@@ -25,7 +25,7 @@ space:
   WS+;
 
 nodeName:
-  LETTER (LETTER | DIGIT)*;
+  ANY_LETTER (ANY_LETTER | DIGIT)*;
 
 nodeList:
   nodeListItem (nodeListDelim nodeListItem)*;
@@ -43,8 +43,8 @@ string:
   STRING space? ( PLUS space? STRING )*;
 
 word:
-  (LETTER | CYR_LETTER | SYMBOL)+
-  (LETTER | CYR_LETTER | DIGIT | DOT | DASH | PLUS | SYMBOL)*;
+  (ANY_LETTER | CYR_LETTER | SYMBOL)+
+  (ANY_LETTER | CYR_LETTER | SYMBOL | DIGIT | DOT | DASH | PLUS)*;
 
 number:
   DASH? DIGIT+ (DOT DIGIT+)?;
@@ -74,8 +74,14 @@ RIGHT_BRACKET:
 PLUS:
   '+';
 
+ANY_LETTER:
+  LETTER | CAPITAL_LETTER;
+
+CAPITAL_LETTER:
+  [A-Z];
+
 LETTER:
-  [a-zA-Z_а-я];
+  [a-z_а-я];
 
 CYR_LETTER:
   [а-яА-ЯёЁ];
