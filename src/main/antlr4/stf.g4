@@ -1,5 +1,9 @@
 grammar stf;
 
+@header {
+  package net.unixcode.rts.parser.antlr;
+}
+
 stf:
   heading
   space?
