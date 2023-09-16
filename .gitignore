@@ -39,3 +39,9 @@ build/
 
 .antlr/
 .idea/
+
+*BaseListener.java
+*Lexer.java
+*.tokens
+*Listener.java
+*Parser.java
