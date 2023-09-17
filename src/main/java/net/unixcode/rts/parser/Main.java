@@ -2,11 +2,14 @@ package net.unixcode.rts.parser;
 
 import net.unixcode.rts.parser.antlr.stf.stfLexer;
 import net.unixcode.rts.parser.antlr.stf.stfParser;
+import net.unixcode.rts.parser.antlr.stf.stfListener;
 import net.unixcode.rts.parser.api.*;
 import net.unixcode.rts.parser.api.stf.ISTFLexerSupplier;
 import net.unixcode.rts.parser.api.stf.ISTFParserSupplier;
-import net.unixcode.rts.parser.services.DefaultParserRunner;
-import net.unixcode.rts.parser.parsers.stf.STFParserRunner;
+import net.unixcode.rts.parser.api.stf.ISTF2XMLListenerCtxt;
+import net.unixcode.rts.parser.parsers.stf.STF2XMLListener;
+import net.unixcode.rts.parser.parsers.stf.STFRunnerProvider;
+import net.unixcode.rts.parser.parsers.stf.STF2XMLListenerCtxt;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.*;
@@ -15,6 +18,8 @@ import org.springframework.stereotype.Service;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 @Service("main")
 public class Main {
@@ -25,14 +30,16 @@ public class Main {
 
     ApplicationContext ctxt = new AnnotationConfigApplicationContext(DIConfig.class);
 
-    DefaultParserRunner parserRunner = (STFParserRunner) ctxt.getBean("stf_parser_runner");
+    IThreadsPoolProvider poolProvider = ctxt.getBean(IThreadsPoolProvider.class);
 
-    parserRunner.setArgv(argv);
+    IParserRunnerProvider parserRunnerProvider = ctxt.getBean(STFRunnerProvider.class);
 
-    var parserThread = new Thread(parserRunner, "Main parsing thread");
+    parserRunnerProvider.prepare(argv);
 
-    parserThread.start();
-    parserThread.join();
+    poolProvider.forEach(executor -> {
+      IParserRunner runner = parserRunnerProvider.get();
+      executor.execute(runner);
+    });
   }
 
   static ParserType parserTypeProviderImpl(String[] argv) {
@@ -65,8 +72,7 @@ public class Main {
 
         result.add(file.getCanonicalPath());
       }
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       System.err.println(e.getLocalizedMessage());
       e.printStackTrace(System.err);
       System.exit(1);
@@ -77,7 +83,7 @@ public class Main {
 
   @Configuration
   // @ImportResource(locations = {"classpath:spring/app_context.xml"})
-  @ComponentScan(basePackages = {"net.unixcode.rts.parser"})
+  @ComponentScan(basePackages = { "net.unixcode.rts.parser" })
   static class DIConfig {
     @Bean
     IParserTypeProvider parser_type_provider() {

@@ -42,6 +42,8 @@ build/
 
 *BaseListener.java
 *Lexer.java
+*Lexer.interp
+*.interp
 *.tokens
 *Listener.java
 *Parser.java

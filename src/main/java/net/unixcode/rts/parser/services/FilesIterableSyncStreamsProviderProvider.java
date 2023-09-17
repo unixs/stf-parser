@@ -1,7 +1,7 @@
 package net.unixcode.rts.parser.services;
 
 import net.unixcode.rts.parser.api.IFileNamesProvider;
-import net.unixcode.rts.parser.api.IInputStreamsProvider;
+import net.unixcode.rts.parser.api.IIterableStreamsProvider;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.jetbrains.annotations.NotNull;
@@ -9,35 +9,36 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
 @Service
-public class FilesInputStreamsProvider implements IInputStreamsProvider {
+public class FilesIterableSyncStreamsProviderProvider implements IIterableStreamsProvider {
   IFileNamesProvider fileNamesProvider;
   List<String> argv;
 
   @Autowired
-  public FilesInputStreamsProvider(IFileNamesProvider fileNamesProvider) {
+  public FilesIterableSyncStreamsProviderProvider(IFileNamesProvider fileNamesProvider) {
     this.fileNamesProvider = fileNamesProvider;
   }
 
   @Override
   public @NotNull Iterator<CharStream> iterator() {
-    return new InternalIterator();
+    return new InternalSyncIterator();
   }
 
   @Override
-  public IInputStreamsProvider apply(List<String> argv) {
+  public IIterableStreamsProvider apply(List<String> argv) {
     this.argv = argv;
 
     return this;
   }
 
-  private class InternalIterator implements Iterator<CharStream> {
+  protected class InternalSyncIterator implements Iterator<CharStream> {
     private final Iterator<String> filesIter;
-    InternalIterator() {
-      List<String> fileNames = fileNamesProvider.apply(argv);
+    InternalSyncIterator() {
+      List<String> fileNames = Collections.synchronizedList(fileNamesProvider.apply(argv));
       filesIter = fileNames.iterator();
     }
 
