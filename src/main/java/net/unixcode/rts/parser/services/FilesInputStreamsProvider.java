@@ -1,4 +1,4 @@
-package net.unixcode.rts.parser.components;
+package net.unixcode.rts.parser.services;
 
 import net.unixcode.rts.parser.api.IFileNamesProvider;
 import net.unixcode.rts.parser.api.IInputStreamsProvider;
@@ -27,7 +27,8 @@ public class FilesInputStreamsProvider implements IInputStreamsProvider {
     return new InternalIterator();
   }
 
-  public IInputStreamsProvider setArgv(List<String> argv) {
+  @Override
+  public IInputStreamsProvider apply(List<String> argv) {
     this.argv = argv;
 
     return this;

@@ -1,22 +1,22 @@
 grammar stf;
 
 @header {
-  package net.unixcode.rts.parser.antlr;
+  package net.unixcode.rts.parser.antlr.stf;
 }
 
 stf:
   heading
   space?
-  node
+  section
   space?
-  node*
+  section*
   space?
   EOF;
 
 heading:
   MAGIC_HEADING_1;
 
-node:
+section:
   nodeName
   space?
   LEFT_PAREN
@@ -38,7 +38,7 @@ nodeListDelim:
   space;
 
 nodeListItem:
-  node | term;
+  section | term;
 
 term:
   word | number | string;

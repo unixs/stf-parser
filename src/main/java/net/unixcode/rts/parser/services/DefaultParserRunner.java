@@ -1,23 +1,25 @@
 package net.unixcode.rts.parser.services;
 
+import net.unixcode.rts.parser.api.BaseParserExecutor;
 import net.unixcode.rts.parser.api.IInputStreamsProvider;
 import net.unixcode.rts.parser.api.IParserRunner;
-import org.antlr.v4.runtime.CharStream;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Service;
+import org.antlr.v4.runtime.Lexer;
+import org.antlr.v4.runtime.Parser;
+import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 import java.util.Arrays;
 import java.util.List;
 
-@Service("default_parser_runner")
-public class DefaultParserRunner implements IParserRunner {
+public abstract class DefaultParserRunner<L extends Lexer, P extends Parser> implements IParserRunner {
   protected List<String> argv = null;
   protected IInputStreamsProvider streamsProvider;
+  protected BaseParserExecutor<L, P> parserExecutor;
+  protected ParseTreeListener listener;
 
-  @Autowired
-  public DefaultParserRunner(IInputStreamsProvider streamsProvider) {
+  public DefaultParserRunner(IInputStreamsProvider streamsProvider, BaseParserExecutor<L, P> parserExecutor, ParseTreeListener listener) {
     this.streamsProvider = streamsProvider;
+    this.parserExecutor = parserExecutor;
+    this.listener = listener;
   }
 
   public void setArgv(String[] argv) {
@@ -33,8 +35,13 @@ public class DefaultParserRunner implements IParserRunner {
       System.exit(1);
     }
 
-    for (CharStream stream : this.streamsProvider.setArgv(argv)) {
-      System.out.println(stream);
+    var streams = this.streamsProvider.apply(argv);
+
+    for (var stream : streams) {
+      this.parserExecutor.apply(stream);
+      this.parserExecutor.exec(listener);
+
+      System.out.println(listener.toString());
     }
   }
 }

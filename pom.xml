@@ -39,9 +39,9 @@
       <plugin>
         <groupId>org.antlr</groupId>
         <artifactId>antlr4-maven-plugin</artifactId>
-        <version>4.3</version>
+        <version>4.13.0</version>
         <configuration>
-          <outputDirectory>src/main/java/net/unixcode/rts/parser/antlr</outputDirectory>
+          <outputDirectory>src/main/java/net/unixcode/rts/parser/antlr/stf</outputDirectory>
         </configuration>
         <executions>
           <execution>

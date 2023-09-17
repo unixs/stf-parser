@@ -1,9 +1,13 @@
 package net.unixcode.rts.parser;
 
+import net.unixcode.rts.parser.antlr.stf.stfLexer;
+import net.unixcode.rts.parser.antlr.stf.stfParser;
 import net.unixcode.rts.parser.api.*;
+import net.unixcode.rts.parser.api.stf.ISTFLexerSupplier;
+import net.unixcode.rts.parser.api.stf.ISTFParserSupplier;
 import net.unixcode.rts.parser.services.DefaultParserRunner;
+import net.unixcode.rts.parser.parsers.stf.STFParserRunner;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.*;
 import org.springframework.stereotype.Service;
@@ -21,7 +25,7 @@ public class Main {
 
     ApplicationContext ctxt = new AnnotationConfigApplicationContext(DIConfig.class);
 
-    DefaultParserRunner parserRunner = (DefaultParserRunner) ctxt.getBean("default_parser_runner");
+    DefaultParserRunner parserRunner = (STFParserRunner) ctxt.getBean("stf_parser_runner");
 
     parserRunner.setArgv(argv);
 
@@ -79,9 +83,20 @@ public class Main {
     IParserTypeProvider parser_type_provider() {
       return Main::parserTypeProviderImpl;
     }
+
     @Bean
     IFileNamesProvider file_names_provider() {
       return Main::argvGetFileNames;
+    }
+
+    @Bean
+    ISTFLexerSupplier stf_lexer_supplier() {
+      return stfLexer::new;
+    }
+
+    @Bean()
+    ISTFParserSupplier stf_parser_supplier() {
+      return stfParser::new;
     }
   }
 }
