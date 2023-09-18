@@ -1,0 +1,35 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Main",
+      "request": "launch",
+      "mainClass": "net.unixcode.rts.parser.Main",
+      "projectName": "parser",
+    },
+    {
+      "name": "rts simple",
+      "type": "antlr-debug",
+      "request": "launch",
+      "grammar": "${workspaceFolder}/src/main/antlr4/stf.g4",
+      "startRule": "stf",
+      "input": "${workspaceFolder}/src/main/antlr4/samples/simple.eng",
+      "visualParseTree": true,
+      "printParseTree": false
+    },
+    {
+      "name": "rts real",
+      "type": "antlr-debug",
+      "request": "launch",
+      "grammar": "${workspaceFolder}/src/main/grammar/stf/stf.g4",
+      "startRule": "stf",
+      "input": "${workspaceFolder}/src/main/grammar/stf/samples/Cab.sd",
+      "visualParseTree": false,
+      "printParseTree": true
+    }
+  ]
+}
