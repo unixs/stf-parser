@@ -2,6 +2,7 @@ package net.unixcode.rts.parser.parsers.stf;
 
 import net.unixcode.rts.parser.antlr.stf.stfLexer;
 import net.unixcode.rts.parser.antlr.stf.stfParser;
+import net.unixcode.rts.parser.api.IParserListener;
 import net.unixcode.rts.parser.api.stf.ISTFLexerSupplier;
 import net.unixcode.rts.parser.api.stf.ISTFParserSupplier;
 import net.unixcode.rts.parser.parsers.BaseExecutor;
@@ -17,7 +18,7 @@ public class STFExecutor extends BaseExecutor<stfLexer, stfParser> {
   }
 
   @Override
-  public void exec(stfParser parser, ParseTreeListener listener) {
+  public void exec(stfParser parser, IParserListener listener) {
     parser.addParseListener(listener);
     parser.stf();
   }

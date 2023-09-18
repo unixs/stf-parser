@@ -1,9 +1,6 @@
 package net.unixcode.rts.parser.parsers;
 
-import net.unixcode.rts.parser.api.ILexerSupplier;
-import net.unixcode.rts.parser.api.IParserConstructor;
-import net.unixcode.rts.parser.api.IParserExecutor;
-import net.unixcode.rts.parser.api.IParserSupplier;
+import net.unixcode.rts.parser.api.*;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.Lexer;
@@ -28,5 +25,5 @@ public abstract class BaseExecutor<L extends Lexer, P extends Parser> implements
     return parserSupplier.apply(tokenStreeam);
   }
 
-  public abstract void exec(P parser, ParseTreeListener listener);
+  public abstract void exec(P parser, IParserListener listener);
 }

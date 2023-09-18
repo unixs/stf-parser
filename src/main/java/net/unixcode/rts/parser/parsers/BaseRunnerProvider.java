@@ -1,8 +1,6 @@
 package net.unixcode.rts.parser.parsers;
 
-import net.unixcode.rts.parser.api.IIterableStreamsProvider;
-import net.unixcode.rts.parser.api.IParserRunner;
-import net.unixcode.rts.parser.api.IParserRunnerProvider;
+import net.unixcode.rts.parser.api.*;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.Parser;
@@ -17,17 +15,16 @@ public abstract class BaseRunnerProvider<L extends Lexer, P extends Parser> impl
   protected List<String> argv = null;
   protected IIterableStreamsProvider streamsProvider;
   protected BaseExecutor<L, P> parserExecutor;
-  protected ParseTreeListener listener;
-  protected Iterator<CharStream> iterator;
+  protected Iterator<ISourceItem> iterator;
   protected ApplicationContext applicationContext;
+  protected IParserEmitter emitter;
 
 
-
-  public BaseRunnerProvider(ApplicationContext applicationContext, IIterableStreamsProvider streamsProvider, BaseExecutor<L, P> parserExecutor, ParseTreeListener listener) {
+  public BaseRunnerProvider(ApplicationContext applicationContext, IIterableStreamsProvider streamsProvider, BaseExecutor<L, P> parserExecutor, IParserEmitter emitter) {
     this.applicationContext = applicationContext;
     this.streamsProvider = streamsProvider;
     this.parserExecutor = parserExecutor;
-    this.listener = listener;
+    this.emitter = emitter;
   }
 
   @Override
@@ -42,7 +39,7 @@ public abstract class BaseRunnerProvider<L extends Lexer, P extends Parser> impl
   @Override
   public abstract IParserRunner get();
 
-  protected void run(ParseTreeListener listener) {
+  protected void run(IParserListener listener) {
     System.out.println("Parser started.");
 
     if (argv == null) {
@@ -52,24 +49,26 @@ public abstract class BaseRunnerProvider<L extends Lexer, P extends Parser> impl
       System.exit(1);
     }
 
-    CharStream stream = null;
+    ISourceItem sourceItem = null;
 
     while(true) {
       synchronized (iterator) {
         if (iterator.hasNext()) {
-          stream = iterator.next();
+          sourceItem = iterator.next();
         }
       }
 
-      if (stream == null) {
+      if (sourceItem == null || sourceItem.getStream() == null) {
         break;
       }
 
-      var parser = this.parserExecutor.apply(stream);
+      var parser = this.parserExecutor.apply(sourceItem.getStream());
       this.parserExecutor.exec(parser, listener);
 
-      stream = null;
+      sourceItem = null;
     }
+
+    this.emitter.accept(listener.getContext());
 
     System.out.println("Parser done.");
   }

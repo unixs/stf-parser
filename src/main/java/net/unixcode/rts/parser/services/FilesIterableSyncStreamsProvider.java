@@ -2,6 +2,8 @@ package net.unixcode.rts.parser.services;
 
 import net.unixcode.rts.parser.api.IFileNamesProvider;
 import net.unixcode.rts.parser.api.IIterableStreamsProvider;
+import net.unixcode.rts.parser.api.ISourceItem;
+import net.unixcode.rts.parser.parsers.BaseSourceItem;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.jetbrains.annotations.NotNull;
@@ -14,17 +16,17 @@ import java.util.Iterator;
 import java.util.List;
 
 @Service
-public class FilesIterableSyncStreamsProviderProvider implements IIterableStreamsProvider {
+public class FilesIterableSyncStreamsProvider implements IIterableStreamsProvider {
   IFileNamesProvider fileNamesProvider;
   List<String> argv;
 
   @Autowired
-  public FilesIterableSyncStreamsProviderProvider(IFileNamesProvider fileNamesProvider) {
+  public FilesIterableSyncStreamsProvider(IFileNamesProvider fileNamesProvider) {
     this.fileNamesProvider = fileNamesProvider;
   }
 
   @Override
-  public @NotNull Iterator<CharStream> iterator() {
+  public @NotNull Iterator<ISourceItem> iterator() {
     return new InternalSyncIterator();
   }
 
@@ -35,7 +37,7 @@ public class FilesIterableSyncStreamsProviderProvider implements IIterableStream
     return this;
   }
 
-  protected class InternalSyncIterator implements Iterator<CharStream> {
+  protected class InternalSyncIterator implements Iterator<ISourceItem> {
     private final Iterator<String> filesIter;
     InternalSyncIterator() {
       List<String> fileNames = Collections.synchronizedList(fileNamesProvider.apply(argv));
@@ -48,13 +50,11 @@ public class FilesIterableSyncStreamsProviderProvider implements IIterableStream
     }
 
     @Override
-    public @NotNull CharStream next() {
+    @NotNull
+    public ISourceItem next() {
       String filePath = filesIter.next();
-      try {
-        return CharStreams.fromFileName(filePath);
-      } catch (IOException e) {
-        throw new RuntimeException(e);
-      }
+
+      return new BaseSourceItem(filePath);
     }
   }
 }

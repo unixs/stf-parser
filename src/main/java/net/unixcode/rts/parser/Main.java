@@ -2,14 +2,10 @@ package net.unixcode.rts.parser;
 
 import net.unixcode.rts.parser.antlr.stf.stfLexer;
 import net.unixcode.rts.parser.antlr.stf.stfParser;
-import net.unixcode.rts.parser.antlr.stf.stfListener;
 import net.unixcode.rts.parser.api.*;
 import net.unixcode.rts.parser.api.stf.ISTFLexerSupplier;
 import net.unixcode.rts.parser.api.stf.ISTFParserSupplier;
-import net.unixcode.rts.parser.api.stf.ISTF2XMLListenerCtxt;
-import net.unixcode.rts.parser.parsers.stf.STF2XMLListener;
 import net.unixcode.rts.parser.parsers.stf.STFRunnerProvider;
-import net.unixcode.rts.parser.parsers.stf.STF2XMLListenerCtxt;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.*;
@@ -17,9 +13,8 @@ import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
 
 @Service("main")
 public class Main {
@@ -51,32 +46,37 @@ public class Main {
 
     try {
       if (argv.size() < 2) {
-        throw new Exception("The file name is not specified in cmd.");
+        System.err.println("The file names are not specified in cmd.");
+        System.exit(1);
+      }
+      else {
+        result = argv.stream().reduce(result, (a, b, c) -> {
+          
+        };
       }
 
-      for (var path : argv) {
 
-        var file = new File(path);
 
-        if (!file.exists()) {
-          throw new Exception("File is not exists.");
-        }
+    for (var path : argv) {
 
-        if (!file.isFile()) {
-          throw new Exception("Specified path is not a file.");
-        }
+      var file = new File(path);
 
-        if (!file.canRead()) {
-          throw new Exception("Specified file is not readable.");
-        }
-
-        result.add(file.getCanonicalPath());
+      if (!file.exists()) {
+        throw new Exception("File is not exists.");
       }
-    } catch (Exception e) {
-      System.err.println(e.getLocalizedMessage());
-      e.printStackTrace(System.err);
-      System.exit(1);
+
+      if (!file.isFile()) {
+        throw new Exception("Specified path is not a file.");
+      }
+
+      if (!file.canRead()) {
+        throw new Exception("Specified file is not readable.");
+      }
+
+      result.add(file.getCanonicalPath());
     }
+
+
 
     return result;
   }
