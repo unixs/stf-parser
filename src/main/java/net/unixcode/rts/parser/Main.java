@@ -41,44 +41,13 @@ public class Main {
     return ParserType.XML;
   }
 
-  static @NotNull List<String> argvGetFileNames(List<String> argv) {
-    var result = new ArrayList<String>();
-
-    try {
-      if (argv.size() < 2) {
-        System.err.println("The file names are not specified in cmd.");
-        System.exit(1);
-      }
-      else {
-        result = argv.stream().reduce(result, (a, b, c) -> {
-          
-        };
-      }
-
-
-
-    for (var path : argv) {
-
-      var file = new File(path);
-
-      if (!file.exists()) {
-        throw new Exception("File is not exists.");
-      }
-
-      if (!file.isFile()) {
-        throw new Exception("Specified path is not a file.");
-      }
-
-      if (!file.canRead()) {
-        throw new Exception("Specified file is not readable.");
-      }
-
-      result.add(file.getCanonicalPath());
+  static @NotNull List<String> argvCheckFileNames(List<String> argv) {
+    if (argv.isEmpty()) {
+      System.err.println("The file names are not specified in cmd.");
+      System.exit(1);
     }
 
-
-
-    return result;
+    return new ArrayList<>(argv);
   }
 
   @Configuration
@@ -92,7 +61,7 @@ public class Main {
 
     @Bean
     IFileNamesProvider file_names_provider() {
-      return Main::argvGetFileNames;
+      return Main::argvCheckFileNames;
     }
 
     @Bean

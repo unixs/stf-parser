@@ -13,11 +13,25 @@ public class BaseSourceItem implements ISourceItem {
   protected CharStream stream = null;
 
   public BaseSourceItem(String sourcePath) {
-    if (sourcePath != null) {
-      this.sourcePath = sourcePath;
-    }
-
     try {
+      if (sourcePath != null) {
+        this.sourcePath = sourcePath;
+
+        var file = new File(sourcePath);
+
+        if (!file.exists()) {
+          throw new IOException("File is not exists.");
+        }
+
+        if (!file.isFile()) {
+          throw new IOException("Specified path is not a file.");
+        }
+
+        if (!file.canRead()) {
+          throw new IOException("Specified file is not readable.");
+        }
+      }
+
       stream = CharStreams.fromFileName(sourcePath);
     }
     catch (IOException e) {
