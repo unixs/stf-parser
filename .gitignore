@@ -45,5 +45,5 @@ build/
 *Lexer.interp
 *.interp
 *.tokens
-*Listener.java
+stfListener.java
 *Parser.java
