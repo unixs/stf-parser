@@ -15,9 +15,9 @@ public class BaseSourceItem implements ISourceItem {
   public BaseSourceItem(String sourcePath) {
     try {
       if (sourcePath != null) {
-        this.sourcePath = sourcePath;
 
         var file = new File(sourcePath);
+        this.sourcePath = file.getCanonicalPath();
 
         if (!file.exists()) {
           throw new IOException("File is not exists.");
@@ -32,7 +32,7 @@ public class BaseSourceItem implements ISourceItem {
         }
       }
 
-      stream = CharStreams.fromFileName(sourcePath);
+      stream = CharStreams.fromFileName(this.sourcePath);
     }
     catch (IOException e) {
       System.err.println(MessageFormat.format("ERROR: Unable to compile file [{0}]", sourcePath));

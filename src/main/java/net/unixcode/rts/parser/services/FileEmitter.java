@@ -2,7 +2,11 @@ package net.unixcode.rts.parser.services;
 
 import net.unixcode.rts.parser.api.IParserEmitter;
 import net.unixcode.rts.parser.api.IParserListenerContext;
+import org.apache.commons.io.FilenameUtils;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
+
+import java.io.File;
 
 @Service
 public class FileEmitter implements IParserEmitter {
@@ -14,8 +18,17 @@ public class FileEmitter implements IParserEmitter {
       return;
     }
 
+    var targetPath = getTargetFilePath(context);
+
     System.out.println("Emit file for.");
-    System.out.println("\t" + context.getSourcePath());
+    System.out.println("\t" + targetPath);
     System.out.println("\t as " + context.getExtensiion());
+  }
+
+  protected String getTargetFilePath(@NotNull IParserListenerContext context) {
+    var srcPath = context.getSourcePath();
+    var targetExtension = context.getExtensiion();
+
+    return FilenameUtils.removeExtension(srcPath) + FilenameUtils.EXTENSION_SEPARATOR + targetExtension;
   }
 }

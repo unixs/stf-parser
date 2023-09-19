@@ -90,6 +90,9 @@ public abstract class BaseRunnerProvider<L extends Lexer, P extends Parser> impl
   protected void execute(ISourceItem sourceItem, IParserListener listener) {
     var parser = this.parserExecutor.apply(sourceItem);
 
+    // Copying source path from source item to listener context
+    listener.getContext().setSourcePath(sourceItem.getSourcePath());
+
     // Marking the listener related context as processed and ready for data emitting
     listener.getContext().setProcessed();
 
