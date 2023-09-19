@@ -20,7 +20,7 @@ import java.util.List;
 public class Main {
   public static void main(String @NotNull [] argv) throws Exception {
     if (argv.length < 1) {
-      throw new Exception("Input file not provided.");
+      throw new Exception("No input files were provided.");
     }
 
     ApplicationContext ctxt = new AnnotationConfigApplicationContext(DIConfig.class);

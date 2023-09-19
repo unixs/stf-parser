@@ -1,10 +1,9 @@
 package net.unixcode.rts.parser.parsers;
 
 import net.unixcode.rts.parser.api.*;
-import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.Parser;
-import org.antlr.v4.runtime.tree.ParseTreeListener;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.context.ApplicationContext;
 
 import java.util.Arrays;
@@ -42,6 +41,7 @@ public abstract class BaseRunnerProvider<L extends Lexer, P extends Parser> impl
   protected void run(IParserListener listener) {
     System.out.println("Parser started.");
 
+    // TODO: refactor it
     if (argv == null) {
       System.err.println("ARGV is not set");
       System.err.println("Call .prepare() first.");
@@ -49,6 +49,14 @@ public abstract class BaseRunnerProvider<L extends Lexer, P extends Parser> impl
       System.exit(1);
     }
 
+    parse(listener);
+
+    emitOutputData(listener);
+
+    System.out.println("Parser done.");
+  }
+
+  protected void parse(IParserListener listener) {
     ISourceItem sourceItem = null;
 
     while(true) {
@@ -58,18 +66,33 @@ public abstract class BaseRunnerProvider<L extends Lexer, P extends Parser> impl
         }
       }
 
-      if (sourceItem == null || sourceItem.getStream() == null) {
+      if (sourceItem == null) {
         break;
       }
 
-      var parser = this.parserExecutor.apply(sourceItem.getStream());
-      this.parserExecutor.exec(parser, listener);
+      if (sourceItem.getStream() == null) {
+        System.err.println("Source stream is NULL. Trying next source item.");
+
+        sourceItem = null;
+        continue;
+      }
+
+      execute(sourceItem, listener);
 
       sourceItem = null;
     }
+  }
 
+  protected void emitOutputData(@NotNull IParserListener listener) {
     this.emitter.accept(listener.getContext());
+  }
 
-    System.out.println("Parser done.");
+  protected void execute(ISourceItem sourceItem, IParserListener listener) {
+    var parser = this.parserExecutor.apply(sourceItem);
+
+    // Marking the listener related context as processed and ready for data emitting
+    listener.getContext().setProcessed();
+
+    this.parserExecutor.exec(parser, listener);
   }
 }

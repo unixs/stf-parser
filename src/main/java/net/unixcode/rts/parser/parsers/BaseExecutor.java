@@ -17,8 +17,10 @@ public abstract class BaseExecutor<L extends Lexer, P extends Parser> implements
   }
 
   @Override
-  public P apply(CharStream charStream) {
-    Lexer lexer = lexerSupplier.apply(charStream);
+  public P apply(ISourceItem sourceItem) {
+    var stream = sourceItem.getStream();
+
+    Lexer lexer = lexerSupplier.apply(stream);
 
     var tokenStreeam = new CommonTokenStream(lexer);
 

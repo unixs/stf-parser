@@ -7,9 +7,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class FileEmitter implements IParserEmitter {
   @Override
-  public void accept(IParserListenerContext listenerContext) {
+  public void accept(IParserListenerContext context) {
+    if (!context.processed()) {
+      System.err.println("Unprocessed context has been passed to emitter");
+
+      return;
+    }
+
     System.out.println("Emit file for.");
-    System.out.println("\t" + listenerContext.getSourcePath());
-    System.out.println("\t as " + listenerContext.getExtensiion());
+    System.out.println("\t" + context.getSourcePath());
+    System.out.println("\t as " + context.getExtensiion());
   }
 }

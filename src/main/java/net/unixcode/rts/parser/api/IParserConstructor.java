@@ -6,5 +6,5 @@ import org.antlr.v4.runtime.Parser;
 import java.util.function.Function;
 
 @FunctionalInterface
-public interface IParserConstructor<T extends Parser> extends Function<CharStream, T> {
+public interface IParserConstructor<T extends Parser> extends Function<ISourceItem, T> {
 }

@@ -7,6 +7,4 @@ import java.util.function.Function;
 
 @FunctionalInterface
 public interface IParserSupplier<T extends Parser> extends Function<CommonTokenStream, T> {
-  @Override
-  T apply(CommonTokenStream ts);
 }

@@ -2,7 +2,6 @@ package net.unixcode.rts.parser.api;
 
 import org.antlr.v4.runtime.CharStream;
 
-import java.io.File;
 
 public interface ISourceItem {
   CharStream getStream();
