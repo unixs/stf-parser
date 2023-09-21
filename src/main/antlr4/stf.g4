@@ -6,56 +6,56 @@ grammar stf;
 
 stf:
   heading
-  space?
-  section
-  space?
-  section*
-  space?
+  WS?
+  rootSections?
+  WS?
   EOF;
 
 heading:
-  MAGIC_HEADING_1;
+  MAGIC_HEADING;
+
+rootSections:
+  section (WS? section)*;
 
 section:
   nodeName
-  space?
+  WS?
   LEFT_PAREN
-  space?
-  nodeList?
-  space?
+  WS?
+  list?
+  WS?
   RIGHT_PAREN;
 
-space:
-  WS+;
-
 nodeName:
-  ANY_LETTER (ANY_LETTER | DIGIT)*;
+  ANY_LETTERS (ANY_LETTERS | DIGITS)*;
 
-nodeList:
-  nodeListItem (nodeListDelim nodeListItem)*;
+list:
+  listItem (WS listItem)*;
 
-nodeListDelim:
-  space;
-
-nodeListItem:
+listItem:
   section | term;
 
 term:
   word | number | string;
 
 string:
-  STRING space? ( PLUS space? STRING )*;
+  STRING  ( WS? PLUS WS? STRING )*;
 
 word:
-  (ANY_LETTER | CYR_LETTER | SYMBOL)+
-  (ANY_LETTER | CYR_LETTER | SYMBOL | DIGIT | DOT | DASH | PLUS)*;
+  (ANY_LETTERS | CYR_LETTERS | SYMBOL)+
+  (ANY_LETTERS | CYR_LETTERS | SYMBOL | DIGITS | DOT | DASH | PLUS)*;
 
 number:
-  DASH? DIGIT+ (DOT DIGIT+)?;
+  intNumber | floatNumber;
 
+intNumber:
+  DASH? DIGITS;
 
-MAGIC_HEADING_1:
-  'SIMISA@@@@@@@@@@JINX0t1t______';
+floatNumber:
+  DASH? DIGITS (DOT DIGITS);
+
+MAGIC_HEADING:
+  'SIM' .*? '______';
 
 LEFT_PAREN:
   '(';
@@ -67,7 +67,7 @@ STRING:
   '"' .*? '"';
 
 SYMBOL:
-  [,&:?|@$] | LEFT_BRACKET | RIGHT_BRACKET;
+  [,&:?№*~`§±|;!#%=\\/@$] | LEFT_BRACKET | RIGHT_BRACKET;
 
 LEFT_BRACKET:
   '[';
@@ -78,8 +78,8 @@ RIGHT_BRACKET:
 PLUS:
   '+';
 
-ANY_LETTER:
-  LETTER | CAPITAL_LETTER;
+ANY_LETTERS:
+  (LETTER | CAPITAL_LETTER)+;
 
 CAPITAL_LETTER:
   [A-Z];
@@ -87,11 +87,11 @@ CAPITAL_LETTER:
 LETTER:
   [a-z_а-я];
 
-CYR_LETTER:
-  [а-яА-ЯёЁ];
+CYR_LETTERS:
+  [а-яА-ЯёЁ]+;
 
-DIGIT:
-  [0-9];
+DIGITS:
+  [0-9]+;
 
 DASH:
   '-';
@@ -100,7 +100,7 @@ DOT:
   '.';
 
 WS:
-  [ \t];
+  [ \t]+;
 
 NEWLINE:
   [\n\r] -> skip;
