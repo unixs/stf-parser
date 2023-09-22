@@ -18,7 +18,7 @@ rootSections:
   section (WS? section)*;
 
 section:
-  nodeName
+  sectionName
   WS?
   LEFT_PAREN
   WS?
@@ -26,7 +26,7 @@ section:
   WS?
   RIGHT_PAREN;
 
-nodeName:
+sectionName:
   ANY_LETTERS (ANY_LETTERS | DIGITS)*;
 
 list:

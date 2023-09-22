@@ -25,11 +25,11 @@
       "name": "rts real",
       "type": "antlr-debug",
       "request": "launch",
-      "grammar": "${workspaceFolder}/src/main/grammar/stf/stf.g4",
+      "grammar": "${workspaceFolder}/src/main/antlr4/stf.g4",
       "startRule": "stf",
-      "input": "${workspaceFolder}/src/main/grammar/stf/samples/Cab.sd",
-      "visualParseTree": false,
-      "printParseTree": true
+      "input": "${workspaceFolder}/src/main/antlr4/samples/Cab.sd",
+      "visualParseTree": true,
+      "printParseTree": false
     }
   ]
 }
