@@ -106,8 +106,6 @@ public class STF2XMLListener extends StackableSTFListener<Node, CountableListene
 
       throw new RuntimeException(e);
     }
-
-    System.out.println("New listener is ready.");
   }
 
   protected Document doc() {
@@ -195,12 +193,10 @@ public class STF2XMLListener extends StackableSTFListener<Node, CountableListene
       counter = peek().getCounter();
     }
 
-    // Прям щас в стеке лежат или дочерние элементы, счётчик и пустой кадр или просто пустой кадр,
+    // Прям щас в стеке лежат дочерние элементы и счётчик,
     // который был добавлен при входе в секцию
-    // В этот пустой кадр по идее нужно писать содержимое этой текущей секции
-    // из которой хотим выйти
 
-    // Надобно всё дочернее выбросить, обернуть, в мой новый кадр и затолкнуть обратно
+    // Надобно всё дочернее выбросить, обернуть в мой новый кадр и затолкнуть обратно
 
     // Тут задёшево храним кадры дочерних элементов
     var childs = new LinkedList<Node>();
@@ -270,6 +266,14 @@ public class STF2XMLListener extends StackableSTFListener<Node, CountableListene
     // Потом при выходе из секции сможем выбросить нужное кол-во
     // обработанных элементов списка
     count();
+  }
+
+  @Override
+  public void exitHeading(@NotNull stfParser.HeadingContext ctx) {
+    var heading = newElement("header");
+      heading.setTextContent(ctx.getText());
+
+    pushData(heading);
   }
 
   @Override

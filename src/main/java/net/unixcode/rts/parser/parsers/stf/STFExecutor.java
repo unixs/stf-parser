@@ -6,7 +6,6 @@ import net.unixcode.rts.parser.api.IParserListener;
 import net.unixcode.rts.parser.api.stf.ISTFLexerSupplier;
 import net.unixcode.rts.parser.api.stf.ISTFParserSupplier;
 import net.unixcode.rts.parser.parsers.BaseExecutor;
-import org.antlr.v4.runtime.tree.ParseTreeListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

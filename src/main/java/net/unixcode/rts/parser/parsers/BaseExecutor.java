@@ -1,11 +1,9 @@
 package net.unixcode.rts.parser.parsers;
 
 import net.unixcode.rts.parser.api.*;
-import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.Parser;
-import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 public abstract class BaseExecutor<L extends Lexer, P extends Parser> implements IParserConstructor<P>, IParserExecutor<P> {
   protected ILexerSupplier<L> lexerSupplier;

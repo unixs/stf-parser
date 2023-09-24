@@ -2,13 +2,11 @@ package net.unixcode.rts.parser.services;
 
 import net.unixcode.rts.parser.api.IParserEmitter;
 import net.unixcode.rts.parser.api.IParserListenerContext;
-import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.io.OutputStreamWriter;
 
-@Service
-@Primary
+@Component
 public class STDOUTEmitter implements IParserEmitter  {
   @Override
   public void accept(IParserListenerContext context) {

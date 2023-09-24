@@ -4,13 +4,10 @@ import net.unixcode.rts.parser.api.IFileNamesProvider;
 import net.unixcode.rts.parser.api.IIterableStreamsProvider;
 import net.unixcode.rts.parser.api.ISourceItem;
 import net.unixcode.rts.parser.parsers.BaseSourceItem;
-import org.antlr.v4.runtime.CharStream;
-import org.antlr.v4.runtime.CharStreams;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;

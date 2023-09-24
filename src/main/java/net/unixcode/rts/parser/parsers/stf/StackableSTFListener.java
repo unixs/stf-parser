@@ -4,6 +4,7 @@ import net.unixcode.rts.parser.antlr.stf.stfBaseListener;
 import net.unixcode.rts.parser.api.IParserListener;
 import net.unixcode.rts.parser.api.IParserListenerContext;
 import net.unixcode.rts.parser.parsers.BaseListenerStackFrame;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.EmptyStackException;
 import java.util.Stack;
@@ -19,7 +20,7 @@ abstract class StackableSTFListener<T, F extends BaseListenerStackFrame<T>> exte
     return frame;
   }
 
-  protected F push(F frame) {
+  protected F push(@NotNull F frame) {
     try {
       var prevFrame = stack.peek();
 

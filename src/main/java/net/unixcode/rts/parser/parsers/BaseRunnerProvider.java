@@ -38,8 +38,6 @@ public abstract class BaseRunnerProvider<L extends Lexer, P extends Parser> impl
   public abstract IParserRunner get();
 
   protected void run(IParserListener listener) {
-    System.out.println("Parser started.");
-
     // TODO: refactor it
     if (argv == null) {
       System.err.println("ARGV is not set");
@@ -51,8 +49,6 @@ public abstract class BaseRunnerProvider<L extends Lexer, P extends Parser> impl
     parse(listener);
 
     emitOutputData(listener);
-
-    System.out.println("Parser done.");
   }
 
   protected void parse(IParserListener listener) {
