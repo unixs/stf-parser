@@ -63,8 +63,14 @@ LEFT_PAREN:
 RIGHT_PAREN:
   ')';
 
+QUOTE:
+  '"';
+
+fragment ANY:
+  .*?;
+
 STRING:
-  '"' .*? '"';
+  QUOTE ANY QUOTE;
 
 SYMBOL:
   [,&:?№*~`§±|;!#%=\\/@$] | LEFT_BRACKET | RIGHT_BRACKET;

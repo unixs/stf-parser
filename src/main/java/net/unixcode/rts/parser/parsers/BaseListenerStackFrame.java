@@ -24,8 +24,10 @@ public abstract class BaseListenerStackFrame<T> implements IListenerStackFrame<T
   }
 
   @Override
-  public void setData(T data) {
+  public IListenerStackFrame<T> setData(T data) {
     this.data = data;
+
+    return this;
   }
 
   @Override

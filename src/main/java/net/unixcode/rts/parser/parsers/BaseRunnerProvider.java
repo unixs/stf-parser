@@ -18,7 +18,6 @@ public abstract class BaseRunnerProvider<L extends Lexer, P extends Parser> impl
   protected ApplicationContext applicationContext;
   protected IParserEmitter emitter;
 
-
   public BaseRunnerProvider(ApplicationContext applicationContext, IIterableStreamsProvider streamsProvider, BaseExecutor<L, P> parserExecutor, IParserEmitter emitter) {
     this.applicationContext = applicationContext;
     this.streamsProvider = streamsProvider;

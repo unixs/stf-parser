@@ -7,27 +7,34 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 
 @Service
-public class FileEmitter implements IParserEmitter {
-  @Override
-  public void accept(IParserListenerContext context) {
-    if (!context.processed()) {
-      System.err.println("Unprocessed context has been passed to emitter");
+public class FileEmitter extends STDOUTEmitter {
+  protected OutputStreamWriter getOutputStreamWriter(IParserListenerContext context) {
+    try {
+      var targetPath = getTargetFilePath(context);
+      var file = new File(targetPath);
 
-      return;
+      System.out.println("Emit file for.");
+      System.out.println("\t" + targetPath);
+      System.out.println("\t as " + context.getFileExtensiion());
+
+      return new FileWriter(file);
     }
+    catch (IOException e) {
+      System.err.println("Unable write output file.");
+      System.err.println(e.getMessage());
 
-    var targetPath = getTargetFilePath(context);
-
-    System.out.println("Emit file for.");
-    System.out.println("\t" + targetPath);
-    System.out.println("\t as " + context.getExtensiion());
+      throw new RuntimeException(e);
+    }
   }
 
   protected String getTargetFilePath(@NotNull IParserListenerContext context) {
     var srcPath = context.getSourcePath();
-    var targetExtension = context.getExtensiion();
+    var targetExtension = context.getFileExtensiion();
 
     return FilenameUtils.removeExtension(srcPath) + FilenameUtils.EXTENSION_SEPARATOR + targetExtension;
   }

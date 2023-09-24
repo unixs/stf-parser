@@ -44,3 +44,4 @@ build/
 *.tokens
 stfListener.java
 *Parser.java
+src/main/antlr4/samples/*.xml
