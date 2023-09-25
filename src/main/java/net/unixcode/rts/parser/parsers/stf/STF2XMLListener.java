@@ -213,7 +213,9 @@ public class STF2XMLListener extends StackableSTFListener<Node, CountableListene
     }
 
     // Ок, а теперь узел текущей секции
-    var section = newElement(elementName);
+    var section = newElement("section");
+
+    section.setAttribute("name", elementName);
 
     // Добавляем в секцию все веброшенные узлы
     var reverseIterator = childs.descendingIterator();
@@ -234,7 +236,9 @@ public class STF2XMLListener extends StackableSTFListener<Node, CountableListene
   @Override
   public void exitString(@NotNull stfParser.StringContext ctx) {
     var node = newElement("string");
-      node.setTextContent(ctx.getText());
+    var str = ctx.getText();
+
+    node.setTextContent(str.substring(1, str.length() - 1).trim());
 
     pushData(node);
   }
