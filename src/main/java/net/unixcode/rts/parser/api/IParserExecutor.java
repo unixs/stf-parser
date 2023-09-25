@@ -5,5 +5,5 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 @FunctionalInterface
 public interface IParserExecutor<P extends Parser> {
-  void exec(P parser, IParserListener listener);
+  IParserListenerContext exec(P parser, IParserListener listener);
 }

@@ -10,15 +10,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.w3c.dom.*;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-import java.io.OutputStreamWriter;
 import java.util.LinkedList;
 
 @Component
@@ -39,77 +30,14 @@ public class STF2XMLListener extends StackableSTFListener<Node, CountableListene
     }
   }
 
-  protected class Context implements ISTF2XMLListenerCtxt {
-    protected String sourcePath;
-    protected IParserListener listener;
-    protected boolean processed = false;
-
-    @Override
-    public IParserListenerContext setSourcePath(String path) {
-      sourcePath = path;
-
-      return this;
-    }
-
-    @Override
-    public String getSourcePath() {
-      return sourcePath;
-    }
-
-    @Override
-    public boolean processed() {
-      return processed;
-    }
-
-    @Override
-    public void setProcessed() {
-      processed = true;
-    }
-
-    @Override
-    public void writeToStream(OutputStreamWriter streamWriter) {
-      try {
-        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-        Transformer transformer = transformerFactory.newTransformer();
-        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-
-        DOMSource source = new DOMSource(doc());
-
-        StreamResult result = new StreamResult(streamWriter);
-
-        transformer.transform(source, result);
-      }
-      catch (Exception e) {
-        System.err.println("Unable transform Document to xml.");
-        System.err.println(e.getMessage());
-
-        throw new RuntimeException(e);
-      }
-    }
-  }
-
   protected ISTF2XMLListenerCtxt listenerContext;
 
-  protected Document doc;
-
-
-  public STF2XMLListener() {
-    this.listenerContext = new Context();
-
-    try {
-      DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-      DocumentBuilder builder = dbf.newDocumentBuilder();
-      doc = builder.newDocument();
-    }
-    catch (ParserConfigurationException e) {
-      System.err.println(e.getMessage());
-
-      throw new RuntimeException(e);
-    }
+  public STF2XMLListener(ISTF2XMLListenerCtxt listenerContext) {
+    this.listenerContext = listenerContext;
   }
 
   protected Document doc() {
-    return doc;
+    return listenerContext.getDoc();
   }
 
   protected Element newElement(String name) {

@@ -3,9 +3,11 @@ package net.unixcode.rts.parser.parsers.stf;
 import net.unixcode.rts.parser.antlr.stf.stfLexer;
 import net.unixcode.rts.parser.antlr.stf.stfParser;
 import net.unixcode.rts.parser.api.IParserListener;
+import net.unixcode.rts.parser.api.IParserListenerContext;
 import net.unixcode.rts.parser.api.stf.ISTFLexerSupplier;
 import net.unixcode.rts.parser.api.stf.ISTFParserSupplier;
 import net.unixcode.rts.parser.parsers.BaseExecutor;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +19,10 @@ public class STFExecutor extends BaseExecutor<stfLexer, stfParser> {
   }
 
   @Override
-  public void exec(stfParser parser, IParserListener listener) {
+  public IParserListenerContext exec(@NotNull stfParser parser, IParserListener listener) {
     parser.addParseListener(listener);
     parser.stf();
+
+    return listener.getContext();
   }
 }

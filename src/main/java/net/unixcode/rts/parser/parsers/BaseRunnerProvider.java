@@ -1,6 +1,7 @@
 package net.unixcode.rts.parser.parsers;
 
 import net.unixcode.rts.parser.api.*;
+import net.unixcode.rts.parser.parsers.stf.STF2XMLListener;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.Parser;
 import org.jetbrains.annotations.NotNull;
@@ -37,7 +38,10 @@ public abstract class BaseRunnerProvider<L extends Lexer, P extends Parser> impl
   @Override
   public abstract IParserRunner get();
 
-  protected void run(IParserListener listener) {
+  /**
+   * This function is body of the parsing Thread from pool
+   */
+  protected void run() {
     // TODO: refactor it
     if (argv == null) {
       System.err.println("ARGV is not set");
@@ -46,12 +50,10 @@ public abstract class BaseRunnerProvider<L extends Lexer, P extends Parser> impl
       System.exit(1);
     }
 
-    parse(listener);
-
-    emitOutputData(listener);
+    process();
   }
 
-  protected void parse(IParserListener listener) {
+  protected void process() {
     ISourceItem sourceItem = null;
 
     while(true) {
@@ -72,17 +74,29 @@ public abstract class BaseRunnerProvider<L extends Lexer, P extends Parser> impl
         continue;
       }
 
-      execute(sourceItem, listener);
+      compile(sourceItem);
 
       sourceItem = null;
     }
+  }
+
+  protected void compile(ISourceItem sourceItem) {
+    IParserListener listener = applicationContext.getBean(STF2XMLListener.class);
+
+    var result = execute(sourceItem, listener);
+
+    emitOutputData(listener);
   }
 
   protected void emitOutputData(@NotNull IParserListener listener) {
     this.emitter.accept(listener.getContext());
   }
 
-  protected void execute(ISourceItem sourceItem, IParserListener listener) {
+  protected IParserListenerContext execute(ISourceItem sourceItem, @NotNull IParserListener listener) {
+    if (listener.getContext().processed()) {
+      throw new IllegalArgumentException("Listener context already processed for: [" + listener.getContext().getSourcePath() + "]");
+    }
+
     var parser = this.parserExecutor.apply(sourceItem);
 
     // Copying source path from source item to listener context
@@ -91,6 +105,6 @@ public abstract class BaseRunnerProvider<L extends Lexer, P extends Parser> impl
     // Marking the listener related context as processed and ready for data emitting
     listener.getContext().setProcessed();
 
-    this.parserExecutor.exec(parser, listener);
+    return this.parserExecutor.exec(parser, listener);
   }
 }

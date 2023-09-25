@@ -25,5 +25,5 @@ public abstract class BaseExecutor<L extends Lexer, P extends Parser> implements
     return parserSupplier.apply(tokenStreeam);
   }
 
-  public abstract void exec(P parser, IParserListener listener);
+  public abstract IParserListenerContext exec(P parser, IParserListener listener);
 }

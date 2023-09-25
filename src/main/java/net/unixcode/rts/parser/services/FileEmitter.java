@@ -19,6 +19,8 @@ public class FileEmitter extends STDOUTEmitter {
       var targetPath = getTargetFilePath(context);
       var file = new File(targetPath);
 
+      System.out.println("compiled file: " + targetPath);
+
       return new FileWriter(file);
     }
     catch (IOException e) {

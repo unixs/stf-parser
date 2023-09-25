@@ -20,6 +20,7 @@ public class BaseThreadsPoolProvider implements IThreadsPoolProvider {
 
   public BaseThreadsPoolProvider() {
     cpus = Runtime.getRuntime().availableProcessors();
+    cpus = 1;
 
     if (cpus > CPU_MIN) {
       // Leave one cpu for user =)

@@ -2,7 +2,6 @@ package net.unixcode.rts.parser.parsers.stf;
 
 import net.unixcode.rts.parser.api.IIterableStreamsProvider;
 import net.unixcode.rts.parser.api.IParserEmitter;
-import net.unixcode.rts.parser.api.IParserListener;
 import net.unixcode.rts.parser.api.IParserRunner;
 import net.unixcode.rts.parser.parsers.BaseRunnerProvider;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +20,6 @@ public class STFRunnerProvider extends BaseRunnerProvider<stfLexer, stfParser> {
 
   @Override
   public IParserRunner get() {
-    return () -> {
-      IParserListener listener = applicationContext.getBean(STF2XMLListener.class);
-
-      this.run(listener);
-    };
+    return this::run;
   }
 }
