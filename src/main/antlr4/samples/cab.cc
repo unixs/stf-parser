@@ -11,601 +11,601 @@ namespace model {
     
     /**
      * Переключатели.
-     * Кабина 1
+     *   Кабина 1
      */
     enum class sw : unsigned short {
       
       /**
        * Тормоз поезда
-       * Кабина 1
+       *   Кабина 1
+       * Type: Мультипереключатель
        * Name: R3951
-       * Flags:
-    CONTROLLERY
+       * Flags: CONTROLLERY, CHECKDISTANCEONPRESS
        */
       R3951_0 = 0,
 
       /**
        * Тормоз локомотива
-       * Кабина 1
+       *   Кабина 1
+       * Type: Мультипереключатель
        * Name: R2541
-       * Flags:
-    CONTROLLERY
+       * Flags: CONTROLLERY, CHECKDISTANCEONPRESS
        */
       R2541_1 = 1,
 
       /**
        * Реверс
-       * Кабина 1
+       *   Кабина 1
+       * Type: Мультипереключатель
        * Name: REV1
-       * Flags:
-    CONTROLLERY
+       * Flags: CONTROLLERY, CHECKDISTANCEONPRESS, KEY
        */
       REV1_2 = 2,
 
       /**
        * Контроллер
-       * Кабина 1
+       *   Кабина 1
+       * Type: Мультипереключатель
        * Name: KONT1
-       * Flags:
-    CONTROLLERX
+       * Flags: CONTROLLERX, CHECKDISTANCEONPRESS
        */
       KONT1_3 = 3,
 
       /**
        * Задатчик тормозного усилия ЭДТ
-       * Кабина 1
+       *   Кабина 1
+       * Type: Мультипереключатель
        * Name: ZAD1
-       * Flags:
-    CONTROLLERX
+       * Flags: CONTROLLERX, CHECKDISTANCEONPRESS
        */
       ZAD1_4 = 4,
 
       /**
        * Блокировка тормозов усл. 367
-       * Кабина 1
+       *   Кабина 1
+       * Type: Выключатель/тумблер
        * Name: R3671
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, KEY
        */
       R3671_6 = 6,
 
       /**
        * Редуктор зарядного давления
-       * Кабина 1
+       *   Кабина 1
+       * Type: Мультипереключатель
        * Name: RED1
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, CONTROLLERX
        */
       RED1_7 = 7,
 
       /**
        * Ключ ЭПК
-       * Кабина 1
+       *   Кабина 1
+       * Type: Выключатель/тумблер
        * Name: EPK1
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       EPK1_8 = 8,
 
       /**
        * Прожектор яркий
-       * Кабина 1
+       *   Кабина 1
+       * Type: Выключатель/тумблер
        * Name: AZV11
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       AZV11_9 = 9,
 
       /**
        * Прожектор тускло
-       * Кабина 1
+       *   Кабина 1
+       * Type: Выключатель/тумблер
        * Name: AZV21
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       AZV21_10 = 10,
 
       /**
        * Питание ЭПТ
-       * Кабина 1
+       *   Кабина 1
+       * Type: Выключатель/тумблер
        * Name: AZV31
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       AZV31_11 = 11,
 
       /**
        * ЭПТ
-       * Кабина 1
+       *   Кабина 1
+       * Type: Выключатель/тумблер
        * Name: AZV41
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       AZV41_12 = 12,
 
       /**
        * Электрический тормоз
-       * Кабина 1
+       *   Кабина 1
+       * Type: Выключатель/тумблер
        * Name: AZV51
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       AZV51_13 = 13,
 
       /**
        * Топливный насос ведомого тепловоза
-       * Кабина 1
+       *   Кабина 1
+       * Type: Выключатель/тумблер
        * Name: AZV61
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       AZV61_14 = 14,
 
       /**
        * Топливный насос ведущего тепловоза
-       * Кабина 1
+       *   Кабина 1
+       * Type: Выключатель/тумблер
        * Name: AZV71
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       AZV71_15 = 15,
 
       /**
        * Управление тепловозом
-       * Кабина 1
+       *   Кабина 1
+       * Type: Выключатель/тумблер
        * Name: AZV81
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       AZV81_16 = 16,
 
       /**
        * Управление общее
-       * Кабина 1
+       *   Кабина 1
+       * Type: Выключатель/тумблер
        * Name: AZV91
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       AZV91_17 = 17,
 
       /**
        * Освещение пульта
-       * Кабина 1
+       *   Кабина 1
+       * Type: Выключатель/тумблер
        * Name: AZV101
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       AZV101_18 = 18,
 
       /**
        * Освещение кабины
-       * Кабина 1
+       *   Кабина 1
+       * Type: Выключатель/тумблер
        * Name: AZV111
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       AZV111_19 = 19,
 
       /**
        * Вентиляция
-       * Кабина 1
+       *   Кабина 1
+       * Type: Выключатель/тумблер
        * Name: AZV121
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       AZV121_20 = 20,
 
       /**
        * Жалюзи масло
-       * Кабина 1
+       *   Кабина 1
+       * Type: Выключатель/тумблер
        * Name: TB11
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TB11_21 = 21,
 
       /**
        * Жалюзи вода
-       * Кабина 1
+       *   Кабина 1
+       * Type: Выключатель/тумблер
        * Name: TB21
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TB21_22 = 22,
 
       /**
        * ОП II ступень
-       * Кабина 1
+       *   Кабина 1
+       * Type: Выключатель/тумблер
        * Name: TB31
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TB31_23 = 23,
 
       /**
        * ОП I ступень
-       * Кабина 1
+       *   Кабина 1
+       * Type: Выключатель/тумблер
        * Name: TB41
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TB41_24 = 24,
 
       /**
        * Освещение приборов
-       * Кабина 1
+       *   Кабина 1
+       * Type: Выключатель/тумблер
        * Name: TB51
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TB51_25 = 25,
 
       /**
        * Освещение кабины
-       * Кабина 1
+       *   Кабина 1
+       * Type: Выключатель/тумблер
        * Name: TB61
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TB61_26 = 26,
 
       /**
        * Освещение расписания
-       * Кабина 1
+       *   Кабина 1
+       * Type: Выключатель/тумблер
        * Name: TB71
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TB71_27 = 27,
 
       /**
        * Электрикалорифер
-       * Кабина 1
+       *   Кабина 1
+       * Type: Выключатель/тумблер
        * Name: TB81
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TB81_28 = 28,
 
       /**
        * Радиостанция
-       * Кабина 1
+       *   Кабина 1
+       * Type: Выключатель/тумблер
        * Name: TB101
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TB101_29 = 29,
 
       /**
        * Манометры и термометры
-       * Кабина 1
+       *   Кабина 1
+       * Type: Выключатель/тумблер
        * Name: TB111
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TB111_30 = 30,
 
       /**
        * АЛСН
-       * Кабина 1
+       *   Кабина 1
+       * Type: Выключатель/тумблер
        * Name: TB121
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TB121_31 = 31,
 
       /**
        * Частота АСЛН
-       * Кабина 1
+       *   Кабина 1
+       * Type: Выключатель/тумблер
        * Name: TB131
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TB131_32 = 32,
 
       /**
        * Омыв окон
-       * Кабина 1
+       *   Кабина 1
+       * Type: Выключатель/тумблер
        * Name: TB141
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TB141_33 = 33,
 
       /**
        * Стеклоочиститель
-       * Кабина 1
+       *   Кабина 1
+       * Type: Выключатель/тумблер
        * Name: TB151
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TB151_34 = 34,
 
       /**
        * Вызов помощника
-       * Кабина 1
+       *   Кабина 1
+       * Type: Кнопка
        * Name: BTN41
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       BTN41_35 = 35,
 
       /**
        * Отпуск тормозов локомотива
-       * Кабина 1
+       *   Кабина 1
+       * Type: Кнопка
        * Name: BTN51
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       BTN51_36 = 36,
 
       /**
        * Свисток
-       * Кабина 1
+       *   Кабина 1
+       * Type: Кнопка
        * Name: BTN11
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       BTN11_37 = 37,
 
       /**
        * Тифон
-       * Кабина 1
+       *   Кабина 1
+       * Type: Кнопка
        * Name: BTN21
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       BTN21_38 = 38,
 
       /**
        * Песок
-       * Кабина 1
+       *   Кабина 1
+       * Type: Кнопка
        * Name: BTN31
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       BTN31_39 = 39,
 
       /**
        * Рукоятка бдительности
-       * Кабина 1
+       *   Кабина 1
+       * Type: Кнопка
        * Name: RB1
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       RB1_40 = 40,
 
       /**
        * Пуск дизеля ведущего тепловоза
-       * Кабина 1
+       *   Кабина 1
+       * Type: Кнопка
        * Name: BTN81
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       BTN81_41 = 41,
 
       /**
        * Пуск дизеля ведомого тепловоза
-       * Кабина 1
+       *   Кабина 1
+       * Type: Кнопка
        * Name: BTN71
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       BTN71_42 = 42,
 
       /**
        * Проверка ЭТ
-       * Кабина 1
+       *   Кабина 1
+       * Type: Кнопка
        * Name: BTN91
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       BTN91_43 = 43,
 
       /**
        * ВК
-       * Кабина 1
+       *   Кабина 1
+       * Type: Кнопка
        * Name: BTN101
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       BTN101_44 = 44,
 
       /**
        * Проверка АЛСН
-       * Кабина 1
+       *   Кабина 1
+       * Type: Кнопка
        * Name: BTN111
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       BTN111_45 = 45,
 
       /**
        * Левый БФ
-       * Кабина 1
+       *   Кабина 1
+       * Type: Мультипереключатель
        * Name: TBP71
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, CONTROLLERY
        */
       TBP71_46 = 46,
 
       /**
        * Правый БФ
-       * Кабина 1
+       *   Кабина 1
+       * Type: Мультипереключатель
        * Name: TBP61
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, CONTROLLERY
        */
       TBP61_47 = 47,
 
       /**
        * Номерные знаки
-       * Кабина 1
+       *   Кабина 1
+       * Type: Выключатель/тумблер
        * Name: TBP51
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TBP51_48 = 48,
 
       /**
        * Освещение пульта
-       * Кабина 1
+       *   Кабина 1
+       * Type: Выключатель/тумблер
        * Name: TBP41
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TBP41_49 = 49,
 
       /**
        * Освещение резервное
-       * Кабина 1
+       *   Кабина 1
+       * Type: Выключатель/тумблер
        * Name: TBP31
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TBP31_50 = 50,
 
       /**
        * Калориферы
-       * Кабина 1
+       *   Кабина 1
+       * Type: Выключатель/тумблер
        * Name: TBP21
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TBP21_51 = 51,
 
       /**
        * Вентиляторы
-       * Кабина 1
+       *   Кабина 1
+       * Type: Выключатель/тумблер
        * Name: TBP11
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TBP11_52 = 52,
 
       /**
        * Вольтметр
-       * Кабина 1
+       *   Кабина 1
+       * Type: Выключатель/тумблер
        * Name: TBP81
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TBP81_53 = 53,
 
       /**
        * Тифон
-       * Кабина 1
+       *   Кабина 1
+       * Type: Кнопка
        * Name: BTNP21
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       BTNP21_54 = 54,
 
       /**
        * Свисток
-       * Кабина 1
+       *   Кабина 1
+       * Type: Кнопка
        * Name: BTNP11
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       BTNP11_55 = 55,
 
       /**
        * Комбинированный кран усл. 103
-       * Кабина 1
+       *   Кабина 1
+       * Type: Мультипереключатель
        * Name: KK1
-       * Flags:
-    CONTROLLERX
+       * Flags: CONTROLLERX
        */
       KK1_56 = 56,
 
       /**
        * Маневры
-       * Кабина 1
+       *   Кабина 1
+       * Type: Кнопка
        * Name: BTN121
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       BTN121_57 = 57,
 
       /**
        * Свисток
-       * Кабина 1
+       *   Кабина 1
+       * Type: Кнопка
        * Name: BTN131
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       BTN131_58 = 58,
 
       /**
        * РБС
-       * Кабина 1
+       *   Кабина 1
+       * Type: Кнопка
        * Name: RBS1
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       RBS1_59 = 59,
 
       /**
        * РБП
-       * Кабина 1
+       *   Кабина 1
+       * Type: Кнопка
        * Name: RBP1
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       RBP1_60 = 60,
 
       /**
        * Вызов ДСП
-       * Кабина 1
+       *   Кабина 1
+       * Type: Кнопка
        * Name: DSP1
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       DSP1_61 = 61,
 
       /**
        * Вызов ДНЦ
-       * Кабина 1
+       *   Кабина 1
+       * Type: Кнопка
        * Name: DNC1
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       DNC1_62 = 62,
 
       /**
        * Подсветка
-       * Кабина 1
+       *   Кабина 1
+       * Type: Кнопка
        * Name: PODSV1
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       PODSV1_63 = 63,
 
       /**
        * Питание радиостанции
-       * Кабина 1
+       *   Кабина 1
+       * Type: Кнопка
        * Name: PIT1
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       PIT1_64 = 64,
 
       /**
        * Ручной тормоз
-       * Кабина 1
+       *   Кабина 1
+       * Type: Мультипереключатель
        * Name: RT1
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, CONTROLLERX, PRECISE
        */
       RT1_65 = 65,
 
       /**
        * Завод часов
-       * Кабина 1
+       *   Кабина 1
+       * Type: Выключатель/тумблер
        * Name: SLZAVOD1
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       SLZAVOD1_66 = 66,
 
@@ -978,655 +978,655 @@ namespace model {
     
     /**
      * Переключатели.
-     * Кабина 2
+     *   Кабина 2
      */
     enum class sw : unsigned short {
       
       /**
        * Тормоз поезда
-       * Кабина 2
+       *   Кабина 2
+       * Type: Мультипереключатель
        * Name: R395
-       * Flags:
-    CONTROLLERY
+       * Flags: CONTROLLERY, CHECKDISTANCEONPRESS
        */
       R395_100 = 100,
 
       /**
        * Тормоз локомотива
-       * Кабина 2
+       *   Кабина 2
+       * Type: Мультипереключатель
        * Name: R254
-       * Flags:
-    CONTROLLERY
+       * Flags: CONTROLLERY, CHECKDISTANCEONPRESS
        */
       R254_101 = 101,
 
       /**
        * Реверс
-       * Кабина 2
+       *   Кабина 2
+       * Type: Мультипереключатель
        * Name: REV
-       * Flags:
-    CONTROLLERY
+       * Flags: CONTROLLERY, CHECKDISTANCEONPRESS, KEY
        */
       REV_102 = 102,
 
       /**
        * Контроллер
-       * Кабина 2
+       *   Кабина 2
+       * Type: Мультипереключатель
        * Name: KONT
-       * Flags:
-    CONTROLLERX
+       * Flags: CONTROLLERX, CHECKDISTANCEONPRESS
        */
       KONT_103 = 103,
 
       /**
        * Задатчик тормозного усилия ЭДТ
-       * Кабина 2
+       *   Кабина 2
+       * Type: Мультипереключатель
        * Name: ZAD
-       * Flags:
-    CONTROLLERX
+       * Flags: CONTROLLERX, CHECKDISTANCEONPRESS
        */
       ZAD_104 = 104,
 
       /**
        * Блокировка тормозов усл. 367
-       * Кабина 2
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: R367
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, KEY
        */
       R367_106 = 106,
 
       /**
        * Редуктор зарядного давления
-       * Кабина 2
+       *   Кабина 2
+       * Type: Мультипереключатель
        * Name: RED
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, CONTROLLERX
        */
       RED_107 = 107,
 
       /**
        * Ключ ЭПК
-       * Кабина 2
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: EPK
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       EPK_108 = 108,
 
       /**
        * Прожектор яркий
-       * Кабина 2
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: AZV1
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       AZV1_109 = 109,
 
       /**
        * Прожектор тускло
-       * Кабина 2
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: AZV2
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       AZV2_110 = 110,
 
       /**
        * Питание ЭПТ
-       * Кабина 2
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: AZV3
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       AZV3_111 = 111,
 
       /**
        * ЭПТ
-       * Кабина 2
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: AZV4
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       AZV4_112 = 112,
 
       /**
        * Электрический тормоз
-       * Кабина 2
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: AZV5
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       AZV5_113 = 113,
 
       /**
        * Топливный насос ведомого тепловоза
-       * Кабина 2
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: AZV6
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       AZV6_114 = 114,
 
       /**
        * Топливный насос ведущего тепловоза
-       * Кабина 2
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: AZV7
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       AZV7_115 = 115,
 
       /**
        * Управление тепловозом
-       * Кабина 2
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: AZV8
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       AZV8_116 = 116,
 
       /**
        * Управление общее
-       * Кабина 2
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: AZV9
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       AZV9_117 = 117,
 
       /**
        * Освещение пульта
-       * Кабина 2
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: AZV10
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       AZV10_118 = 118,
 
       /**
        * Освещение кабины
-       * Кабина 2
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: AZV011
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       AZV011_119 = 119,
 
       /**
        * Вентиляция
-       * Кабина 2
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: AZV12
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       AZV12_120 = 120,
 
       /**
        * Жалюзи масло
-       * Кабина 2
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: TB1
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TB1_121 = 121,
 
       /**
        * Жалюзи вода
-       * Кабина 2
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: TB2
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TB2_122 = 122,
 
       /**
        * ОП II ступень
-       * Кабина 2
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: TB3
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TB3_123 = 123,
 
       /**
        * ОП I ступень
-       * Кабина 2
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: TB4
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TB4_124 = 124,
 
       /**
        * Освещение приборов
-       * Кабина 2
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: TB5
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TB5_125 = 125,
 
       /**
        * Освещение кабины
-       * Кабина 2
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: TB6
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TB6_126 = 126,
 
       /**
        * Освещение расписания
-       * Кабина 2
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: TB7
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TB7_127 = 127,
 
       /**
        * Электрикалорифер
-       * Кабина 2
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: TB8
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TB8_128 = 128,
 
       /**
        * Радиостанция
-       * Кабина 2
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: TB10
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TB10_129 = 129,
 
       /**
        * Манометры и термометры
-       * Кабина 2
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: TB011
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TB011_130 = 130,
 
       /**
        * АЛСН
-       * Кабина 2
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: TB12
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TB12_131 = 131,
 
       /**
        * Частота АСЛН
-       * Кабина 2
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: TB13
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TB13_132 = 132,
 
       /**
        * Омыв окон
-       * Кабина 2
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: TB14
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TB14_133 = 133,
 
       /**
        * Стеклоочиститель
-       * Кабина 2
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: TB15
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TB15_134 = 134,
 
       /**
        * Вызов помощника
-       * Кабина 2
+       *   Кабина 2
+       * Type: Кнопка
        * Name: BTN4
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       BTN4_135 = 135,
 
       /**
        * Отпуск тормозов локомотива
-       * Кабина 2
+       *   Кабина 2
+       * Type: Кнопка
        * Name: BTN5
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       BTN5_136 = 136,
 
       /**
        * Свисток
-       * Кабина 2
+       *   Кабина 2
+       * Type: Кнопка
        * Name: BTN1
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       BTN1_137 = 137,
 
       /**
        * Тифон
-       * Кабина 2
+       *   Кабина 2
+       * Type: Кнопка
        * Name: BTN2
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       BTN2_138 = 138,
 
       /**
        * Песок
-       * Кабина 2
+       *   Кабина 2
+       * Type: Кнопка
        * Name: BTN3
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       BTN3_139 = 139,
 
       /**
        * Рукоятка бдительности
-       * Кабина 2
+       *   Кабина 2
+       * Type: Кнопка
        * Name: RB
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       RB_140 = 140,
 
       /**
        * Пуск дизеля ведущего тепловоза
-       * Кабина 2
+       *   Кабина 2
+       * Type: Кнопка
        * Name: BTN8
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       BTN8_141 = 141,
 
       /**
        * Пуск дизеля ведомого тепловоза
-       * Кабина 2
+       *   Кабина 2
+       * Type: Кнопка
        * Name: BTN7
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       BTN7_142 = 142,
 
       /**
        * Проверка ЭТ
-       * Кабина 2
+       *   Кабина 2
+       * Type: Кнопка
        * Name: BTN9
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       BTN9_143 = 143,
 
       /**
        * ВК
-       * Кабина 2
+       *   Кабина 2
+       * Type: Кнопка
        * Name: BTN10
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       BTN10_144 = 144,
 
       /**
        * Проверка АЛСН
-       * Кабина 2
+       *   Кабина 2
+       * Type: Кнопка
        * Name: BTN011
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       BTN011_145 = 145,
 
       /**
        * Левый БФ
-       * Кабина 2
+       *   Кабина 2
+       * Type: Мультипереключатель
        * Name: TBP7
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, CONTROLLERY
        */
       TBP7_146 = 146,
 
       /**
        * Правый БФ
-       * Кабина 2
+       *   Кабина 2
+       * Type: Мультипереключатель
        * Name: TBP6
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, CONTROLLERY
        */
       TBP6_147 = 147,
 
       /**
        * Номерные знаки
-       * Кабина 2
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: TBP5
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TBP5_148 = 148,
 
       /**
        * Освещение пульта
-       * Кабина 2
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: TBP4
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TBP4_149 = 149,
 
       /**
        * Освещение резервное
-       * Кабина 2
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: TBP3
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TBP3_150 = 150,
 
       /**
        * Калориферы
-       * Кабина 2
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: TBP2
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TBP2_151 = 151,
 
       /**
        * Вентиляторы
-       * Кабина 2
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: TBP1
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TBP1_152 = 152,
 
       /**
        * Вольтметр
-       * Кабина 2
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: TBP8
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TBP8_153 = 153,
 
       /**
        * Тифон
-       * Кабина 2
+       *   Кабина 2
+       * Type: Кнопка
        * Name: BTNP2
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       BTNP2_154 = 154,
 
       /**
        * Свисток
-       * Кабина 2
+       *   Кабина 2
+       * Type: Кнопка
        * Name: BTNP1
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       BTNP1_155 = 155,
 
       /**
        * Комбинированный кран усл. 103
-       * Кабина 2
+       *   Кабина 2
+       * Type: Мультипереключатель
        * Name: KK
-       * Flags:
-    CONTROLLERX
+       * Flags: CONTROLLERX
        */
       KK_156 = 156,
 
       /**
        * Маневры
-       * Кабина 2
+       *   Кабина 2
+       * Type: Кнопка
        * Name: BTN12
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       BTN12_157 = 157,
 
       /**
        * Свисток
-       * Кабина 2
+       *   Кабина 2
+       * Type: Кнопка
        * Name: BTN13
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       BTN13_158 = 158,
 
       /**
        * РБС
-       * Кабина 2
+       *   Кабина 2
+       * Type: Кнопка
        * Name: RBS
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       RBS_159 = 159,
 
       /**
        * РБП
-       * Кабина 2
+       *   Кабина 2
+       * Type: Кнопка
        * Name: RBP
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       RBP_160 = 160,
 
       /**
        * Вызов ДСП
-       * Кабина 2
+       *   Кабина 2
+       * Type: Кнопка
        * Name: DSP
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       DSP_161 = 161,
 
       /**
        * Вызов ДНЦ
-       * Кабина 2
+       *   Кабина 2
+       * Type: Кнопка
        * Name: DNC
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       DNC_162 = 162,
 
       /**
        * Подсветка
-       * Кабина 2
+       *   Кабина 2
+       * Type: Кнопка
        * Name: PODSV
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       PODSV_163 = 163,
 
       /**
        * Питание радиостанции
-       * Кабина 2
+       *   Кабина 2
+       * Type: Кнопка
        * Name: PIT
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, NONFIXED
        */
       PIT_164 = 164,
 
       /**
        * Ручной тормоз
-       * Кабина 2
+       *   Кабина 2
+       * Type: Мультипереключатель
        * Name: RT
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS, CONTROLLERX, PRECISE
        */
       RT_165 = 165,
 
       /**
        * Завод часов
-       * Кабина 2
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: SLZAVOD
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       SLZAVOD_166 = 166,
 
       /**
-       * 
-       * Кабина 2
+       * UNNAMED
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: STOR_1
-       * Flags:
-    PRECISE
+       * Flags: PRECISE, CONTROLLERY, CHECKDISTANCEONPRESS
        */
       STOR_1_168 = 168,
 
       /**
-       * 
-       * Кабина 2
+       * UNNAMED
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: STOR_2
-       * Flags:
-    PRECISE
+       * Flags: PRECISE, CONTROLLERY, CHECKDISTANCEONPRESS
        */
       STOR_2_169 = 169,
 
       /**
-       * 
-       * Кабина 2
+       * UNNAMED
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: STOR_3
-       * Flags:
-    PRECISE
+       * Flags: PRECISE, CONTROLLERY, CHECKDISTANCEONPRESS
        */
       STOR_3_170 = 170,
 
       /**
-       * 
-       * Кабина 2
+       * UNNAMED
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: STOR_11
-       * Flags:
-    PRECISE
+       * Flags: PRECISE, CONTROLLERY, CHECKDISTANCEONPRESS
        */
       STOR_11_171 = 171,
 
       /**
-       * 
-       * Кабина 2
+       * UNNAMED
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: STOR_22
-       * Flags:
-    PRECISE
+       * Flags: PRECISE, CONTROLLERY, CHECKDISTANCEONPRESS
        */
       STOR_22_172 = 172,
 
       /**
-       * 
-       * Кабина 2
+       * UNNAMED
+       *   Кабина 2
+       * Type: Выключатель/тумблер
        * Name: STOR_33
-       * Flags:
-    PRECISE
+       * Flags: PRECISE, CONTROLLERY, CHECKDISTANCEONPRESS
        */
       STOR_33_173 = 173,
 
@@ -2063,322 +2063,322 @@ namespace model {
     
     /**
      * Переключатели.
-     * Кузов
+     *   Кузов
      */
     enum class sw : unsigned short {
       
       /**
        * Шкаф
-       * Кузов
+       *   Кузов
+       * Type: Выключатель/тумблер
        * Name: DOOR_F
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       DOOR_F_200 = 200,
 
       /**
        * Переключение кабины
-       * Кузов
+       *   Кузов
+       * Type: Выключатель/тумблер
        * Name: RC1
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       RC1_201 = 201,
 
       /**
        * Переключение кабины
-       * Кузов
+       *   Кузов
+       * Type: Выключатель/тумблер
        * Name: RC2
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       RC2_202 = 202,
 
       /**
        * Питание топливного насоса
-       * Кузов
+       *   Кузов
+       * Type: Выключатель/тумблер
        * Name: TBM6
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TBM6_203 = 203,
 
       /**
        * Отключение 1 ТЭД
-       * Кузов
+       *   Кузов
+       * Type: Выключатель/тумблер
        * Name: OM1
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       OM1_204 = 204,
 
       /**
        * Отключение 2 ТЭД
-       * Кузов
+       *   Кузов
+       * Type: Выключатель/тумблер
        * Name: OM2
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       OM2_205 = 205,
 
       /**
        * Отключение 3 ТЭД
-       * Кузов
+       *   Кузов
+       * Type: Выключатель/тумблер
        * Name: OM3
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       OM3_206 = 206,
 
       /**
        * Отключение 4 ТЭД
-       * Кузов
+       *   Кузов
+       * Type: Выключатель/тумблер
        * Name: OM4
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       OM4_207 = 207,
 
       /**
        * Отключение 5 ТЭД
-       * Кузов
+       *   Кузов
+       * Type: Выключатель/тумблер
        * Name: OM5
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       OM5_208 = 208,
 
       /**
        * Отключение 6 ТЭД
-       * Кузов
+       *   Кузов
+       * Type: Выключатель/тумблер
        * Name: OM6
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       OM6_209 = 209,
 
       /**
        * АЗВ освещение дизельного
-       * Кузов
+       *   Кузов
+       * Type: Выключатель/тумблер
        * Name: AZVM1
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       AZVM1_210 = 210,
 
       /**
        * АЗВ резервное освещение дизельного
-       * Кузов
+       *   Кузов
+       * Type: Выключатель/тумблер
        * Name: AZVM2
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       AZVM2_211 = 211,
 
       /**
        * АЗВ освещение подкузовное
-       * Кузов
+       *   Кузов
+       * Type: Выключатель/тумблер
        * Name: AZVM3
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       AZVM3_212 = 212,
 
       /**
        * АЗВ освещение ВВК
-       * Кузов
+       *   Кузов
+       * Type: Выключатель/тумблер
        * Name: AZVM4
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       AZVM4_213 = 213,
 
       /**
        * АЗВ питание розеток
-       * Кузов
+       *   Кузов
+       * Type: Выключатель/тумблер
        * Name: AZVM5
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       AZVM5_214 = 214,
 
       /**
        * АЗВ питание автостопа
-       * Кузов
+       *   Кузов
+       * Type: Выключатель/тумблер
        * Name: AZVM6
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       AZVM6_215 = 215,
 
       /**
        * АЗВ питание автостопа
-       * Кузов
+       *   Кузов
+       * Type: Выключатель/тумблер
        * Name: AZVM7
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       AZVM7_216 = 216,
 
       /**
        * АЗВ пожарная сигнализация
-       * Кузов
+       *   Кузов
+       * Type: Выключатель/тумблер
        * Name: AZVM8
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       AZVM8_217 = 217,
 
       /**
        * АЗВ буферные фонари
-       * Кузов
+       *   Кузов
+       * Type: Выключатель/тумблер
        * Name: AZVM9
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       AZVM9_218 = 218,
 
       /**
        * АЗВ питание розеток
-       * Кузов
+       *   Кузов
+       * Type: Выключатель/тумблер
        * Name: AZVM10
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       AZVM10_219 = 219,
 
       /**
        * АЗВ вспомогательные цепи
-       * Кузов
+       *   Кузов
+       * Type: Выключатель/тумблер
        * Name: AZVM11
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       AZVM11_220 = 220,
 
       /**
        * АЗВ компрессор
-       * Кузов
+       *   Кузов
+       * Type: Выключатель/тумблер
        * Name: AZVM12
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       AZVM12_221 = 221,
 
       /**
        * АЗВ топливный насос
-       * Кузов
+       *   Кузов
+       * Type: Выключатель/тумблер
        * Name: AZVM13
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       AZVM13_222 = 222,
 
       /**
        * АЗВ калорифер
-       * Кузов
+       *   Кузов
+       * Type: Выключатель/тумблер
        * Name: AZVM14
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       AZVM14_223 = 223,
 
       /**
        * Резервное питание насоса
-       * Кузов
+       *   Кузов
+       * Type: Выключатель/тумблер
        * Name: TBM1
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TBM1_224 = 224,
 
       /**
        * Автостоп
-       * Кузов
+       *   Кузов
+       * Type: Выключатель/тумблер
        * Name: TBM2
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TBM2_225 = 225,
 
       /**
        * Шунтировка
-       * Кузов
+       *   Кузов
+       * Type: Выключатель/тумблер
        * Name: TBM3
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TBM3_226 = 226,
 
       /**
        * Электродинамический тормоз
-       * Кузов
+       *   Кузов
+       * Type: Выключатель/тумблер
        * Name: TBM4
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TBM4_227 = 227,
 
       /**
        * Ручная прокачка масла
-       * Кузов
+       *   Кузов
+       * Type: Выключатель/тумблер
        * Name: TBM5
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       TBM5_228 = 228,
 
       /**
        * Батарея 1
-       * Кузов
+       *   Кузов
+       * Type: Выключатель/тумблер
        * Name: RUB_AB1
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       RUB_AB1_229 = 229,
 
       /**
        * Батарея 2
-       * Кузов
+       *   Кузов
+       * Type: Выключатель/тумблер
        * Name: RUB_AB2
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       RUB_AB2_230 = 230,
 
       /**
-       * 
-       * Кузов
+       * UNNAMED
+       *   Кузов
+       * Type: Выключатель/тумблер
        * Name: KR1
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       KR1_233 = 233,
 
       /**
-       * 
-       * Кузов
+       * UNNAMED
+       *   Кузов
+       * Type: Выключатель/тумблер
        * Name: KR2
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       KR2_234 = 234,
 
       /**
-       * 
-       * Кузов
+       * UNNAMED
+       *   Кузов
+       * Type: Выключатель/тумблер
        * Name: KR3
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       KR3_235 = 235,
 
       /**
-       * 
-       * Кузов
+       * UNNAMED
+       *   Кузов
+       * Type: Выключатель/тумблер
        * Name: KR4
-       * Flags:
-    CHECKDISTANCEONPRESS
+       * Flags: CHECKDISTANCEONPRESS
        */
       KR4_236 = 236,
 

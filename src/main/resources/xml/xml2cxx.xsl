@@ -22,11 +22,11 @@
     <xsl:param name="switch"/>
     <xsl:param name="location"/>
       /**
-       * <xsl:value-of select="$switch/Hint/string/text()" />
-       * <xsl:value-of select="$location" />
+       * <xsl:if test="not($switch/Hint)"><xsl:text>UNNAMED</xsl:text></xsl:if><xsl:value-of select="$switch/Hint/string/text()" />
+       *   <xsl:value-of select="$location" />
+       * Type: <xsl:call-template name="switch_type_hint"><xsl:with-param name="switch" select="."/></xsl:call-template>
        * Name: <xsl:value-of select="$switch/Name/word/text()" />
-       * Flags:
-    <xsl:value-of select="$switch/Flags/word" separator=", "/>
+       * Flags: <xsl:value-of select="$switch/Flags/word" separator=", "/>
        */
     <xsl:text>  </xsl:text>
     <xsl:call-template name="nameable">
@@ -34,13 +34,27 @@
     </xsl:call-template>
   </xsl:template>
 
+  <xsl:template name="switch_type_hint">
+    <xsl:param name="switch"/>
+    <xsl:choose>
+      <xsl:when test="Flags/word[contains(text(), 'NONFIXED')]">
+        <xsl:text>Кнопка</xsl:text>
+      </xsl:when>
+      <xsl:when test="States/number/text() = 2">
+        <xsl:text>Выключатель/тумблер</xsl:text>
+      </xsl:when>
+      <xsl:when test="States/number/text() &gt; 2">
+        <xsl:text>Мультипереключатель</xsl:text>
+      </xsl:when>
+    </xsl:choose>
+  </xsl:template>
 
   <xsl:template name="switches">
     <xsl:param name="switches"/>
     <xsl:param name="location"/>
     /**
      * Переключатели.
-     * <xsl:value-of select="$location" />
+     *   <xsl:value-of select="$location" />
      */
     enum class sw : unsigned short {
       <xsl:for-each select="$switches">
@@ -58,7 +72,7 @@
     <xsl:param name="location"/>
       /**
        * Состояния переключателя - <xsl:value-of select="$switch/Hint/string/text()" />
-       * <xsl:value-of select="$location" />
+       *   <xsl:value-of select="$location" />
        * Name: <xsl:value-of select="$switch/Name/word/text()" />
        */
     <xsl:text>  </xsl:text>

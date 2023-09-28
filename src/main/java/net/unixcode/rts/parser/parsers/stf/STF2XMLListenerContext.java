@@ -72,6 +72,7 @@ public class STF2XMLListenerContext implements ISTF2XMLListenerCtxt {
 
       DOMSource source = new DOMSource(getDoc());
 
+
       StreamResult result = new StreamResult(streamWriter);
 
       transformer.transform(source, result);
