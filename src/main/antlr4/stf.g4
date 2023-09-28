@@ -106,7 +106,4 @@ DOT:
   '.';
 
 WS:
-  [ \t]+;
-
-NEWLINE:
-  [\n\r] -> skip;
+  [ \t\n\r]+;

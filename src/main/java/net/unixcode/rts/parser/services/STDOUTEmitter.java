@@ -11,10 +11,6 @@ import java.io.OutputStreamWriter;
 public class STDOUTEmitter implements IParserEmitter  {
   @Override
   public void accept(@NotNull IParserListenerContext context) {
-    if (!context.processed()) {
-      return;
-    }
-
     var streamWriter = getOutputStreamWriter(context);
 
     context.writeToStream(streamWriter);

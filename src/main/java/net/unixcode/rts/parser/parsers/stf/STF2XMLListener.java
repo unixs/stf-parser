@@ -141,9 +141,9 @@ public class STF2XMLListener extends StackableSTFListener<Node, CountableListene
     }
 
     // Ок, а теперь узел текущей секции
-    var section = newElement("section");
+    var section = newElement(elementName);
 
-    section.setAttribute("name", elementName);
+    section.setAttribute("type", "section");
 
     // Добавляем в секцию все веброшенные узлы
     var reverseIterator = childs.descendingIterator();

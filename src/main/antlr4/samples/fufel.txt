@@ -1,0 +1,4273 @@
+SIMISA@@@@@@@@@@JINX0t1t______
+
+Shape(Cab.s ESD_Detail_Level(0 )
+ESD_Alternative_Texture(0 )
+ESD_Bounding_Box(-1.5 0.06 -11.1 1.5 5.0 11.1 )
+ESD_CheckDetailsVisible()
+ESD_Interior(Switches(500 Switch(ID(0 )
+Name(R3951 )
+Hint(
+        "Тормоз поезда"
+         )
+StateHints(7 
+        "[VI экстренное торм.]"
+         
+        "[V торможение]"
+         
+        "[Vэ торможение ЭПТ]"
+         
+        "[IV перекрыша с пит.]"
+         
+        "[III перекрыша без пит.]"
+         
+        "[II поездное]"
+         
+        "[I отпуск и зарядка]"
+         )
+Position(-1.341 2.908 -9.384 )
+Radius(2 )
+States(7 0 )
+Flags(CONTROLLERY CHECKDISTANCEONPRESS )
+AssignKey(
+        ";"
+         
+        "'"
+         )
+AnimTime(0.1 )
+)
+Switch(ID(1 )
+Name(R2541 )
+Hint(
+        "Тормоз локомотива"
+         )
+StateHints(6 
+        "[Торможение 4]"
+         
+        "[Торможение 3]"
+         
+        "[Торможение 2]"
+         
+        "[Торможение 1]"
+         
+        "[Поездное]"
+         
+        "[Буфер]"
+         )
+Position(-1.346 3.016 -9.639 )
+Radius(2 )
+States(6 0 )
+Flags(CONTROLLERY CHECKDISTANCEONPRESS )
+AssignKey(
+        "["
+         
+        "]"
+         )
+AnimTime(0.2 )
+)
+Switch(ID(2 )
+Name(REV1 )
+Hint(
+        "Реверс"
+         )
+StateHints(3 
+        "[Назад]"
+         
+        "[Нейтральный]"
+         
+        "[Вперёд]"
+         )
+Position(-0.791 2.901 -9.712 )
+Radius(2 )
+States(3 1 )
+Flags(CONTROLLERY CHECKDISTANCEONPRESS KEY )
+AssignKey(
+        "W"
+         
+        "S"
+         )
+AnimTime(0.2 )
+)
+Switch(ID(3 )
+Name(KONT1 )
+Hint(
+        "Контроллер"
+         )
+StateHints(23 [торм.6] [торм.5] [торм.4] [торм.3] [торм.2] [торм.1] [П] [0] [1] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15] )
+Position(-0.792 2.897 -9.712 )
+Radius(2 )
+States(23 7 )
+Flags(CONTROLLERX CHECKDISTANCEONPRESS )
+AssignKey(
+        "D"
+         
+        "A"
+         )
+AnimTime(0.05 )
+)
+Switch(ID(4 )
+Name(ZAD1 )
+Hint(
+        "Задатчик тормозного усилия ЭДТ"
+         )
+Position(-0.633 2.869 -9.729 )
+Radius(2 )
+States(12 11 )
+Flags(CONTROLLERX CHECKDISTANCEONPRESS )
+AssignKey(
+        "E"
+         
+        "Q"
+         )
+AnimTime(0.05 )
+)
+Switch(ID(6 )
+Name(R3671 )
+Hint(
+        "Блокировка тормозов усл. 367"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(-1.288 2.325 -9.497 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS KEY )
+AnimTime(0.2 )
+AssignKey(
+        "P"
+         )
+)
+Switch(ID(7 )
+Name(RED1 )
+Hint(
+        "Редуктор зарядного давления"
+         )
+StateHints(20 [4.0] [4.1] [4.2] [4.3] [4.4] [4.5] [4.6] [4.7] [4.8] [4.9] [5.0] [5.1] [5.2] [5.3] [5.4] [5.5] [5.6] [5.7] [5.8] [5.9] )
+Position(-1.272 2.66 -9.314 )
+Radius(2 )
+States(20 12 )
+Flags(CHECKDISTANCEONPRESS CONTROLLERX )
+AnimTime(0.2 )
+AssignKey(
+        "Shift+'"
+         
+        "Shift+;"
+         )
+)
+Switch(ID(8 )
+Name(EPK1 )
+Hint(
+        "Ключ ЭПК"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.66 2.715 -8.792 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.4 )
+AssignKey(
+        "N"
+         )
+)
+Switch(ID(9 )
+Name(AZV11 )
+Hint(
+        "Прожектор яркий"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(-1.11 2.804 -9.723 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+AssignKey(
+        "G"
+         )
+)
+Switch(ID(10 )
+Name(AZV21 )
+Hint(
+        "Прожектор тускло"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(-1.082 2.804 -9.723 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+AssignKey(
+        "H"
+         )
+)
+Switch(ID(11 )
+Name(AZV31 )
+Hint(
+        "Питание ЭПТ"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(-1.04 2.804 -9.723 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+AssignKey(
+        "4"
+         )
+)
+Switch(ID(12 )
+Name(AZV41 )
+Hint(
+        "ЭПТ"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(-1.012 2.804 -9.723 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+AssignKey(
+        "Shift+N"
+         )
+)
+Switch(ID(13 )
+Name(AZV51 )
+Hint(
+        "Электрический тормоз"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(-0.983 2.804 -9.723 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+AssignKey(
+        "5"
+         )
+)
+Switch(ID(14 )
+Name(AZV61 )
+Hint(
+        "Топливный насос ведомого тепловоза"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(-0.526 2.804 -9.723 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+AssignKey(
+        "6"
+         )
+)
+Switch(ID(15 )
+Name(AZV71 )
+Hint(
+        "Топливный насос ведущего тепловоза"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(-0.497 2.804 -9.723 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+AssignKey(
+        "7"
+         )
+)
+Switch(ID(16 )
+Name(AZV81 )
+Hint(
+        "Управление тепловозом"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(-0.455 2.804 -9.723 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+AssignKey(
+        "9"
+         )
+)
+Switch(ID(17 )
+Name(AZV91 )
+Hint(
+        "Управление общее"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(-0.427 2.804 -9.723 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+AssignKey(
+        "8"
+         )
+)
+Switch(ID(18 )
+Name(AZV101 )
+Hint(
+        "Освещение пульта"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(-0.398 2.804 -9.723 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(19 )
+Name(AZV111 )
+Hint(
+        "Освещение кабины"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(-0.37 2.804 -9.723 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(20 )
+Name(AZV121 )
+Hint(
+        "Вентиляция"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(-0.341 2.804 -9.723 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+AssignKey(
+        "Shift+N"
+         )
+)
+Switch(ID(21 )
+Name(TB11 )
+Hint(
+        "Жалюзи масло"
+         )
+StateHints(2 
+        "[Автомат]"
+         
+        "[Ручное]"
+         )
+Position(-0.839 2.851 -9.571 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+AssignKey(
+        "3"
+         )
+)
+Switch(ID(22 )
+Name(TB21 )
+Hint(
+        "Жалюзи вода"
+         )
+StateHints(2 
+        "[Автомат]"
+         
+        "[Ручное]"
+         )
+Position(-0.804 2.851 -9.571 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+AssignKey(
+        "2"
+         )
+)
+Switch(ID(23 )
+Name(TB31 )
+Hint(
+        "ОП II ступень"
+         )
+StateHints(2 
+        "[Автомат]"
+         
+        "[Ручное]"
+         )
+Position(-0.768 2.851 -9.571 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+AssignKey(
+        "1"
+         )
+)
+Switch(ID(24 )
+Name(TB41 )
+Hint(
+        "ОП I ступень"
+         )
+StateHints(2 
+        "[Автомат]"
+         
+        "[Ручное]"
+         )
+Position(-0.733 2.851 -9.571 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+AssignKey(
+        "T"
+         )
+)
+Switch(ID(25 )
+Name(TB51 )
+Hint(
+        "Освещение приборов"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(-0.423 2.851 -9.571 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+AssignKey(
+        "L"
+         )
+)
+Switch(ID(26 )
+Name(TB61 )
+Hint(
+        "Освещение кабины"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(-0.388 2.851 -9.571 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+AssignKey(
+        "Shift+L"
+         )
+)
+Switch(ID(27 )
+Name(TB71 )
+Hint(
+        "Освещение расписания"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(-0.347 2.851 -9.571 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AssignKey(
+        "Ctrl+L"
+         )
+AnimTime(0.2 )
+)
+Switch(ID(28 )
+Name(TB81 )
+Hint(
+        "Электрикалорифер"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(-0.296 2.851 -9.571 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AssignKey(
+        "Ctrl+O"
+         )
+AnimTime(0.2 )
+)
+Switch(ID(29 )
+Name(TB101 )
+Hint(
+        "Радиостанция"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(-0.154 2.9 -9.59 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AssignKey(
+        "Ctrl+P"
+         )
+AnimTime(0.2 )
+)
+Switch(ID(30 )
+Name(TB111 )
+Hint(
+        "Манометры и термометры"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(-0.169 2.9 -9.617 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(31 )
+Name(TB121 )
+Hint(
+        "АЛСН"
+         )
+StateHints(2 
+        "[Без АЛС]"
+         
+        "[АЛС]"
+         )
+Position(-0.247 2.902 -9.777 )
+Radius(2 )
+States(2 1 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(32 )
+Name(TB131 )
+Hint(
+        "Частота АСЛН"
+         )
+StateHints(2 
+        "[25 Гц]"
+         
+        "[50 Гц]"
+         )
+Position(-0.261 2.902 -9.804 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(33 )
+Name(TB141 )
+Hint(
+        "Омыв окон"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(-0.012 2.939 -9.548 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AssignKey(
+        "Ctrl+M"
+         )
+AnimTime(0.2 )
+)
+Switch(ID(34 )
+Name(TB151 )
+Hint(
+        "Стеклоочиститель"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(-0.06 2.939 -9.548 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(35 )
+Name(BTN41 )
+Hint(
+        "Вызов помощника"
+         )
+Position(-0.884 2.856 -9.576 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AnimTime(0.2 )
+)
+Switch(ID(36 )
+Name(BTN51 )
+Hint(
+        "Отпуск тормозов локомотива"
+         )
+Position(-0.694 2.857 -9.576 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AssignKey(
+        "/"
+         )
+AnimTime(0.2 )
+)
+Switch(ID(37 )
+Name(BTN11 )
+Hint(
+        "Свисток"
+         )
+Position(-1.114 2.855 -9.576 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AssignKey(
+        "B"
+         )
+AnimTime(0.2 )
+)
+Switch(ID(38 )
+Name(BTN21 )
+Hint(
+        "Тифон"
+         )
+Position(-1.056 2.855 -9.576 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AssignKey(
+        "Space"
+         )
+AnimTime(0.2 )
+)
+Switch(ID(39 )
+Name(BTN31 )
+Hint(
+        "Песок"
+         )
+Position(-0.995 2.855 -9.576 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AssignKey(
+        "X"
+         )
+AnimTime(0.2 )
+)
+Switch(ID(40 )
+Name(RB1 )
+Hint(
+        "Рукоятка бдительности"
+         )
+Position(-0.52 2.778 -10.015 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AssignKey(
+        "Z"
+         )
+AnimTime(0.2 )
+)
+Switch(ID(41 )
+Name(BTN81 )
+Hint(
+        "Пуск дизеля ведущего тепловоза"
+         )
+Position(-0.465 2.856 -9.572 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AnimTime(0.2 )
+)
+Switch(ID(42 )
+Name(BTN71 )
+Hint(
+        "Пуск дизеля ведомого тепловоза"
+         )
+Position(-0.51 2.856 -9.572 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AnimTime(0.2 )
+)
+Switch(ID(43 )
+Name(BTN91 )
+Hint(
+        "Проверка ЭТ"
+         )
+Position(-0.188 2.904 -9.649 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AnimTime(0.2 )
+)
+Switch(ID(44 )
+Name(BTN101 )
+Hint(
+        "ВК"
+         )
+Position(-0.209 2.904 -9.693 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AnimTime(0.2 )
+)
+Switch(ID(45 )
+Name(BTN111 )
+Hint(
+        "Проверка АЛСН"
+         )
+Position(-0.231 2.904 -9.736 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AnimTime(0.2 )
+)
+Switch(ID(46 )
+Name(TBP71 )
+Hint(
+        "Левый БФ"
+         )
+StateHints(3 
+        "[Красный]"
+         
+        "[Выкл.]"
+         
+        "[Белый]"
+         )
+Position(1.099 2.889 -9.583 )
+Radius(2 )
+States(3 1 )
+Flags(CHECKDISTANCEONPRESS CONTROLLERY )
+AnimTime(0.2 )
+)
+Switch(ID(47 )
+Name(TBP61 )
+Hint(
+        "Правый БФ"
+         )
+StateHints(3 
+        "[Красный]"
+         
+        "[Выкл.]"
+         
+        "[Белый]"
+         )
+Position(1.057 2.889 -9.583 )
+Radius(2 )
+States(3 1 )
+Flags(CHECKDISTANCEONPRESS CONTROLLERY )
+AnimTime(0.2 )
+)
+Switch(ID(48 )
+Name(TBP51 )
+Hint(
+        "Номерные знаки"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(1.019 2.889 -9.583 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(49 )
+Name(TBP41 )
+Hint(
+        "Освещение пульта"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.977 2.889 -9.583 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(50 )
+Name(TBP31 )
+Hint(
+        "Освещение резервное"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.943 2.889 -9.583 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(51 )
+Name(TBP21 )
+Hint(
+        "Калориферы"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.9 2.889 -9.583 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(52 )
+Name(TBP11 )
+Hint(
+        "Вентиляторы"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.862 2.889 -9.583 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(53 )
+Name(TBP81 )
+Hint(
+        "Вольтметр"
+         )
+StateHints(2 
+        "[ЭПТ]"
+         
+        "[Батарея]"
+         )
+Position(1.224 2.972 -9.917 )
+Radius(2 )
+States(2 1 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(54 )
+Name(BTNP21 )
+Hint(
+        "Тифон"
+         )
+Position(1.192 2.881 -9.576 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AnimTime(0.2 )
+)
+Switch(ID(55 )
+Name(BTNP11 )
+Hint(
+        "Свисток"
+         )
+Position(1.287 2.881 -9.576 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AnimTime(0.2 )
+)
+Switch(ID(56 )
+Name(KK1 )
+Hint(
+        "Комбинированный кран усл. 103"
+         )
+StateHints(3 
+        "[Двойная тяга]"
+         
+        "[Нормальное]"
+         
+        "[Экстренное]"
+         )
+Position(-1.312 2.207 -9.405 )
+Radius(2 )
+States(3 1 )
+Flags(CONTROLLERX )
+AnimTime(0.1 )
+)
+Switch(ID(57 )
+Name(BTN121 )
+Hint(
+        "Маневры"
+         )
+Position(-1.465 2.84 -8.966 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AssignKey(
+        "V"
+         )
+AnimTime(0.2 )
+)
+Switch(ID(58 )
+Name(BTN131 )
+Hint(
+        "Свисток"
+         )
+Position(-1.466 2.84 -8.9 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AnimTime(0.2 )
+)
+Switch(ID(59 )
+Name(RBS1 )
+Hint(
+        "РБС"
+         )
+Position(-1.474 3.782 -9.884 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AssignKey(
+        "M"
+         )
+AnimTime(0.2 )
+)
+Switch(ID(60 )
+Name(RBP1 )
+Hint(
+        "РБП"
+         )
+Position(1.475 2.878 -9.361 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AnimTime(0.2 )
+)
+Switch(ID(61 )
+Name(DSP1 )
+Hint(
+        "Вызов ДСП"
+         )
+Position(-0.076 3.071 -9.643 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AnimTime(0.1 )
+)
+Switch(ID(62 )
+Name(DNC1 )
+Hint(
+        "Вызов ДНЦ"
+         )
+Position(-0.076 3.047 -9.643 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AnimTime(0.1 )
+)
+Switch(ID(63 )
+Name(PODSV1 )
+Hint(
+        "Подсветка"
+         )
+Position(-0.174 3.071 -9.814 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AnimTime(0.1 )
+)
+Switch(ID(64 )
+Name(PIT1 )
+Hint(
+        "Питание радиостанции"
+         )
+Position(-0.187 2.998 -9.835 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AnimTime(0.1 )
+)
+Switch(ID(65 )
+Name(RT1 )
+Hint(
+        "Ручной тормоз"
+         )
+StateHints(5 
+        "[Закручен]"
+         
+        "[75%]"
+         
+        "[50%]"
+         
+        "[25%]"
+         
+        "[Откручен]"
+         )
+Position(0.714 2.927 -8.662 )
+Radius(2 )
+States(5 0 )
+Flags(CHECKDISTANCEONPRESS CONTROLLERX PRECISE )
+SwitchPrecision(0.1 -0.05 )
+AssignKey(
+        "<"
+         
+        ">"
+         )
+AnimTime(0.3 )
+)
+Switch(ID(66 )
+Name(SLZAVOD1 )
+Hint(
+        "Завод часов"
+         )
+Position(-0.353 3.14 -9.846 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.45 )
+)
+Skip(
+        "--------------------   Кабина 2 ----------------------"
+         )
+Switch(ID(100 )
+Name(R395 )
+Hint(
+        "Тормоз поезда"
+         )
+StateHints(7 
+        "[VI экстренное торм.]"
+         
+        "[V торможение]"
+         
+        "[Vэ торможение ЭПТ]"
+         
+        "[IV перекрыша с пит.]"
+         
+        "[III перекрыша без пит.]"
+         
+        "[II поездное]"
+         
+        "[I отпуск и зарядка]"
+         )
+Position(1.341 2.908 9.384 )
+Radius(2 )
+States(7 0 )
+Flags(CONTROLLERY CHECKDISTANCEONPRESS )
+AssignKey(
+        ";"
+         
+        "'"
+         )
+AnimTime(0.1 )
+)
+Switch(ID(101 )
+Name(R254 )
+Hint(
+        "Тормоз локомотива"
+         )
+StateHints(6 
+        "[Торможение 4]"
+         
+        "[Торможение 3]"
+         
+        "[Торможение 2]"
+         
+        "[Торможение 1]"
+         
+        "[Поездное]"
+         
+        "[Буфер]"
+         )
+Position(1.346 3.016 9.639 )
+Radius(2 )
+States(6 0 )
+Flags(CONTROLLERY CHECKDISTANCEONPRESS )
+AssignKey(
+        "["
+         
+        "]"
+         )
+AnimTime(0.2 )
+)
+Switch(ID(102 )
+Name(REV )
+Hint(
+        "Реверс"
+         )
+StateHints(7 
+        "[Назад]"
+         
+        "[Нейтральный]"
+         
+        "[Вперёд]"
+         )
+Position(0.791 2.901 9.712 )
+Radius(2 )
+States(3 1 )
+Flags(CONTROLLERY CHECKDISTANCEONPRESS KEY )
+AssignKey(
+        "W"
+         
+        "S"
+         )
+AnimTime(0.2 )
+)
+Switch(ID(103 )
+Name(KONT )
+Hint(
+        "Контроллер"
+         )
+StateHints(23 [торм.6] [торм.5] [торм.4] [торм.3] [торм.2] [торм.1] [П] [0] [1] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15] )
+Position(0.792 2.897 9.712 )
+Radius(2 )
+States(23 7 )
+Flags(CONTROLLERX CHECKDISTANCEONPRESS )
+AssignKey(
+        "D"
+         
+        "A"
+         )
+AnimTime(0.05 )
+)
+Switch(ID(104 )
+Name(ZAD )
+Hint(
+        "Задатчик тормозного усилия ЭДТ"
+         )
+Position(0.633 2.869 9.729 )
+Radius(2 )
+States(12 11 )
+Flags(CONTROLLERX CHECKDISTANCEONPRESS )
+AssignKey(
+        "E"
+         
+        "Q"
+         )
+AnimTime(0.05 )
+)
+Switch(ID(106 )
+Name(R367 )
+Hint(
+        "Блокировка тормозов усл. 367"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(1.288 2.325 9.497 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS KEY )
+AnimTime(0.2 )
+AssignKey(
+        "P"
+         )
+)
+Switch(ID(107 )
+Name(RED )
+Hint(
+        "Редуктор зарядного давления"
+         )
+StateHints(20 [4.0] [4.1] [4.2] [4.3] [4.4] [4.5] [4.6] [4.7] [4.8] [4.9] [5.0] [5.1] [5.2] [5.3] [5.4] [5.5] [5.6] [5.7] [5.8] [5.9] )
+Position(1.272 2.66 9.314 )
+Radius(2 )
+States(20 12 )
+Flags(CHECKDISTANCEONPRESS CONTROLLERX )
+AnimTime(0.2 )
+AssignKey(
+        "Shift+'"
+         
+        "Shift+;"
+         )
+)
+Switch(ID(108 )
+Name(EPK )
+Hint(
+        "Ключ ЭПК"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(-0.66 2.715 8.792 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.4 )
+AssignKey(
+        "N"
+         )
+)
+Switch(ID(109 )
+Name(AZV1 )
+Hint(
+        "Прожектор яркий"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(1.11 2.804 9.723 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+AssignKey(
+        "G"
+         )
+)
+Switch(ID(110 )
+Name(AZV2 )
+Hint(
+        "Прожектор тускло"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(1.082 2.804 9.723 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+AssignKey(
+        "H"
+         )
+)
+Switch(ID(111 )
+Name(AZV3 )
+Hint(
+        "Питание ЭПТ"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(1.04 2.804 9.723 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+AssignKey(
+        "4"
+         )
+)
+Switch(ID(112 )
+Name(AZV4 )
+Hint(
+        "ЭПТ"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(1.012 2.804 9.723 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+AssignKey(
+        "Shift+N"
+         )
+)
+Switch(ID(113 )
+Name(AZV5 )
+Hint(
+        "Электрический тормоз"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.983 2.804 9.723 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+AssignKey(
+        "5"
+         )
+)
+Switch(ID(114 )
+Name(AZV6 )
+Hint(
+        "Топливный насос ведомого тепловоза"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.526 2.804 9.723 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+AssignKey(
+        "6"
+         )
+)
+Switch(ID(115 )
+Name(AZV7 )
+Hint(
+        "Топливный насос ведущего тепловоза"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.497 2.804 9.723 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+AssignKey(
+        "7"
+         )
+)
+Switch(ID(116 )
+Name(AZV8 )
+Hint(
+        "Управление тепловозом"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.455 2.804 9.723 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+AssignKey(
+        "9"
+         )
+)
+Switch(ID(117 )
+Name(AZV9 )
+Hint(
+        "Управление общее"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.427 2.804 9.723 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+AssignKey(
+        "8"
+         )
+)
+Switch(ID(118 )
+Name(AZV10 )
+Hint(
+        "Освещение пульта"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.398 2.804 9.723 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(119 )
+Name(AZV011 )
+Hint(
+        "Освещение кабины"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.37 2.804 9.723 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(120 )
+Name(AZV12 )
+Hint(
+        "Вентиляция"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.341 2.804 9.723 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+AssignKey(
+        "Shift+N"
+         )
+)
+Switch(ID(121 )
+Name(TB1 )
+Hint(
+        "Жалюзи масло"
+         )
+StateHints(2 
+        "[Автомат]"
+         
+        "[Ручное]"
+         )
+Position(0.839 2.851 9.571 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+AssignKey(
+        "3"
+         )
+)
+Switch(ID(122 )
+Name(TB2 )
+Hint(
+        "Жалюзи вода"
+         )
+StateHints(2 
+        "[Автомат]"
+         
+        "[Ручное]"
+         )
+Position(0.804 2.851 9.571 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+AssignKey(
+        "2"
+         )
+)
+Switch(ID(123 )
+Name(TB3 )
+Hint(
+        "ОП II ступень"
+         )
+StateHints(2 
+        "[Автомат]"
+         
+        "[Ручное]"
+         )
+Position(0.768 2.851 9.571 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+AssignKey(
+        "1"
+         )
+)
+Switch(ID(124 )
+Name(TB4 )
+Hint(
+        "ОП I ступень"
+         )
+StateHints(2 
+        "[Автомат]"
+         
+        "[Ручное]"
+         )
+Position(0.733 2.851 9.571 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+AssignKey(
+        "T"
+         )
+)
+Switch(ID(125 )
+Name(TB5 )
+Hint(
+        "Освещение приборов"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.423 2.851 9.571 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+AssignKey(
+        "L"
+         )
+)
+Switch(ID(126 )
+Name(TB6 )
+Hint(
+        "Освещение кабины"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.388 2.851 9.571 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+AssignKey(
+        "Shift+L"
+         )
+)
+Switch(ID(127 )
+Name(TB7 )
+Hint(
+        "Освещение расписания"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.347 2.851 9.571 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AssignKey(
+        "Ctrl+L"
+         )
+AnimTime(0.2 )
+)
+Switch(ID(128 )
+Name(TB8 )
+Hint(
+        "Электрикалорифер"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.296 2.851 9.571 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AssignKey(
+        "Ctrl+O"
+         )
+AnimTime(0.2 )
+)
+Switch(ID(129 )
+Name(TB10 )
+Hint(
+        "Радиостанция"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.154 2.9 9.59 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AssignKey(
+        "Ctrl+P"
+         )
+AnimTime(0.2 )
+)
+Switch(ID(130 )
+Name(TB011 )
+Hint(
+        "Манометры и термометры"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.169 2.9 9.617 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(131 )
+Name(TB12 )
+Hint(
+        "АЛСН"
+         )
+StateHints(2 
+        "[Без АЛС]"
+         
+        "[АЛС]"
+         )
+Position(0.247 2.902 9.777 )
+Radius(2 )
+States(2 1 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(132 )
+Name(TB13 )
+Hint(
+        "Частота АСЛН"
+         )
+StateHints(2 
+        "[25 Гц]"
+         
+        "[50 Гц]"
+         )
+Position(0.261 2.902 9.804 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(133 )
+Name(TB14 )
+Hint(
+        "Омыв окон"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.012 2.939 9.548 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AssignKey(
+        "Ctrl+M"
+         )
+AnimTime(0.2 )
+)
+Switch(ID(134 )
+Name(TB15 )
+Hint(
+        "Стеклоочиститель"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.06 2.939 9.548 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(135 )
+Name(BTN4 )
+Hint(
+        "Вызов помощника"
+         )
+Position(0.884 2.856 9.576 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AnimTime(0.2 )
+)
+Switch(ID(136 )
+Name(BTN5 )
+Hint(
+        "Отпуск тормозов локомотива"
+         )
+Position(0.694 2.857 9.576 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AssignKey(
+        "/"
+         )
+AnimTime(0.2 )
+)
+Switch(ID(137 )
+Name(BTN1 )
+Hint(
+        "Свисток"
+         )
+Position(1.114 2.855 9.576 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AssignKey(
+        "B"
+         )
+AnimTime(0.2 )
+)
+Switch(ID(138 )
+Name(BTN2 )
+Hint(
+        "Тифон"
+         )
+Position(1.056 2.855 9.576 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AssignKey(
+        "Space"
+         )
+AnimTime(0.2 )
+)
+Switch(ID(139 )
+Name(BTN3 )
+Hint(
+        "Песок"
+         )
+Position(0.995 2.855 9.576 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AssignKey(
+        "X"
+         )
+AnimTime(0.2 )
+)
+Switch(ID(140 )
+Name(RB )
+Hint(
+        "Рукоятка бдительности"
+         )
+Position(0.52 2.778 10.015 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AssignKey(
+        "Z"
+         )
+AnimTime(0.2 )
+)
+Switch(ID(141 )
+Name(BTN8 )
+Hint(
+        "Пуск дизеля ведущего тепловоза"
+         )
+Position(0.465 2.856 9.572 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AnimTime(0.2 )
+)
+Switch(ID(142 )
+Name(BTN7 )
+Hint(
+        "Пуск дизеля ведомого тепловоза"
+         )
+Position(0.51 2.856 9.572 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AnimTime(0.2 )
+)
+Switch(ID(143 )
+Name(BTN9 )
+Hint(
+        "Проверка ЭТ"
+         )
+Position(0.188 2.904 9.649 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AnimTime(0.2 )
+)
+Switch(ID(144 )
+Name(BTN10 )
+Hint(
+        "ВК"
+         )
+Position(0.209 2.904 9.693 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AnimTime(0.2 )
+)
+Switch(ID(145 )
+Name(BTN011 )
+Hint(
+        "Проверка АЛСН"
+         )
+Position(0.231 2.904 9.736 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AnimTime(0.2 )
+)
+Switch(ID(146 )
+Name(TBP7 )
+Hint(
+        "Левый БФ"
+         )
+StateHints(3 
+        "[Красный]"
+         
+        "[Выкл.]"
+         
+        "[Белый]"
+         )
+Position(-1.099 2.889 9.583 )
+Radius(2 )
+States(3 1 )
+Flags(CHECKDISTANCEONPRESS CONTROLLERY )
+AnimTime(0.2 )
+)
+Switch(ID(147 )
+Name(TBP6 )
+Hint(
+        "Правый БФ"
+         )
+StateHints(3 
+        "[Красный]"
+         
+        "[Выкл.]"
+         
+        "[Белый]"
+         )
+Position(-1.057 2.889 9.583 )
+Radius(2 )
+States(3 1 )
+Flags(CHECKDISTANCEONPRESS CONTROLLERY )
+AnimTime(0.2 )
+)
+Switch(ID(148 )
+Name(TBP5 )
+Hint(
+        "Номерные знаки"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(-1.019 2.889 9.583 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(149 )
+Name(TBP4 )
+Hint(
+        "Освещение пульта"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(-0.977 2.889 9.583 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(150 )
+Name(TBP3 )
+Hint(
+        "Освещение резервное"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(-0.943 2.889 9.583 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(151 )
+Name(TBP2 )
+Hint(
+        "Калориферы"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(-0.9 2.889 9.583 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(152 )
+Name(TBP1 )
+Hint(
+        "Вентиляторы"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(-0.862 2.889 9.583 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(153 )
+Name(TBP8 )
+Hint(
+        "Вольтметр"
+         )
+StateHints(2 
+        "[ЭПТ]"
+         
+        "[Батарея]"
+         )
+Position(-1.224 2.972 9.917 )
+Radius(2 )
+States(2 1 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(154 )
+Name(BTNP2 )
+Hint(
+        "Тифон"
+         )
+Position(-1.192 2.881 9.576 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AnimTime(0.2 )
+)
+Switch(ID(155 )
+Name(BTNP1 )
+Hint(
+        "Свисток"
+         )
+Position(-1.287 2.881 9.576 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AnimTime(0.2 )
+)
+Switch(ID(156 )
+Name(KK )
+Hint(
+        "Комбинированный кран усл. 103"
+         )
+StateHints(3 
+        "[Двойная тяга]"
+         
+        "[Нормальное]"
+         
+        "[Экстренное]"
+         )
+Position(1.312 2.207 9.405 )
+Radius(2 )
+States(3 1 )
+Flags(CONTROLLERX )
+AnimTime(0.1 )
+)
+Switch(ID(157 )
+Name(BTN12 )
+Hint(
+        "Маневры"
+         )
+Position(1.465 2.84 8.966 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AssignKey(
+        "V"
+         )
+AnimTime(0.2 )
+)
+Switch(ID(158 )
+Name(BTN13 )
+Hint(
+        "Свисток"
+         )
+Position(1.466 2.84 8.9 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AnimTime(0.2 )
+)
+Switch(ID(159 )
+Name(RBS )
+Hint(
+        "РБС"
+         )
+Position(1.474 3.782 9.884 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AssignKey(
+        "M"
+         )
+AnimTime(0.2 )
+)
+Switch(ID(160 )
+Name(RBP )
+Hint(
+        "РБП"
+         )
+Position(-1.475 2.878 9.361 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AnimTime(0.2 )
+)
+Switch(ID(161 )
+Name(DSP )
+Hint(
+        "Вызов ДСП"
+         )
+Position(0.076 3.071 9.643 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AnimTime(0.1 )
+)
+Switch(ID(162 )
+Name(DNC )
+Hint(
+        "Вызов ДНЦ"
+         )
+Position(0.076 3.047 9.643 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AnimTime(0.1 )
+)
+Switch(ID(163 )
+Name(PODSV )
+Hint(
+        "Подсветка"
+         )
+Position(0.174 3.071 9.814 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AnimTime(0.1 )
+)
+Switch(ID(164 )
+Name(PIT )
+Hint(
+        "Питание радиостанции"
+         )
+Position(0.187 2.998 9.835 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS NONFIXED )
+AnimTime(0.1 )
+)
+Switch(ID(165 )
+Name(RT )
+Hint(
+        "Ручной тормоз"
+         )
+StateHints(5 
+        "[Закручен]"
+         
+        "[75%]"
+         
+        "[50%]"
+         
+        "[25%]"
+         
+        "[Откручен]"
+         )
+Position(-0.714 2.927 8.662 )
+Radius(2 )
+States(5 0 )
+Flags(CHECKDISTANCEONPRESS CONTROLLERX PRECISE )
+SwitchPrecision(0.1 -0.05 )
+AssignKey(
+        "<"
+         
+        ">"
+         )
+AnimTime(0.3 )
+)
+Switch(ID(166 )
+Name(SLZAVOD )
+Hint(
+        "Завод часов"
+         )
+Position(0.353 3.14 9.846 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.45 )
+)
+Switch(ID(168 )
+Name(STOR_1 )
+Position(-0.628 3.397 10.453 )
+Radius(2 )
+States(2 1 )
+Flags(PRECISE CONTROLLERY CHECKDISTANCEONPRESS )
+AnimTime(1.0 )
+SwitchPrecision(0.0 -0.1 )
+)
+Switch(ID(169 )
+Name(STOR_2 )
+Position(-0.428 3.4 10.475 )
+Radius(2 )
+States(2 1 )
+Flags(PRECISE CONTROLLERY CHECKDISTANCEONPRESS )
+AnimTime(1.0 )
+SwitchPrecision(0.0 -0.1 )
+)
+Switch(ID(170 )
+Name(STOR_3 )
+Position(0.616 3.397 10.453 )
+Radius(2 )
+States(2 1 )
+Flags(PRECISE CONTROLLERY CHECKDISTANCEONPRESS )
+AnimTime(1.0 )
+SwitchPrecision(0.0 -0.1 )
+)
+Switch(ID(171 )
+Name(STOR_11 )
+Position(0.625 3.394 -10.562 )
+Radius(2 )
+States(2 1 )
+Flags(PRECISE CONTROLLERY CHECKDISTANCEONPRESS )
+AnimTime(1.0 )
+SwitchPrecision(0.0 -0.1 )
+)
+Switch(ID(172 )
+Name(STOR_22 )
+Position(0.426 3.4 -10.585 )
+Radius(2 )
+States(2 1 )
+Flags(PRECISE CONTROLLERY CHECKDISTANCEONPRESS )
+AnimTime(1.0 )
+SwitchPrecision(0.0 -0.1 )
+)
+Switch(ID(173 )
+Name(STOR_33 )
+Position(-0.617 3.396 -10.564 )
+Radius(2 )
+States(2 1 )
+Flags(PRECISE CONTROLLERY CHECKDISTANCEONPRESS )
+AnimTime(1.0 )
+SwitchPrecision(0.0 -0.1 )
+)
+Skip(
+        "--------------------- Машинное ------------------------"
+         )
+Switch(ID(200 )
+Name(DOOR_F )
+Hint(
+        "Шкаф"
+         )
+Position(0.218 2.703 7.508 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AssignKey(
+        "K"
+         )
+AnimTime(1.0 )
+)
+Switch(ID(201 )
+Name(RC1 )
+Hint(
+        "Переключение кабины"
+         )
+StateHints(2 
+        "[Кабина 1]"
+         
+        "[Кабина 2]"
+         )
+Position(0.135 3.415 7.415 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AssignKey(
+        "U"
+         )
+AnimTime(0.3 )
+)
+Switch(ID(202 )
+Name(RC2 )
+Hint(
+        "Переключение кабины"
+         )
+StateHints(2 
+        "[Кабина 1]"
+         
+        "[Кабина 2]"
+         )
+Position(-0.008 3.415 7.415 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AssignKey(
+        "I"
+         )
+AnimTime(0.3 )
+)
+Switch(ID(203 )
+Name(TBM6 )
+Hint(
+        "Питание топливного насоса"
+         )
+StateHints(2 
+        "[2 Тепловоза]"
+         
+        "[2 Тепловоза]"
+         )
+Position(0.2 3.313 7.395 )
+Radius(2 )
+States(2 1 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(204 )
+Name(OM1 )
+Hint(
+        "Отключение 1 ТЭД"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.14 2.903 7.457 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(205 )
+Name(OM2 )
+Hint(
+        "Отключение 2 ТЭД"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.103 2.903 7.457 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(206 )
+Name(OM3 )
+Hint(
+        "Отключение 3 ТЭД"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.066 2.903 7.457 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(207 )
+Name(OM4 )
+Hint(
+        "Отключение 4 ТЭД"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.021 2.903 7.457 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(208 )
+Name(OM5 )
+Hint(
+        "Отключение 5 ТЭД"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(-0.016 2.903 7.457 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(209 )
+Name(OM6 )
+Hint(
+        "Отключение 6 ТЭД"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(-0.053 2.903 7.457 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(210 )
+Name(AZVM1 )
+Hint(
+        "АЗВ освещение дизельного"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.799 3.093 7.33 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(211 )
+Name(AZVM2 )
+Hint(
+        "АЗВ резервное освещение дизельного"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.77 3.093 7.33 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(212 )
+Name(AZVM3 )
+Hint(
+        "АЗВ освещение подкузовное"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.741 3.093 7.33 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(213 )
+Name(AZVM4 )
+Hint(
+        "АЗВ освещение ВВК"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.712 3.093 7.33 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(214 )
+Name(AZVM5 )
+Hint(
+        "АЗВ питание розеток"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.654 3.093 7.33 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(215 )
+Name(AZVM6 )
+Hint(
+        "АЗВ питание автостопа"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.625 3.093 7.33 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(216 )
+Name(AZVM7 )
+Hint(
+        "АЗВ питание автостопа"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.596 3.093 7.33 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(217 )
+Name(AZVM8 )
+Hint(
+        "АЗВ пожарная сигнализация"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.567 3.093 7.33 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(218 )
+Name(AZVM9 )
+Hint(
+        "АЗВ буферные фонари"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.538 3.093 7.33 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(219 )
+Name(AZVM10 )
+Hint(
+        "АЗВ питание розеток"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.509 3.093 7.33 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(220 )
+Name(AZVM11 )
+Hint(
+        "АЗВ вспомогательные цепи"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.48 3.093 7.33 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(221 )
+Name(AZVM12 )
+Hint(
+        "АЗВ компрессор"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.451 3.093 7.33 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(222 )
+Name(AZVM13 )
+Hint(
+        "АЗВ топливный насос"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.422 3.093 7.33 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(223 )
+Name(AZVM14 )
+Hint(
+        "АЗВ калорифер"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.393 3.093 7.33 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(224 )
+Name(TBM1 )
+Hint(
+        "Резервное питание насоса"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.626 2.933 7.408 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(225 )
+Name(TBM2 )
+Hint(
+        "Автостоп"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.575 2.933 7.408 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(226 )
+Name(TBM3 )
+Hint(
+        "Шунтировка"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.523 2.933 7.408 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(227 )
+Name(TBM4 )
+Hint(
+        "Электродинамический тормоз"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.472 2.933 7.408 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(228 )
+Name(TBM5 )
+Hint(
+        "Ручная прокачка масла"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.421 2.933 7.408 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(229 )
+Name(RUB_AB1 )
+Hint(
+        "Батарея 1"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.06 2.693 7.429 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(230 )
+Name(RUB_AB2 )
+Hint(
+        "Батарея 2"
+         )
+StateHints(2 
+        "[Выкл.]"
+         
+        "[Вкл.]"
+         )
+Position(0.06 2.693 7.429 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(0.2 )
+)
+Switch(ID(233 )
+Name(KR1 )
+Position(-1.493 3.434 1.486 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(2.0 )
+)
+Switch(ID(234 )
+Name(KR2 )
+Position(-1.493 3.434 -1.087 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(2.0 )
+)
+Switch(ID(235 )
+Name(KR3 )
+Position(1.493 3.434 1.486 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(2.0 )
+)
+Switch(ID(236 )
+Name(KR4 )
+Position(1.493 3.434 -1.087 )
+Radius(2 )
+States(2 0 )
+Flags(CHECKDISTANCEONPRESS )
+AnimTime(2.0 )
+)
+)
+Displays(200 Display(ID(0 )
+Name(ARR141 )
+Hint(
+        "Вольтметр"
+         )
+Position(1.226 3.038 -9.928 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 150.0 0.0 0.0 )
+Granularity(0.2 )
+AnimSpeed(100 )
+Flags()
+)
+Display(ID(1 )
+Name(ARR151 )
+Hint(
+        "Амперметр АКБ"
+         )
+Position(1.128 3.038 -9.928 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(-150.0 150.0 -150.0 0.0 )
+Granularity(0.2 )
+AnimSpeed(100 )
+Flags()
+)
+Display(ID(2 )
+Name(ARR161 )
+Hint(
+        "Напряжение генератора"
+         )
+Position(1.027 3.038 -9.928 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 1000.0 0.0 0.0 )
+Granularity(1.0 )
+AnimSpeed(100 )
+Flags(PRECISE )
+)
+Display(ID(3 )
+Name(ARR171 )
+Hint(
+        "Индикатор"
+         )
+Position(1.506 3.038 -9.928 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 10.0 0.0 0.0 )
+Granularity(0.02 )
+AnimSpeed(50 )
+Flags()
+)
+Display(ID(4 )
+Name(ARR51 )
+Hint(
+        "Ток якоря Тяга"
+         )
+Position(-0.491 3.022 -9.942 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 10.0 0.0 0.0 )
+Granularity(0.01 )
+AnimSpeed(50 )
+Flags()
+)
+Display(ID(5 )
+Name(ARR61 )
+Hint(
+        "Ток якоря ЭДТ"
+         )
+Position(-0.615 3.022 -9.942 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 10.0 0.0 0.0 )
+Granularity(0.01 )
+AnimSpeed(50 )
+Flags()
+)
+Display(ID(6 )
+Name(ARR71 )
+Hint(
+        "Заданная скорость"
+         )
+Position(-0.743 3.022 -9.942 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 150.0 0.0 0.0 )
+Granularity(0.2 )
+AnimSpeed(100 )
+Flags()
+)
+Display(ID(7 )
+Name(ARR81 )
+Hint(
+        "Давление ТЦ"
+         )
+Position(-0.853 3.022 -9.942 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 16.2 0.0 0.0 )
+Granularity(0.01 )
+AnimSpeed(50 )
+Flags()
+)
+Display(ID(8 )
+Name(ARR101 )
+Hint(
+        "Давление ТМ"
+         )
+Position(-0.978 3.022 -9.942 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 16.0 0.0 0.0 )
+Granularity(0.01 )
+AnimSpeed(50 )
+Flags()
+)
+Display(ID(9 )
+Name(ARR91 )
+Hint(
+        "Давление ГР"
+         )
+Position(-0.978 3.022 -9.942 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 16.0 0.0 0.0 )
+Granularity(0.01 )
+AnimSpeed(50 )
+Flags()
+)
+Display(ID(10 )
+Name(ARR111 )
+Hint(
+        "Давление УР"
+         )
+Position(-1.101 3.022 -9.942 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 10.0 0.0 0.0 )
+Granularity(0.01 )
+AnimSpeed(50 )
+Flags()
+)
+Display(ID(11 )
+Name(ARR01 )
+Hint(
+        "Скорость"
+         )
+Position(-1.322 3.073 -9.898 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 62.50 0.0 0.0 )
+Granularity(0.01 )
+AnimSpeed(30 )
+Flags()
+)
+Display(ID(12 )
+Name(ARR121 )
+Hint(
+        "Часы"
+         )
+Position(-1.322 3.101 -9.869 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 24.00 0.0 0.0 )
+Granularity(0.01 )
+Flags(PRECISE )
+)
+Display(ID(13 )
+Name(ARR131 )
+Hint(
+        "Минуты"
+         )
+Position(-1.322 3.101 -9.869 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 60.00 0.0 0.0 )
+Granularity(0.01 )
+Flags(PRECISE )
+)
+Display(ID(14 )
+Name(ARR011 )
+Hint(
+        "Температура воды"
+         )
+Position(-0.476 2.903 -9.875 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 127.0 0.0 0.0 )
+Granularity(0.1 )
+AnimSpeed(50 )
+Flags()
+)
+Display(ID(15 )
+Name(ARR21 )
+Hint(
+        "Температура масла"
+         )
+Position(-0.549 2.903 -9.875 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 127.0 0.0 0.0 )
+Granularity(0.1 )
+AnimSpeed(50 )
+Flags()
+)
+Display(ID(16 )
+Name(ARR31 )
+Hint(
+        "Давление топлива"
+         )
+Position(-0.631 2.903 -9.875 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 15.8 0.0 0.0 )
+Granularity(0.01 )
+AnimSpeed(50 )
+Flags()
+)
+Display(ID(17 )
+Name(ARR41 )
+Hint(
+        "Давление масла"
+         )
+Position(-0.699 2.903 -9.875 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 15.8 0.0 0.0 )
+Granularity(0.01 )
+AnimSpeed(50 )
+Flags()
+)
+Display(ID(20 )
+Name(LAMP011 )
+Hint(
+        "Сброс нагрузки"
+         )
+Position(-0.307 3.096 -9.938 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Display(ID(21 )
+Name(LAMP21 )
+Hint(
+        "Жалюзи ЭТ открыты"
+         )
+Position(-0.37 3.096 -9.938 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Display(ID(22 )
+Name(LAMP31 )
+Hint(
+        "Температура воды и масла"
+         )
+Position(-0.307 3.021 -9.926 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Display(ID(23 )
+Name(LAMP41 )
+Hint(
+        "Жалюзи ЭТ открыты"
+         )
+Position(-0.37 3.021 -9.926 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Display(ID(24 )
+Name(LAMP51 )
+Hint(
+        "Давление масла"
+         )
+Position(-0.307 2.974 -9.911 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Display(ID(25 )
+Name(LAMP61 )
+Hint(
+        "Нет зарядки батареи"
+         )
+Position(-0.37 2.974 -9.911 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Display(ID(26 )
+Name(LAMP71 )
+Hint(
+        "ЭДТ I тепловоза"
+         )
+Position(-0.875 2.915 -9.867 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Display(ID(27 )
+Name(LAMP81 )
+Hint(
+        "ЭДТ II тепловоза"
+         )
+Position(-0.922 2.915 -9.867 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Display(ID(28 )
+Name(LAMP111 )
+Hint(
+        "О"
+         )
+Position(-1.022 2.915 -9.867 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Display(ID(29 )
+Name(LAMP101 )
+Hint(
+        "П"
+         )
+Position(-1.07 2.915 -9.867 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Display(ID(30 )
+Name(LAMP91 )
+Hint(
+        "Т"
+         )
+Position(-1.116 2.915 -9.867 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Display(ID(31 )
+Name(LAMPP11 )
+Hint(
+        "Резервный топливный насос"
+         )
+Position(0.921 3.07 -9.94 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Display(ID(32 )
+Name(LAMPP21 )
+Hint(
+        "Нагружение на тормозные резисторы"
+         )
+Position(0.859 3.07 -9.94 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Display(ID(33 )
+Name(LAMPP31 )
+Hint(
+        "Пожар левой стороны ДП"
+         )
+Position(0.921 3.023 -9.927 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Display(ID(34 )
+Name(LAMPP41 )
+Hint(
+        "Пожар правой стороны ДП"
+         )
+Position(0.859 3.023 -9.927 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Display(ID(35 )
+Name(LAMPP51 )
+Hint(
+        "Перегрев электрического калорифера"
+         )
+Position(0.859 2.976 -9.914 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Display(ID(36 )
+Name(PSS11 )
+Hint(
+        "ПСС"
+         )
+Position(-0.399 3.16 -9.949 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Display(ID(37 )
+Name(PSS21 )
+Hint(
+        "Скатывание (H)"
+         )
+Position(-1.003 3.16 -9.949 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Display(ID(38 )
+Name(PSS31 )
+Hint(
+        "ПСС"
+         )
+Position(-1.042 3.16 -9.949 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Display(ID(39 )
+Name(LAMPPO1 )
+Hint(
+        ""
+         )
+Position(-0.793 2.98 -9.906 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Skip(
+        "------------------- Кабина 2 -----------------------"
+         )
+Display(ID(100 )
+Name(ARR14 )
+Hint(
+        "Вольтметр"
+         )
+Position(-1.226 3.038 9.928 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 150.0 0.0 0.0 )
+Granularity(0.2 )
+AnimSpeed(100 )
+Flags()
+)
+Display(ID(101 )
+Name(ARR15 )
+Hint(
+        "Амперметр АКБ"
+         )
+Position(-1.128 3.038 9.928 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(-150.0 150.0 -150.0 0.0 )
+Granularity(0.2 )
+AnimSpeed(100 )
+Flags()
+)
+Display(ID(102 )
+Name(ARR16 )
+Hint(
+        "Напряжение генератора"
+         )
+Position(-1.027 3.038 9.928 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 1000.0 0.0 0.0 )
+Granularity(1.0 )
+AnimSpeed(100 )
+Flags(PRECISE )
+)
+Display(ID(103 )
+Name(ARR17 )
+Hint(
+        "Индикатор"
+         )
+Position(-1.506 3.038 9.928 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 10.0 0.0 0.0 )
+Granularity(0.02 )
+AnimSpeed(50 )
+Flags()
+)
+Display(ID(104 )
+Name(ARR5 )
+Hint(
+        "Ток якоря Тяга"
+         )
+Position(0.491 3.022 9.942 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 10.0 0.0 0.0 )
+Granularity(0.01 )
+AnimSpeed(50 )
+Flags()
+)
+Display(ID(105 )
+Name(ARR6 )
+Hint(
+        "Ток якоря ЭДТ"
+         )
+Position(0.615 3.022 9.942 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 10.0 0.0 0.0 )
+Granularity(0.01 )
+AnimSpeed(50 )
+Flags()
+)
+Display(ID(106 )
+Name(ARR7 )
+Hint(
+        "Заданная скорость"
+         )
+Position(0.743 3.022 9.942 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 150.0 0.0 0.0 )
+Granularity(0.2 )
+AnimSpeed(100 )
+Flags()
+)
+Display(ID(107 )
+Name(ARR8 )
+Hint(
+        "Давление ТЦ"
+         )
+Position(0.853 3.022 9.942 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 16.2 0.0 0.0 )
+Granularity(0.01 )
+AnimSpeed(50 )
+Flags()
+)
+Display(ID(108 )
+Name(ARR9 )
+Hint(
+        "Давление ТМ"
+         )
+Position(0.978 3.022 9.942 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 16.0 0.0 0.0 )
+Granularity(0.01 )
+AnimSpeed(50 )
+Flags()
+)
+Display(ID(109 )
+Name(ARR10 )
+Hint(
+        "Давление ГР"
+         )
+Position(0.978 3.022 9.942 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 16.0 0.0 0.0 )
+Granularity(0.01 )
+AnimSpeed(50 )
+Flags()
+)
+Display(ID(110 )
+Name(ARR11 )
+Hint(
+        "Давление УР"
+         )
+Position(1.101 3.022 9.942 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 10.0 0.0 0.0 )
+Granularity(0.01 )
+AnimSpeed(50 )
+Flags()
+)
+Display(ID(111 )
+Name(ARR0 )
+Hint(
+        "Скорость"
+         )
+Position(1.322 3.073 9.898 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 62.50 0.0 0.0 )
+Granularity(0.01 )
+AnimSpeed(30 )
+Flags()
+)
+Display(ID(112 )
+Name(ARR12 )
+Hint(
+        "Часы"
+         )
+Position(1.322 3.101 9.869 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 24.00 0.0 0.0 )
+Granularity(0.01 )
+Flags(PRECISE )
+)
+Display(ID(113 )
+Name(ARR13 )
+Hint(
+        "Минуты"
+         )
+Position(1.322 3.101 9.869 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 60.00 0.0 0.0 )
+Granularity(0.01 )
+Flags(PRECISE )
+)
+Display(ID(114 )
+Name(ARR1 )
+Hint(
+        "Температура воды"
+         )
+Position(0.476 2.903 9.875 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 127.0 0.0 0.0 )
+Granularity(0.1 )
+AnimSpeed(50 )
+Flags()
+)
+Display(ID(115 )
+Name(ARR2 )
+Hint(
+        "Температура масла"
+         )
+Position(0.549 2.903 9.875 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 127.0 0.0 0.0 )
+Granularity(0.1 )
+AnimSpeed(50 )
+Flags()
+)
+Display(ID(116 )
+Name(ARR3 )
+Hint(
+        "Давление топлива"
+         )
+Position(0.631 2.903 9.875 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 15.8 0.0 0.0 )
+Granularity(0.01 )
+AnimSpeed(50 )
+Flags()
+)
+Display(ID(117 )
+Name(ARR4 )
+Hint(
+        "Давление масла"
+         )
+Position(0.699 2.903 9.875 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 15.8 0.0 0.0 )
+Granularity(0.01 )
+AnimSpeed(50 )
+Flags()
+)
+Display(ID(120 )
+Name(LAMP1 )
+Hint(
+        "Сброс нагрузки"
+         )
+Position(0.307 3.096 9.938 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Display(ID(121 )
+Name(LAMP2 )
+Hint(
+        "Жалюзи ЭТ открыты"
+         )
+Position(0.37 3.096 9.938 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Display(ID(122 )
+Name(LAMP3 )
+Hint(
+        "Температура воды и масла"
+         )
+Position(0.307 3.021 9.926 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Display(ID(123 )
+Name(LAMP4 )
+Hint(
+        "Жалюзи ЭТ открыты"
+         )
+Position(0.37 3.021 9.926 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Display(ID(124 )
+Name(LAMP5 )
+Hint(
+        "Давление масла"
+         )
+Position(0.307 2.974 9.911 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Display(ID(125 )
+Name(LAMP6 )
+Hint(
+        "Нет зарядки батареи"
+         )
+Position(0.37 2.974 9.911 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Display(ID(126 )
+Name(LAMP7 )
+Hint(
+        "ЭДТ I тепловоза"
+         )
+Position(0.875 2.915 9.867 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Display(ID(127 )
+Name(LAMP8 )
+Hint(
+        "ЭДТ II тепловоза"
+         )
+Position(0.922 2.915 9.867 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Display(ID(128 )
+Name(LAMP11 )
+Hint(
+        "О"
+         )
+Position(1.022 2.915 9.867 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Display(ID(129 )
+Name(LAMP10 )
+Hint(
+        "П"
+         )
+Position(1.07 2.915 9.867 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Display(ID(130 )
+Name(LAMP9 )
+Hint(
+        "Т"
+         )
+Position(1.116 2.915 9.867 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Display(ID(131 )
+Name(LAMPP1 )
+Hint(
+        "Резервный топливный насос"
+         )
+Position(-0.921 3.07 9.94 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Display(ID(132 )
+Name(LAMPP2 )
+Hint(
+        "Нагружение на тормозные резисторы"
+         )
+Position(-0.859 3.07 9.94 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Display(ID(133 )
+Name(LAMPP3 )
+Hint(
+        "Пожар левой стороны ДП"
+         )
+Position(-0.921 3.023 9.927 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Display(ID(134 )
+Name(LAMPP4 )
+Hint(
+        "Пожар правой стороны ДП"
+         )
+Position(-0.859 3.023 9.927 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Display(ID(135 )
+Name(LAMPP5 )
+Hint(
+        "Перегрев электрического калорифера"
+         )
+Position(-0.859 2.976 9.914 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Display(ID(136 )
+Name(PSS1 )
+Hint(
+        "ПСС"
+         )
+Position(0.399 3.16 9.949 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Display(ID(137 )
+Name(PSS2 )
+Hint(
+        "Скатывание (H)"
+         )
+Position(1.003 3.16 9.949 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Display(ID(138 )
+Name(PSS3 )
+Hint(
+        "ПСС"
+         )
+Position(1.042 3.16 9.949 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Display(ID(139 )
+Name(LAMPPO )
+Hint(
+        ""
+         )
+Position(0.793 2.98 9.906 )
+Radius(2 )
+DisplayType(LAMP )
+DisplayFade(0.1 0 )
+Flags()
+)
+Display(ID(150 )
+Name(NUM1 )
+Position(0 0 0 )
+Radius(0 )
+DisplayType(SCREEN )
+InitialState(1 )
+Flags()
+DisplayScreen(TopLeft(-0.987 3.097 -10.325 )
+TopRight(-1.156 3.097 -10.325 )
+BottomRight(-1.156 3.063 -10.316 )
+SubObjects(1 SubObject(SubID(0 )
+Type(LABEL )
+Area(0.0 0.0 1.0 1.0 )
+UV(0.0 0.0 1.0 1.0 )
+Textures(1 Font.ace )
+NamedShader(BlendATexDiff )
+CharacterWidth(0.1 0.125 )
+CharacterHeight(1.0 0.25 )
+CharacterSpacing(0.0 0.0 )
+LineSpacing(0.0 0.0 )
+Alignment(LEFT BOTTOM )
+Alphabet(ТЭП-1234567890 )
+MaxStringLength(10 )
+)
+)
+)
+)
+Display(ID(151 )
+Name(NUM2 )
+Position(0 0 0 )
+Radius(0 )
+DisplayType(SCREEN )
+InitialState(1 )
+Flags()
+DisplayScreen(TopLeft(0.987 3.097 10.213 )
+TopRight(1.156 3.097 10.213 )
+BottomRight(1.156 3.063 10.204 )
+SubObjects(1 SubObject(SubID(0 )
+Type(LABEL )
+Area(0.0 0.0 1.0 1.0 )
+UV(0.0 0.0 1.0 1.0 )
+Textures(1 Font.ace )
+NamedShader(BlendATexDiff )
+CharacterWidth(0.1 0.125 )
+CharacterHeight(1.0 0.25 )
+CharacterSpacing(0.0 0.0 )
+LineSpacing(0.0 0.0 )
+Alignment(LEFT BOTTOM )
+Alphabet(ТЭП-1234567890 )
+MaxStringLength(10 )
+)
+)
+)
+)
+Display(ID(162 )
+Name(ARRM1 )
+Hint(
+        "Давление масла до фильтра тонкой очистки"
+         )
+Position(-1.455 3.528 -0.104 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 16.0 0.0 0.0 )
+Granularity(0.01 )
+AnimSpeed(50 )
+Flags()
+)
+Display(ID(163 )
+Name(ARRM2 )
+Hint(
+        "Давление масла после фильтра тонкой очистки"
+         )
+Position(-1.455 3.528 0.009 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 16.0 0.0 0.0 )
+Granularity(0.01 )
+AnimSpeed(50 )
+Flags()
+)
+Display(ID(164 )
+Name(ARRM3 )
+Hint(
+        "Давление топлива до фильтра тонкой очистки"
+         )
+Position(-1.455 3.528 0.122 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 16.0 0.0 0.0 )
+Granularity(0.01 )
+AnimSpeed(50 )
+Flags()
+)
+Display(ID(165 )
+Name(ARRM4 )
+Hint(
+        "Давление топлива после фильтра тонкой очистки"
+         )
+Position(-1.455 3.528 0.232 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 16.0 0.0 0.0 )
+Granularity(0.01 )
+AnimSpeed(50 )
+Flags()
+)
+Display(ID(166 )
+Name(ARRM5 )
+Hint(
+        "Наддув"
+         )
+Position(-1.455 3.528 0.344 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 16.0 0.0 0.0 )
+Granularity(0.01 )
+AnimSpeed(50 )
+Flags()
+)
+Display(ID(167 )
+Name(ARRM6 )
+Hint(
+        "Давление в гидростатической системе"
+         )
+Position(-1.455 3.528 0.458 )
+Radius(2 )
+DisplayType(ARROW )
+ValuesRange(0.0 16.0 0.0 0.0 )
+Granularity(0.01 )
+AnimSpeed(50 )
+Flags()
+)
+)
+LightSources(19 LightSource(Name(
+        "LCAB"
+         )
+Position(0 5.7 8.954 )
+PointsTo(0 2.0 11.522 )
+Radius(12.5 6.0 )
+SpotExponent(0.5 )
+Colour(C07B785D )
+LightFade(0.1 0.0 )
+Flags(LIGHT_CONE POSITIONAL )
+)
+LightSource(Name(
+        "LCAB"
+         )
+Position(0 5.7 8.954 )
+PointsTo(0 2.0 11.522 )
+Radius(12.5 6.0 )
+SpotExponent(0.5 )
+Colour(FFF0E68C )
+LightFade(0.1 0.0 )
+Flags(LIGHT_CONE POSITIONAL )
+)
+LightSource(Name(
+        "Lamp1P1"
+         )
+Position(1.076 3.113 10.217 )
+PointsTo(0.998 2.812 9.853 )
+Radius(2.0 1.0 )
+SpotExponent(0.2 )
+Colour(FFF0E68C )
+LightFade(0.1 0.0 )
+Flags(LIGHT_CONE POSITIONAL )
+)
+LightSource(Name(
+        "Lamp1P2"
+         )
+Position(0.512 3.113 10.217 )
+PointsTo(0.539 2.812 9.853 )
+Radius(2.0 1.0 )
+SpotExponent(0.2 )
+Colour(FFF0E68C )
+LightFade(0.1 0.0 )
+Flags(LIGHT_CONE POSITIONAL )
+)
+LightSource(Name(
+        "LCAB1"
+         )
+Position(0 5.7 -9.079 )
+PointsTo(0 2.0 -11.522 )
+Radius(12.5 6.0 )
+SpotExponent(0.1 )
+Colour(C07B785D )
+LightFade(0.1 0.0 )
+Flags(LIGHT_CONE POSITIONAL )
+)
+LightSource(Name(
+        "LCAB1"
+         )
+Position(0 5.7 -9.079 )
+PointsTo(0 2.0 -11.522 )
+Radius(12.5 6.0 )
+SpotExponent(0.5 )
+Colour(FFF0E68C )
+LightFade(0.1 0.0 )
+Flags(LIGHT_CONE POSITIONAL )
+)
+LightSource(Name(
+        "Lamp2P1"
+         )
+Position(-1.076 3.113 -10.329 )
+PointsTo(-0.998 2.812 -9.964 )
+Radius(2.0 1.0 )
+SpotExponent(0.2 )
+Colour(FFF0E68C )
+LightFade(0.1 0.0 )
+Flags(LIGHT_CONE POSITIONAL )
+)
+LightSource(Name(
+        "Lamp2P2"
+         )
+Position(-0.512 3.113 -10.329 )
+PointsTo(-0.539 2.812 -9.964 )
+Radius(2.0 1.0 )
+SpotExponent(0.2 )
+Colour(FFF0E68C )
+LightFade(0.1 0.0 )
+Flags(LIGHT_CONE POSITIONAL )
+)
+LightSource(Name(
+        "SVET"
+         )
+Position(0 6.7 7.91 )
+PointsTo(0 2.0 6.129 )
+Radius(12.5 4.5 )
+SpotExponent(0.5 )
+Colour(FFF0E68C )
+LightFade(0.1 0.0 )
+Flags(LIGHT_CONE POSITIONAL )
+)
+LightSource(Name(
+        "LampM2"
+         )
+Position(0 6.7 -8.315 )
+PointsTo(0 2.0 -6.002 )
+Radius(12.5 4.5 )
+SpotExponent(0.5 )
+Colour(FFF0E68C )
+LightFade(0.1 0.0 )
+Flags(LIGHT_CONE POSITIONAL )
+)
+LightSource(Name(
+        "LampM3"
+         )
+Position(1.367 5.7 5.225 )
+PointsTo(0.0 2.0 5.225 )
+Radius(10.0 12.5 )
+SpotExponent(0.5 )
+Colour(FFF0E68C )
+LightFade(0.1 0.0 )
+Flags(LIGHT_CONE POSITIONAL )
+)
+LightSource(Name(
+        "LampM4"
+         )
+Position(1.367 5.7 -1.201 )
+PointsTo(0.0 2.0 -1.201 )
+Radius(10.0 12.5 )
+SpotExponent(0.5 )
+Colour(FFF0E68C )
+LightFade(0.1 0.0 )
+Flags(LIGHT_CONE POSITIONAL )
+)
+LightSource(Name(
+        "LampM5"
+         )
+Position(1.367 5.7 5.225 )
+PointsTo(0.0 2.0 5.225 )
+Radius(10.0 12.5 )
+SpotExponent(0.5 )
+Colour(FFF0E68C )
+LightFade(0.1 0.0 )
+Flags(LIGHT_CONE POSITIONAL )
+)
+LightSource(Name(
+        "LampM6"
+         )
+Position(1.367 5.7 -1.201 )
+PointsTo(0.0 2.0 -1.201 )
+Radius(10.0 12.5 )
+SpotExponent(0.5 )
+Colour(FFF0E68C )
+LightFade(0.1 0.0 )
+Flags(LIGHT_CONE POSITIONAL )
+)
+LightSource(Name(
+        "LampM7"
+         )
+Position(0.0 4.7 -6.033 )
+PointsTo(0.0 2.0 -6.033 )
+Radius(10.0 12.5 )
+SpotExponent(0.5 )
+Colour(FFF0E68C )
+LightFade(0.1 0.0 )
+Flags(LIGHT_CONE POSITIONAL )
+)
+LightSource(Name(
+        "Lamp1P3"
+         )
+Position(-1.176 3.113 10.217 )
+PointsTo(-1.176 2.812 9.853 )
+Radius(2.0 1.0 )
+SpotExponent(0.2 )
+Colour(FFF0E68C )
+LightFade(0.1 0.0 )
+Flags(LIGHT_CONE POSITIONAL )
+)
+LightSource(Name(
+        "Lamp1P4"
+         )
+Position(-0.612 3.113 10.217 )
+PointsTo(-0.639 2.812 9.853 )
+Radius(2.0 1.0 )
+SpotExponent(0.2 )
+Colour(FFF0E68C )
+LightFade(0.1 0.0 )
+Flags(LIGHT_CONE POSITIONAL )
+)
+LightSource(Name(
+        "Lamp2P3"
+         )
+Position(1.176 3.113 -10.329 )
+PointsTo(1.176 2.812 -9.964 )
+Radius(2.0 1.0 )
+SpotExponent(0.2 )
+Colour(FFF0E68C )
+LightFade(0.1 0.0 )
+Flags(LIGHT_CONE POSITIONAL )
+)
+LightSource(Name(
+        "Lamp2P4"
+         )
+Position(0.612 3.113 -10.329 )
+PointsTo(0.639 2.812 -9.964 )
+Radius(2.0 1.0 )
+SpotExponent(0.2 )
+Colour(FFF0E68C )
+LightFade(0.1 0.0 )
+Flags(LIGHT_CONE POSITIONAL )
+)
+)
+LocomotiveSignalization(BlockCheckAhead(1 )
+SignalLights(10 Light(A_W )
+Light(A_R )
+Light(A_YR )
+Light(A_Y )
+Light(A_G )
+Light(A_W1 )
+Light(A_R1 )
+Light(A_YR1 )
+Light(A_Y1 )
+Light(A_G1 )
+)
+SignalizationScripted(1 )
+SignalAspects(9 Aspect(2 1 6 )
+Aspect(2 2 7 )
+Aspect(2 0 5 )
+Aspect(2 3 8 )
+Aspect(2 3 8 )
+Aspect(2 3 8 )
+Aspect(2 4 9 )
+Aspect(2 4 9 )
+Aspect(2 1 6 )
+)
+)
+Animations(4 AnimNode(Name(
+        "WIPERS_R"
+         )
+ChildNodes(1 WIPER2 )
+AnimTime(3.5 )
+Flags(CONTINUOUS )
+NumKeyFrames(5 )
+)
+AnimNode(Name(
+        "WIPERS_L"
+         )
+ChildNodes(1 WIPER1 )
+AnimTime(3.5 )
+Flags(CONTINUOUS )
+NumKeyFrames(5 )
+)
+AnimNode(Name(
+        "WIPERS_R1"
+         )
+ChildNodes(1 WIPER21 )
+AnimTime(2.5 )
+Flags(CONTINUOUS )
+NumKeyFrames(5 )
+)
+AnimNode(Name(
+        "WIPERS_L1"
+         )
+ChildNodes(1 WIPER11 )
+AnimTime(2.5 )
+Flags(CONTINUOUS )
+NumKeyFrames(5 )
+)
+)
+InteriorGeometryInfo(InteriorAreas(3 InteriorArea(CABIN1 -1.524 10.936 1.524 8.884 )
+InteriorArea(DIESEL -1.524 8.884 1.524 -8.97 )
+InteriorArea(CABIN2 -1.524 -8.97 1.524 -10.936 )
+)
+InteriorPlanes(28 InteriorPlane(CABIN1 -1.386 1.7 9.72 -0.026 1.7 9.504 )
+InteriorPlane(CABIN1 -0.752 1.7 9.563 0.571 1.7 9.079 )
+InteriorPlane(CABIN1 0.498 1.7 9.72 1.176 1.7 9.504 )
+InteriorPlane(CABIN1 -0.266 1.7 9.079 0.266 1.7 8.687 )
+InteriorPlane(DIESEL -1.319 1.7 8.458 1.319 1.7 7.691 )
+Skip(
+        "левая"
+         )
+InteriorPlane(DIESEL -1.319 1.7 7.691 -0.936 1.7 0.714 )
+InteriorPlane(DIESEL -1.319 1.7 0.714 -1.131 1.7 -1.522 )
+InteriorPlane(DIESEL -1.131 1.7 -1.154 -0.932 1.7 -3.374 )
+InteriorPlane(DIESEL -1.319 1.7 -2.604 -1.131 1.7 -3.374 )
+InteriorPlane(DIESEL -0.932 1.7 -2.857 -0.606 1.7 -3.729 )
+InteriorPlane(DIESEL -0.606 1.7 -3.218 -0.294 1.7 -3.729 )
+Skip(
+        "правая"
+         )
+InteriorPlane(DIESEL 1.072 1.7 7.691 1.319 1.7 0.805 )
+InteriorPlane(DIESEL 1.198 1.7 0.805 1.319 1.7 -1.596 )
+InteriorPlane(DIESEL 1.039 1.7 -1.117 1.199 1.7 -3.332 )
+InteriorPlane(DIESEL 1.199 1.7 -2.59 1.319 1.7 -3.332 )
+InteriorPlane(DIESEL 0.71 1.7 -2.863 1.039 1.7 -3.739 )
+InteriorPlane(DIESEL 0.34 1.7 -3.218 0.71 1.7 -3.739 )
+Skip(
+        "центр"
+         )
+InteriorPlane(DIESEL -0.936 1.7 5.184 -0.166 1.7 4.75 )
+InteriorPlane(DIESEL -0.166 1.7 5.534 1.072 1.7 4.75 )
+InteriorPlane(DIESEL -0.166 1.7 6.324 0.074 1.7 5.534 )
+InteriorPlane(DIESEL -0.936 1.7 3.415 -0.334 1.7 2.987 )
+InteriorPlane(DIESEL 0.501 1.7 3.474 1.072 1.7 3.007 )
+InteriorPlane(DIESEL -0.294 1.7 -3.563 0.34 1.7 -4.11 )
+InteriorPlane(DIESEL -0.243 1.7 -4.11 0.203 1.7 -7.953 )
+InteriorPlane(DIESEL -1.319 1.7 -7.953 1.319 1.7 -8.84 )
+InteriorPlane(CABIN2 -1.176 1.7 -9.621 -0.498 1.7 -9.837 )
+InteriorPlane(CABIN2 -0.571 1.7 -9.196 0.752 1.7 -9.68 )
+InteriorPlane(CABIN2 0.026 1.7 -9.621 1.386 1.7 -9.837 )
+)
+InteriorDoors(12 InteriorDoor(Name(DOOR_A )
+Connects(DIESEL EXTERIOR )
+Position(1.61 2.822 -8.235 )
+Radius(5 )
+InteriorPlane(1.319 1.7 -8.088 1.7 1.7 -8.54 )
+AnimTime(1.0 )
+SMSTriggers(300 301 )
+SoundProof(0.9 1.0 )
+)
+InteriorDoor(Name(DOOR_B )
+Connects(DIESEL EXTERIOR )
+Position(1.61 2.822 8.235 )
+Radius(5 )
+InteriorPlane(1.319 1.7 8.136 1.7 1.7 7.691 )
+AnimTime(1.0 )
+SMSTriggers(300 301 )
+SoundProof(0.9 1.0 )
+)
+InteriorDoor(Name(DOOR_D )
+Connects(DIESEL EXTERIOR )
+Position(-1.61 2.822 -8.235 )
+Radius(5 )
+InteriorPlane(-1.7 1.7 -8.088 -1.319 1.7 -8.54 )
+AnimTime(1.0 )
+SMSTriggers(300 301 )
+SoundProof(0.9 1.0 )
+)
+InteriorDoor(Name(DOOR_E )
+Connects(DIESEL EXTERIOR )
+Position(-1.61 2.822 8.235 )
+Radius(5 )
+InteriorPlane(-1.7 1.7 8.136 -1.319 1.7 7.691 )
+AnimTime(1.0 )
+SMSTriggers(300 301 )
+SoundProof(0.9 1.0 )
+)
+InteriorDoor(Name(DOOR_C1 )
+Connects(DIESEL CABIN1 )
+Position(0.0 3.033 8.239 )
+Radius(5 )
+InteriorPlane(-0.266 1.7 8.687 0.266 1.7 8.458 )
+AnimTime(1.0 )
+SMSTriggers(300 301 )
+SoundProof(0.7 0.9 )
+)
+InteriorDoor(Name(DOOR_C11 )
+ParentObject(4 )
+AnimTime(1.0 )
+)
+InteriorDoor(Name(DOOR_C2 )
+Connects(DIESEL CABIN2 )
+Position(0.0 3.024 -8.594 )
+Radius(5 )
+InteriorPlane(-0.266 1.7 -8.84 0.266 1.7 -9.196 )
+AnimTime(1.0 )
+SMSTriggers(300 301 )
+SoundProof(0.7 0.9 )
+)
+InteriorDoor(Name(DOOR_C22 )
+ParentObject(6 )
+AnimTime(1.0 )
+)
+InteriorDoor(Name(DOOR_A1 )
+ParentObject(0 )
+AnimTime(1.0 )
+)
+InteriorDoor(Name(DOOR_B1 )
+ParentObject(1 )
+AnimTime(1.0 )
+)
+InteriorDoor(Name(DOOR_D1 )
+ParentObject(2 )
+AnimTime(1.0 )
+)
+InteriorDoor(Name(DOOR_E1 )
+ParentObject(3 )
+AnimTime(1.0 )
+)
+)
+ExteriorNodes(8 DOOR_D DOOR_A DOOR_B DOOR_E DOOR_D1 DOOR_A1 DOOR_B1 DOOR_E1 )
+InteriorChairs(4 Chair(Position(-0.859 2.766 -9.36 )
+Radius(2 )
+Pos1(-0.859 2.566 -9.36 )
+Pos2(-0.859 1.7 -9.706 )
+Pos3(-0.3 1.7 -9.36 )
+HeadOutWindow(WIN_M1 )
+)
+Chair(Position(1.092 2.766 -9.36 )
+Radius(2 )
+Pos1(1.092 2.566 -9.36 )
+Pos2(1.092 1.7 -9.706 )
+Pos3(0.7 1.7 -9.36 )
+HeadOutWindow(WIN_P1 )
+)
+Chair(Position(0.859 2.766 9.248 )
+Radius(2 )
+Pos1(0.859 2.566 9.248 )
+Pos2(0.859 1.7 9.615 )
+Pos3(0.3 1.7 9.248 )
+HeadOutWindow(WIN_M )
+)
+Chair(Position(-1.092 2.766 9.248 )
+Radius(2 )
+Pos1(-1.092 2.566 9.248 )
+Pos2(-1.092 1.7 9.615 )
+Pos3(-0.7 1.7 9.248 )
+HeadOutWindow(WIN_P )
+)
+)
+InteriorWindows(4 InteriorWindow(Name(WIN_M1 )
+Position(-1.515 3.504 -9.503 )
+Radius(2 )
+CanBeOpened(1 )
+HeadOutPosition(-2.0 3.504 -9.503 )
+AnimTime(0.8 )
+SMSTriggers(302 303 )
+SoundProof(0.1 0.7 )
+)
+InteriorWindow(Name(WIN_P1 )
+Position(1.513 3.504 -9.503 )
+Radius(2 )
+CanBeOpened(1 )
+HeadOutPosition(2.0 3.504 -9.503 )
+AnimTime(0.8 )
+SMSTriggers(302 303 )
+SoundProof(0.1 0.7 )
+)
+InteriorWindow(Name(WIN_M )
+Position(1.513 3.504 9.359 )
+Radius(2 )
+CanBeOpened(1 )
+HeadOutPosition(2.0 3.504 9.359 )
+AnimTime(0.8 )
+SMSTriggers(302 303 )
+SoundProof(0.1 0.7 )
+)
+InteriorWindow(Name(WIN_P )
+Position(-1.513 3.504 9.359 )
+Radius(2 )
+CanBeOpened(1 )
+HeadOutPosition(-2.0 3.504 9.359 )
+AnimTime(0.8 )
+SMSTriggers(302 303 )
+SoundProof(0.1 0.7 )
+)
+)
+)
+)
+)
