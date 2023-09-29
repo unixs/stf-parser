@@ -6,7 +6,7 @@ grammar stf;
 
 stf:
   heading
-  WS?
+  WS
   rootSections?
   WS?
   EOF;

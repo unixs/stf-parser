@@ -1,0 +1,378 @@
+SIMISA@@@@@@@@@@JINX0x1t______
+
+Tr_SMS (
+
+	ScalabiltyGroup( 5
+		Activation (
+			CabCam	()
+			Distance   	(100)
+		)
+		Deactivation (
+		      ExternalCam ()
+			PassengerCam	()
+			Distance    (100)
+		)
+		Stereo ()
+		Volume (1.0)
+		SoundSources ( 3
+			0.0 0.0  0.0 1.2
+			0.0 1.85 7.5 1.0
+			0.0 1.85 9.5 1.0
+		)
+		Streams ( 15
+			Stream (
+				Skip (**** TED **** )
+				Sources ( 2 0 2 )
+				Priority ( 6 )
+                        		Volume( 1 )
+
+				Triggers ( 2
+					Variable_Trigger ( Variable2_Inc_Past 0.2 StartLoop ( 1 File ( "../../tsrLoco_VL10-Alias/Sound/tsrSound_vl10-ted.wav" -1 ) SelectionMethod ( SequentialSelection ) ) )
+					Variable_Trigger ( Variable2_Dec_Past 0.1 ReleaseLoopRelease ( ) )
+				)
+				FrequencyCurve(
+				SpeedControlled
+				CurvePoints ( 3
+			    	-200   80000
+				0.000 11048
+				200.0 80000
+					)
+				Granularity ( 0 )
+				)
+				VolumeCurve(
+				Variable2Controlled
+				CurvePoints ( 2
+				5.000 0.3
+				100.0 1.0
+				)
+				Granularity ( 0.00 )
+				)
+			)
+			Stream (
+				Sources ( 1 2 )
+				Priority ( 6 )
+				Triggers ( 5
+				Initial_Trigger  ( StartLoop   ( 1 File ( "../../tsrLoco_VL10-Alias/Sound/tsrSound_vl10-rails.wav" -1 )   SelectionMethod ( SequentialSelection )  ) )
+				Variable_Trigger ( Variable2_Inc_Past  0.050 ReleaseLoopRelease () )
+				Variable_Trigger ( Variable2_Inc_Past  0.050 StartLoop   ( 1 File ( "../../tsrLoco_VL10-Alias/Sound/tsrSound_vl10-rails.wav" -1 )   SelectionMethod ( SequentialSelection ) ) )
+				Variable_Trigger ( Variable2_Dec_Past  0.150 ReleaseLoopRelease () )
+				Variable_Trigger ( Variable2_Dec_Past  0.150 StartLoop   ( 1 File ( "../../tsrLoco_VL10-Alias/Sound/tsrSound_vl10-rails.wav" -1 )   SelectionMethod ( SequentialSelection ) ) )
+				)
+
+				FrequencyCurve(
+					SpeedControlled
+					CurvePoints ( 4
+						-080.000	90050
+						-035.000	60050
+						0.000		14050
+						100.000		60050
+					)
+					Granularity ( 100 )
+				)
+				VolumeCurve(
+					SpeedControlled
+					CurvePoints ( 5
+
+						 -100.0		1.0
+						 -20.0		1.0
+						 0.000		0.0
+						 20.0			1.0
+						 100.0            1.0
+					)
+					Granularity ( 0.05 )
+				)
+
+			)
+			Stream (
+				Sources ( 1 1 )
+				AllowStreamOnWindowCamera ()
+				Priority ( 5 )
+				Attenuation ( 1.0 3.0 1 )
+				Triggers ( 3
+					Discrete_Trigger ( 17	PlayOneShot ( 1	File ( "../../tsrLoco_VL10-Alias/Sound/tsrSound_vl10-switch1.wav" -1 ) SelectionMethod ( SequentialSelection ) ) )
+					Discrete_Trigger ( 18	PlayOneShot ( 1	File ( "../../tsrLoco_VL10-Alias/Sound/tsrSound_vl10-switch3.wav" -1 ) SelectionMethod ( SequentialSelection ) ) )
+					Discrete_Trigger ( 108	PlayOneShot ( 1	File ( "../../tsrLoco_VL10-Alias/Sound/tsrSound_vl10-switch2.wav" -1 ) SelectionMethod ( SequentialSelection ) ) )
+				)
+			)
+			Stream (
+				Sources ( 1 1 )
+				Priority ( 6 )
+				Triggers ( 4
+					Discrete_Trigger ( 14
+						PlayOneShot ( 2
+							File ( "../../tsrLoco_VL10-Alias/Sound/tsrSound_vl10-airb_auto3.wav" -1 ) File
+							SelectionMethod ( SequentialSelection )
+						)
+					)
+					Discrete_Trigger ( 54
+						ReleaseLoopReleaseWithJump (  )
+					)
+					Discrete_Trigger ( 53
+						PlayOneShot ( 2
+							File ( "../../tsrLoco_VL10-Alias/Sound/tsrSound_vl10-airb_auto1.wav" -1 )
+							File ( "../../tsrLoco_VL10-Alias/Sound/tsrSound_vl10-airb_auto2.wav" -1 )
+							SelectionMethod ( RandomSelection )
+						)
+					)
+					Discrete_Trigger ( 54
+						PlayOneShot ( 2
+							File ( "../../tsrLoco_VL10-Alias/Sound/tsrSound_vl10-airb_auto1.wav" -1 )
+							File ( "../../tsrLoco_VL10-Alias/Sound/tsrSound_vl10-airb_auto2.wav" -1 )
+							SelectionMethod ( RandomSelection )
+						)
+					)
+				)
+			)
+			Stream (
+				Sources ( 1 1 )
+				Skip ( **** This stream plays all the controls samples  	**** )
+				Skip ( **** NOTE: Missing AWS Alarm                     	**** )
+				Priority ( 5 )
+				Volume ( 0.8 )
+				Triggers ( 1
+					Discrete_Trigger ( 18	PlayOneShot ( 1	File ( "../../tsrLoco_VL10-Alias/Sound/tsrSound_vl10-brake.wav" -1 )    SelectionMethod ( SequentialSelection ) ) )
+				)
+			)
+			Stream (
+				Skip ( ********	sound of brake1	************* )
+				Priority ( 6 )
+				Volume ( 1.0 )
+				Triggers ( 14
+					Variable_Trigger ( Speed_Dec_Past 2.0
+						StartLoop ( 1
+							File ( "../../tsrLoco_VL10-Alias/Sound/tsrSound_vl10-skrip1.wav" -1 )
+							SelectionMethod ( SequentialSelection )
+						)
+					)
+					Variable_Trigger ( Speed_Dec_Past 0.1
+						ReleaseLoopRelease (  )
+					)
+					Variable_Trigger ( Variable3_Dec_Past 0.03
+						SetStreamVolume ( 0.10 )
+					)
+					Variable_Trigger ( Variable3_Dec_Past 0.02
+						SetStreamVolume ( 0.20 )
+					)
+					Variable_Trigger ( Variable3_Dec_Past 0.01
+						SetStreamVolume ( 0.40 )
+					)
+					Variable_Trigger ( Variable3_Dec_Past 0.008
+						SetStreamVolume ( 0.55 )
+					)
+					Variable_Trigger ( Variable3_Dec_Past 0.005
+						SetStreamVolume ( 0.65 )
+					)
+					Variable_Trigger ( Variable3_Inc_Past 0.005
+						SetStreamVolume ( 0.55 )
+					)
+					Variable_Trigger ( Variable3_Inc_Past 0.008
+						SetStreamVolume ( 0.40 )
+					)
+					Variable_Trigger ( Variable3_Inc_Past 0.01
+						SetStreamVolume ( 0.25 )
+					)
+					Variable_Trigger ( Variable3_Inc_Past 0.02
+						SetStreamVolume ( 0.10 )
+					)
+					Variable_Trigger ( Variable3_Inc_Past 0.03
+						SetStreamVolume ( 0.00 )
+					)
+					Variable_Trigger ( Speed_Dec_Past 0.2
+						ReleaseLoopReleaseWithJump (  )
+					)
+					Variable_Trigger ( Variable2_Inc_Past 0.5
+						ReleaseLoopReleaseWithJump (  )
+					)
+				)
+				FrequencyCurve ( SpeedControlled
+					CurvePoints ( 5 -4 11185 -2.5 10985 -2 10800 0.0 11485 2 10800 2.5 10985 4 11185 )
+					Granularity ( 1 )
+				)
+				VolumeCurve ( SpeedControlled
+					CurvePoints ( 11 -4.0 0.0 -3.0 0.2 -2.6 0.3 -1.5 0.4 -0.5 0.6 0.0 0.0 0.5 0.6 1.5 0.4 2.6 0.3 3.0 0.2 4.0 0.0 )
+					Granularity ( 0.05 )
+				)
+			)
+			Stream (
+				Skip ( ********	sound of brake2	 ************* )
+				Priority ( 6 )
+				Volume ( 0.7 )
+				Triggers ( 17
+					Discrete_Trigger ( 14
+						StartLoopRelease ( 1
+							File ( "../../tsrLoco_VL10-Alias/Sound/tsrSound_vl10-skrip2.wav" -1 )
+							SelectionMethod ( SequentialSelection )
+						)
+					)
+					Discrete_Trigger ( 54
+						ReleaseLoopReleaseWithJump (  )
+					)
+					Discrete_Trigger ( 54
+						ReleaseLoopReleaseWithJump (  )
+					)
+					Discrete_Trigger ( 54
+						ReleaseLoopReleaseWithJump (  )
+					)
+					Discrete_Trigger ( 54
+						ReleaseLoopReleaseWithJump (  )
+					)
+					Variable_Trigger ( Variable3_Dec_Past 0.07
+						SetStreamVolume ( 0.15 )
+					)
+					Variable_Trigger ( Variable3_Dec_Past 0.05
+						SetStreamVolume ( 0.30 )
+					)
+					Variable_Trigger ( Variable3_Dec_Past 0.03
+						SetStreamVolume ( 0.45 )
+					)
+					Variable_Trigger ( Variable3_Dec_Past 0.02
+						SetStreamVolume ( 0.60 )
+					)
+					Variable_Trigger ( Variable3_Dec_Past 0.005
+						SetStreamVolume ( 0.70 )
+					)
+					Variable_Trigger ( Variable3_Inc_Past 0.005
+						SetStreamVolume ( 0.60 )
+					)
+					Variable_Trigger ( Variable3_Inc_Past 0.02
+						SetStreamVolume ( 0.45 )
+					)
+					Variable_Trigger ( Variable3_Inc_Past 0.03
+						SetStreamVolume ( 0.30 )
+					)
+					Variable_Trigger ( Variable3_Inc_Past 0.05
+						SetStreamVolume ( 0.15 )
+					)
+					Variable_Trigger ( Variable3_Inc_Past 0.07
+						SetStreamVolume ( 0.00 )
+					)
+					Variable_Trigger ( Speed_Dec_Past 0.2
+						ReleaseLoopReleaseWithJump (  )
+					)
+					Variable_Trigger ( Variable2_Inc_Past 0.5
+						ReleaseLoopReleaseWithJump (  )
+					)
+				)
+				FrequencyCurve ( SpeedControlled
+					CurvePoints ( 5 -4 11185 -2.5 10985 -2 10800 0.0 11485 2 10800 2.5 10985 4 11185 )
+					Granularity ( 1 )
+				)
+				VolumeCurve ( SpeedControlled
+					CurvePoints ( 11 -4.0 0.0 -3.0 0.2 -2.6 0.3 -1.5 0.4 -0.5 0.6 0.0 0.0 0.5 0.6 1.5 0.4 2.6 0.3 3.0 0.2 4.0 0.0 )
+					Granularity ( 0.05 )
+				)
+			)
+			Stream (
+				Skip ( **** This stream allows the horn to be played at the same time  	**** )
+				Sources ( 1 2 )
+				Priority ( 6 )
+                        		Volume ( 0.6 )
+				Triggers ( 2
+					Discrete_Trigger ( 8	StartLoopRelease ( 1	File ( "../../tsrLoco_VL10-Alias/Sound/tsrSound_vl10-horn.wav" -1 )	SelectionMethod ( SequentialSelection )	)	)
+					Discrete_Trigger ( 9	ReleaseLoopReleaseWithJump ()	)
+				)
+			)
+			Stream (
+				Skip ( **** Fans **** )
+				Sources ( 1 0 )
+				Priority ( 6 )
+				Volume ( 1.0 )
+				Triggers ( 2
+					Discrete_Trigger  ( 106 StartLoopRelease   ( 1 File ( "tsrSound_vl10-vent.wav" -1 )   SelectionMethod ( SequentialSelection ) ) )
+					Discrete_Trigger  ( 107 ReleaseLoopReleaseWithJump (  ) )
+				)
+				FrequencyCurve(
+					SpeedControlled
+					CurvePoints ( 3
+						-50.0		11025
+						0.000		11025
+						 50.0		11025
+					)
+					Granularity ( 100 )
+				)
+				VolumeCurve(
+					Variable1Controlled
+					CurvePoints ( 3
+						   0.0	0.75
+						  20.0	0.8
+						 100.0	1.2
+					)
+					Granularity ( 0.05 )
+				)
+			)
+			Stream (
+				Skip ( **** This stream allows the Sander to be played at the same time  	**** )
+				Sources ( 1 2 )
+				Priority ( 6 )
+				Volume ( 1.0 )
+				Triggers ( 2
+					Discrete_Trigger (  4	StartLoopRelease ( 1	File ( "../../tsrLoco_VL10-Alias/Sound/tsrSound_vl10-sand.wav" -1 )	SelectionMethod ( SequentialSelection ) ) )
+					Discrete_Trigger (  5	ReleaseLoopRelease () )
+				)
+			)
+			Stream (
+				Skip ( **** This stream allows the alternative horn to be played at the same time  	**** )
+				Sources ( 1 2 )
+				Priority ( 6 )
+                        		Volume ( 0.7 )
+				Triggers ( 2
+					Discrete_Trigger ( 10	StartLoopRelease ( 1
+						File ( "../../tsrLoco_VL10-Alias/Sound/tsrSound_vl10-svist.wav" -1 )
+						SelectionMethod ( RandomSelection )
+						)
+					)
+
+					Discrete_Trigger ( 11 	ReleaseLoopReleaseWithJump ()	)
+				)
+			)
+			Stream (
+				Skip ( **** This stream plays all the controls samples  	**** )
+				Skip ( **** NOTE: Missing AWS Alarm                     	**** )
+				Sources ( 1 1 )
+				AllowStreamOnWindowCamera ()
+				Priority ( 5 )
+				Volume ( 0.8 )
+				Attenuation ( 1.0 3.0 1 )
+				Triggers ( 7
+					Discrete_Trigger ( 15	PlayOneShot ( 1	File ( "../../tsrLoco_VL10-Alias/Sound/tsrSound_vl10-revers.wav" -1 )  SelectionMethod ( SequentialSelection ) ) )
+					Discrete_Trigger ( 16	PlayOneShot ( 1	File ( "../../tsrLoco_VL10-Alias/Sound/tsrSound_vl10-throttl.wav" -1 )  SelectionMethod ( SequentialSelection ) ) )
+
+					Discrete_Trigger ( 25	PlayOneShot ( 1	File ( "../../tsrLoco_VL10-Alias/Sound/tsrSound_vl10-rb.wav" -1 )  SelectionMethod ( SequentialSelection ) ) )
+					Discrete_Trigger ( 26	PlayOneShot ( 1	File ( "../../tsrLoco_VL10-Alias/Sound/tsrSound_vl10-ku.wav" -1 )  SelectionMethod ( SequentialSelection ) ) )
+					Discrete_Trigger ( 37	PlayOneShot ( 1	File ( "../../tsrLoco_VL10-Alias/Sound/tsrSound_vl10-ku.wav" -1 )   SelectionMethod ( SequentialSelection ) ) )
+
+					Discrete_Trigger ( 47	PlayOneShot ( 1	File ( "../../tsrLoco_VL10-Alias/Sound/tsrSound_vl10-ku.wav" -1 )     SelectionMethod ( SequentialSelection ) ) )
+					Discrete_Trigger ( 48	PlayOneShot ( 1	File ( "../../tsrLoco_VL10-Alias/Sound/tsrSound_vl10-rb.wav" -1 )  SelectionMethod ( SequentialSelection ) ) )
+				)
+			)
+			Stream(
+				Skip ( **** Vigelence alarm  	**** )
+				Sources ( 1 1 )
+				AllowStreamOnWindowCamera ()
+				Priority ( 6 )
+				Volume ( 1.0 )
+				Triggers( 4
+					Discrete_Trigger ( 56	StartLoopRelease ( 1 File ( "epk.wav" -1 ) SelectionMethod ( SequentialSelection ) ) )
+					Discrete_Trigger ( 57	HaltPlayback () )
+					Discrete_Trigger ( 111	HaltPlayback () )
+					Discrete_Trigger ( 111	PlayOneShot ( 1	File ( "epk_rel.wav" -1 )     SelectionMethod ( SequentialSelection ) ) )
+				)
+			)
+			Stream (
+				Sources ( 2 0 2 )
+				Priority ( 6 )
+				Volume ( 1.0 )
+				Triggers ( 2
+					Discrete_Trigger ( 101	StartLoopRelease ( 1
+						File ( "tsrSound_vl10-komp.wav" -1 )
+						SelectionMethod ( RandomSelection )
+						)
+					)
+
+					Discrete_Trigger ( 102 	ReleaseLoopReleaseWithJump ()	)
+				)
+			)
+		)
+	)
+
+)

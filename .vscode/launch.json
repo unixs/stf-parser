@@ -30,6 +30,16 @@
       "input": "${workspaceFolder}/src/main/antlr4/samples/Cab.sd",
       "visualParseTree": true,
       "printParseTree": false
+    },
+    {
+      "name": "rts sms",
+      "type": "antlr-debug",
+      "request": "launch",
+      "grammar": "${workspaceFolder}/src/main/antlr4/stf.g4",
+      "startRule": "stf",
+      "input": "${workspaceFolder}/src/main/antlr4/samples/vl10k-cab.sms",
+      "visualParseTree": true,
+      "printParseTree": false
     }
   ]
 }

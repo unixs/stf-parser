@@ -5,24 +5,19 @@ import net.unixcode.rts.parser.api.ITranslator;
 import net.unixcode.rts.parser.api.stf.ISTF2XMLListenerCtxt;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ResourceUtils;
-import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.sax.SAXSource;
-import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.*;
 
 @Component
 public class XML2CXXTranslator implements ITranslator<ISTF2XMLListenerCtxt> {
+  final Logger logger = LoggerFactory.getLogger(getClass());
   public static final String XSLT_FILENAME = "classpath:xml/xml2cxx.xsl";
   public static final String CXX_EXTENSION = "cc";
   protected Processor processor;
@@ -41,8 +36,8 @@ public class XML2CXXTranslator implements ITranslator<ISTF2XMLListenerCtxt> {
       transformer = stylesheet.load30();
     }
     catch (Exception e) {
-      System.err.println("Unable to initialize XSLT transformer.");
-      System.err.println(e.getMessage());
+      logger.error("Unable to initialize XSLT transformer.");
+      logger.error(e.getMessage());
 
       throw new RuntimeException(e);
     }

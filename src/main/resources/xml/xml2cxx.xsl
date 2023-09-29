@@ -15,6 +15,7 @@
 
   <xsl:variable name="cab1_max_id" as="xs:integer" select="99"/>
   <xsl:variable name="cab2_max_id" as="xs:integer" select="199"/>
+  <xsl:variable name="unnamed" as="xs:string" select="'UNNAMED'"/>
 
 
 
@@ -22,12 +23,12 @@
     <xsl:param name="switch"/>
     <xsl:param name="location"/>
       /**
-       * <xsl:if test="not($switch/Hint)"><xsl:text>UNNAMED</xsl:text></xsl:if><xsl:value-of select="$switch/Hint/string/text()" />
-       *   <xsl:value-of select="$location" />
-       * Type: <xsl:call-template name="switch_type_hint"><xsl:with-param name="switch" select="."/></xsl:call-template>
-       * Name: <xsl:value-of select="$switch/Name/word/text()" />
-       * Flags: <xsl:value-of select="$switch/Flags/word" separator=", "/>
-       */
+        ### <xsl:call-template name="dev_name"><xsl:with-param name="name" select="$switch/Hint/string"/></xsl:call-template>
+         **<xsl:value-of select="$location" />**
+        Type: <xsl:call-template name="switch_type_hint"/>
+        Name: <xsl:value-of select="$switch/Name/word/text()" />
+        Flags: <xsl:value-of select="$switch/Flags/word" separator=", "/>
+      **/
     <xsl:text>  </xsl:text>
     <xsl:call-template name="nameable">
       <xsl:with-param name="nameable" select="."/>
@@ -35,7 +36,6 @@
   </xsl:template>
 
   <xsl:template name="switch_type_hint">
-    <xsl:param name="switch"/>
     <xsl:choose>
       <xsl:when test="Flags/word[contains(text(), 'NONFIXED')]">
         <xsl:text>Кнопка</xsl:text>
@@ -53,9 +53,9 @@
     <xsl:param name="switches"/>
     <xsl:param name="location"/>
     /**
-     * Переключатели.
-     *   <xsl:value-of select="$location" />
-     */
+      ## Переключатели.
+      ###  <xsl:value-of select="$location" />
+     **/
     enum class sw : unsigned short {
       <xsl:for-each select="$switches">
         <xsl:call-template name="switch">
@@ -66,41 +66,80 @@
     };
   </xsl:template>
 
+  <xsl:template name="dev_name">
+    <xsl:param name="name" />
+    <xsl:if test="string-length($name/text()) = 0">
+      <xsl:value-of select="$unnamed"/>
+    </xsl:if>
+    <xsl:value-of select="$name/text()" />
+  </xsl:template>
+
+  <xsl:template name="switch_state_hint">
+    <xsl:param name="sw" />
+    <xsl:param name="st" />
+    <xsl:if test="not($sw/StateHints/(string|word)[number($st) + 1])">
+      <xsl:value-of select="$unnamed"/>
+    </xsl:if>
+    <xsl:value-of select="$sw/StateHints/(string|word)[number($st) + 1]"/>
+  </xsl:template>
 
   <xsl:template name="switch_state">
     <xsl:param name="switch"/>
     <xsl:param name="location"/>
       /**
-       * Состояния переключателя - <xsl:value-of select="$switch/Hint/string/text()" />
-       *   <xsl:value-of select="$location" />
-       * Name: <xsl:value-of select="$switch/Name/word/text()" />
-       */
-    <xsl:text>  </xsl:text>
-    enum class <xsl:value-of select="$switch/Name/word/text()"/> : unsigned short {
-    <!--<xsl:for-each select="$displays">
-      <xsl:call-template name="display">
-        <xsl:with-param name="display" select="."/>
-        <xsl:with-param name="location" select="$location"/>
-      </xsl:call-template>
-    </xsl:for-each>-->!
-    };
+        #### Состояния переключателя
+        ### <xsl:call-template name="dev_name">
+              <xsl:with-param name="name" select="$switch/Hint/string"/>
+            </xsl:call-template>
+          **<xsl:value-of select="$location" />**
+        Name: `<xsl:value-of select="$switch/Name/word/text()" />`
+        Default: `<xsl:value-of select="$switch/States/number[2]" />`
+        States:<xsl:for-each select="1 to $switch/States/number[1]">
+          - <xsl:number value=". - 1" format="`1` - "/>
+        <xsl:call-template name="switch_state_hint">
+          <xsl:with-param name="st" select=". - 1"/>
+          <xsl:with-param name="sw" select="$switch"/>
+        </xsl:call-template>
+      </xsl:for-each>
+       **/
+      enum class <xsl:value-of select="$switch/Name/word/text()"/> : unsigned short {
+        /**
+          #### <xsl:call-template name="dev_name">
+                 <xsl:with-param name="name" select="$switch/Hint/string"/>
+               </xsl:call-template>
+          ### Исходное состояние
+         **/
+        DEFAULT = <xsl:value-of select="$switch/States/number[2]"/><xsl:text>,</xsl:text>
+        <xsl:for-each select="1 to $switch/States/number[1]">&#xa;
+        /**
+          #### <xsl:value-of select="$switch/Hint/string"/>
+          ### <xsl:call-template name="switch_state_hint">
+                <xsl:with-param name="st" select=". - 1"/>
+                <xsl:with-param name="sw" select="$switch"/>
+              </xsl:call-template>
+         **/
+        ST_<xsl:number value="position() - 1"/>
+          <xsl:text> = </xsl:text>
+          <xsl:number value="position() - 1"/>
+          <xsl:text>,</xsl:text>
+        </xsl:for-each>
+      };
   </xsl:template>
 
-
   <xsl:template name="states">
-    <!--<xsl:param name="switches"/>-->
     <xsl:param name="location"/>
+    <xsl:param name="switches"/>
     /**
-     * Состояния приборов
-     * <xsl:value-of select="$location" />
-     */
-    namespace state {
-    <!--<xsl:for-each select="$switches">
-      <xsl:call-template name="switch_state">
-        <xsl:with-param name="switch" select="."/>
-        <xsl:with-param name="location" select="$location"/>
-      </xsl:call-template>
-    </xsl:for-each>-->
+      ## Состояния приборов
+      ###  <xsl:value-of select="$location" />
+     **/
+    namespace st {
+      <xsl:for-each select="$switches">
+        <xsl:call-template name="switch_state">
+          <xsl:with-param name="switch" select="."/>
+          <xsl:with-param name="location" select="$location"/>
+        </xsl:call-template>
+      </xsl:for-each>
     };
   </xsl:template>
 
@@ -120,9 +159,10 @@
     <xsl:param name="display"/>
     <xsl:param name="location"/>
       /**
-       * <xsl:value-of select="$display/Hint/string/text()" />
-       *
-       * <xsl:value-of select="$location" />
+       * <xsl:call-template name="dev_name">
+           <xsl:with-param name="name" select="$display/Hint/string"/>
+         </xsl:call-template>
+       *   <xsl:value-of select="$location" />
        * Type: <xsl:value-of select="$display/DisplayType/word/text()" />
        * Name: <xsl:value-of select="$display/Name/word/text()" />
        */
@@ -137,9 +177,9 @@
     <xsl:param name="displays"/>
     <xsl:param name="location"/>
     /**
-     * Указатели.
-     * <xsl:value-of select="$location" />
-     */
+      ## Указатели.
+      ###  <xsl:value-of select="$location" />
+     **/
     enum class disp : unsigned short {
       <xsl:for-each select="$displays">
         <xsl:call-template name="display">
@@ -156,13 +196,13 @@
     <xsl:variable name="cab2_name" as="xs:string" select="'Кабина 2'"/>
     <xsl:variable name="deck_name" as="xs:string" select="'Кузов'"/>
 /**
- * Интерфейс 3D модели
- */
+  # Интерфейс 3D модели
+ **/
 namespace model {
 
   /**
-   * <xsl:value-of select="$cab1_name"/>
-   */
+    ## <xsl:value-of select="$cab1_name"/>
+   **/
   namespace cab1 {
     <xsl:variable name="cab1_switches" select="Switches/Switch[ID/number/text() &lt;= $cab1_max_id]"/>
     <xsl:variable name="cab1_displays" select="Displays/Display[ID/number/text() &lt;= $cab1_max_id]"/>
@@ -170,19 +210,19 @@ namespace model {
       <xsl:with-param name="switches" select="$cab1_switches"/>
       <xsl:with-param name="location" select="$cab1_name"/>
     </xsl:call-template>
-    <xsl:call-template name="states">
-      <!--<xsl:with-param name="switches" select="$cab1_switches"/>-->
-      <xsl:with-param name="location" select="$cab1_name"/>
-    </xsl:call-template>
     <xsl:call-template name="displays">
       <xsl:with-param name="displays" select="$cab1_displays"/>
       <xsl:with-param name="location" select="$cab1_name"/>
     </xsl:call-template>
+    <xsl:call-template name="states">
+      <xsl:with-param name="location" select="$cab1_name"/>
+      <xsl:with-param name="switches" select="$cab1_switches"/>
+    </xsl:call-template>
   };
 
   /**
-   * <xsl:value-of select="$cab2_name"/>
-   */
+    ## <xsl:value-of select="$cab2_name"/>
+   **/
   namespace cab2 {
     <xsl:call-template name="switches">
       <xsl:with-param name="switches" select="Switches/Switch[ID/number/text() &gt; $cab1_max_id and ID/number/text() &lt;= $cab2_max_id]"/>
@@ -195,8 +235,8 @@ namespace model {
   };
 
   /**
-   * <xsl:value-of select="$deck_name"/>
-   */
+    ## <xsl:value-of select="$deck_name"/>
+   **/
   namespace deck {
     <xsl:call-template name="switches">
       <xsl:with-param name="switches" select="Switches/Switch[ID/number/text() &gt; $cab2_max_id]"/>
