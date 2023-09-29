@@ -15,7 +15,10 @@
 
   <xsl:variable name="cab1_max_id" as="xs:integer" select="99"/>
   <xsl:variable name="cab2_max_id" as="xs:integer" select="199"/>
+  <xsl:variable name="cab2_disp_max_id" as="xs:integer" select="161"/>
   <xsl:variable name="unnamed" as="xs:string" select="'UNNAMED'"/>
+  <xsl:variable name="disp_lamp" as="xs:string" select="'LAMP'"/>
+  <xsl:variable name="disp_arrow" as="xs:string" select="'ARROW'"/>
 
 
 
@@ -28,7 +31,7 @@
         Type: <xsl:call-template name="switch_type_hint"/>
         Name: <xsl:value-of select="$switch/Name/word/text()" />
         Flags: <xsl:value-of select="$switch/Flags/word" separator=", "/>
-      **/
+       **/
     <xsl:text>  </xsl:text>
     <xsl:call-template name="nameable">
       <xsl:with-param name="nameable" select="."/>
@@ -155,17 +158,36 @@
   </xsl:template>
 
 
+  <xsl:template name="display_values">
+    <xsl:choose>
+      <xsl:when test="DisplayType/word = $disp_lamp">
+        <xsl:text>#### Values:
+          `0` - OFF
+          `1` - ON</xsl:text>
+      </xsl:when>
+      <xsl:when test="DisplayType/word = $disp_arrow">
+        <xsl:text>#### Values:</xsl:text>
+          MIN: `<xsl:value-of select="ValuesRange/number[1]"/>`
+          MAX: `<xsl:value-of select="ValuesRange/number[2]"/>`
+          ZERO: `<xsl:value-of select="ValuesRange/number[3]"/>
+            <xsl:text>`</xsl:text>
+      </xsl:when>
+    </xsl:choose>
+  </xsl:template>
+
   <xsl:template name="display">
     <xsl:param name="display"/>
     <xsl:param name="location"/>
       /**
-       * <xsl:call-template name="dev_name">
+        ### <xsl:call-template name="dev_name">
            <xsl:with-param name="name" select="$display/Hint/string"/>
          </xsl:call-template>
-       *   <xsl:value-of select="$location" />
-       * Type: <xsl:value-of select="$display/DisplayType/word/text()" />
-       * Name: <xsl:value-of select="$display/Name/word/text()" />
-       */
+        #### <xsl:value-of select="$location" />
+        Type: <xsl:value-of select="$display/DisplayType/word/text()" />
+        Name: `<xsl:value-of select="$display/Name/word/text()" />
+        <xsl:text>`</xsl:text>
+        <xsl:call-template name="display_values" />
+       **/
     <xsl:text>  </xsl:text>
     <xsl:call-template name="nameable">
       <xsl:with-param name="nameable" select="."/>
@@ -229,7 +251,7 @@ namespace model {
       <xsl:with-param name="location" select="$cab2_name"/>
     </xsl:call-template>
     <xsl:call-template name="displays">
-      <xsl:with-param name="displays" select="Displays/Display[ID/number/text() &gt; $cab1_max_id and ID/number/text() &lt;= $cab2_max_id]"/>
+      <xsl:with-param name="displays" select="Displays/Display[ID/number/text() &gt; $cab1_max_id and ID/number/text() &lt;= $cab2_disp_max_id]"/>
       <xsl:with-param name="location" select="$cab2_name"/>
     </xsl:call-template>
   };
@@ -243,7 +265,7 @@ namespace model {
       <xsl:with-param name="location" select="$deck_name"/>
     </xsl:call-template>
     <xsl:call-template name="displays">
-      <xsl:with-param name="displays" select="Displays/Display[ID/number/text() &gt; $cab2_max_id]"/>
+      <xsl:with-param name="displays" select="Displays/Display[ID/number/text() &gt; $cab2_disp_max_id]"/>
       <xsl:with-param name="location" select="$deck_name"/>
     </xsl:call-template>
   };
