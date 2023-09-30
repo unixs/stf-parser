@@ -161,12 +161,11 @@
   <xsl:template name="display_values">
     <xsl:choose>
       <xsl:when test="DisplayType/word = $disp_lamp">
-        <xsl:text>#### Values:
+        #### Values:
           `0` - OFF
-          `1` - ON</xsl:text>
-      </xsl:when>
+          `1` - ON</xsl:when>
       <xsl:when test="DisplayType/word = $disp_arrow">
-        <xsl:text>#### Values:</xsl:text>
+        #### Values:
           MIN: `<xsl:value-of select="ValuesRange/number[1]"/>`
           MAX: `<xsl:value-of select="ValuesRange/number[2]"/>`
           ZERO: `<xsl:value-of select="ValuesRange/number[3]"/>
