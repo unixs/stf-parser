@@ -106,4 +106,4 @@ DOT:
   '.';
 
 WS:
-  [ \t\n\r]+;
+  [ \t\r\n\uFFFE\uFEFF]+;

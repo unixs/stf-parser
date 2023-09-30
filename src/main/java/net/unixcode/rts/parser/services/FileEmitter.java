@@ -35,6 +35,6 @@ public class FileEmitter extends STDOUTEmitter {
     var srcPath = context.getSourcePath();
     var targetExtension = context.getFileExtensiion();
 
-    return FilenameUtils.removeExtension(srcPath) + FilenameUtils.EXTENSION_SEPARATOR + targetExtension;
+    return srcPath + FilenameUtils.EXTENSION_SEPARATOR + targetExtension;
   }
 }

@@ -6,7 +6,10 @@ import net.unixcode.rts.parser.parsers.stf.STF2XMLListener;
 import net.unixcode.rts.parser.translator.XML2CXXTranslator;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.Parser;
+import org.antlr.v4.runtime.RecognitionException;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 
 import java.util.Arrays;
@@ -14,6 +17,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public abstract class BaseRunnerProvider<L extends Lexer, P extends Parser> implements IParserRunnerProvider {
+  final protected Logger log = LoggerFactory.getLogger(getClass());
   protected List<String> argv = null;
   protected IIterableStreamsProvider streamsProvider;
   protected BaseExecutor<L, P> parserExecutor;
@@ -21,6 +25,7 @@ public abstract class BaseRunnerProvider<L extends Lexer, P extends Parser> impl
   protected ApplicationContext applicationContext;
   protected IParserEmitter emitter;
   protected XML2CXXTranslator translator;
+
 
   public BaseRunnerProvider(ApplicationContext applicationContext, IIterableStreamsProvider streamsProvider, BaseExecutor<L, P> parserExecutor, IParserEmitter emitter, XML2CXXTranslator translator) {
     this.applicationContext = applicationContext;
@@ -48,8 +53,8 @@ public abstract class BaseRunnerProvider<L extends Lexer, P extends Parser> impl
   protected void run() {
     // TODO: refactor it
     if (argv == null) {
-      System.err.println("ARGV is not set");
-      System.err.println("Call .prepare() first.");
+      log.error("ARGV is not set");
+      log.error("Call .prepare() first.");
 
       System.exit(1);
     }

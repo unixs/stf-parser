@@ -6,6 +6,8 @@ import org.antlr.v4.runtime.CharStreams;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.text.MessageFormat;
 
 public class BaseSourceItem implements ISourceItem {
@@ -32,7 +34,7 @@ public class BaseSourceItem implements ISourceItem {
         }
       }
 
-      stream = CharStreams.fromFileName(this.sourcePath);
+      stream = CharStreams.fromFileName(this.sourcePath, StandardCharsets.UTF_16);
     }
     catch (IOException e) {
       System.err.println(MessageFormat.format("ERROR: Unable to compile file [{0}]", sourcePath));

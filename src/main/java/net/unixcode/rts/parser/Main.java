@@ -8,6 +8,7 @@ import net.unixcode.rts.parser.api.stf.ISTFParserSupplier;
 import net.unixcode.rts.parser.parsers.stf.STFRunnerProvider;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.*;
 import org.springframework.stereotype.Service;
@@ -17,9 +18,10 @@ import java.util.List;
 
 @Service("main")
 public class Main {
-  public static void main(String @NotNull [] argv) throws Exception {
+  final static protected Logger log = LoggerFactory.getLogger(Main.class);
+  public static void main(String @NotNull [] argv) {
     if (argv.length < 1) {
-      throw new Exception("No input files were provided.");
+      throw new RuntimeException("No input files were provided.");
     }
 
     ApplicationContext ctxt = new AnnotationConfigApplicationContext(DIConfig.class);
@@ -42,7 +44,7 @@ public class Main {
 
   static @NotNull List<String> argvCheckFileNames(List<String> argv) {
     if (argv.isEmpty()) {
-      System.err.println("The file names are not specified in cmd.");
+      log.error("The file names are not specified in cmd.");
       System.exit(1);
     }
 

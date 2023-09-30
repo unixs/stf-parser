@@ -2,14 +2,14 @@ package net.unixcode.rts.parser.services;
 
 import net.unixcode.rts.parser.api.IThreadsPoolProvider;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.Iterator;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Service
+@Component
 public class BaseThreadsPoolProvider implements IThreadsPoolProvider {
   final protected int CPU_MIN = 2;
 
@@ -20,7 +20,6 @@ public class BaseThreadsPoolProvider implements IThreadsPoolProvider {
 
   public BaseThreadsPoolProvider() {
     cpus = Runtime.getRuntime().availableProcessors();
-    cpus = 1;
 
     if (cpus > CPU_MIN) {
       // Leave one cpu for user =)
