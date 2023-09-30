@@ -5153,6 +5153,37 @@ namespace model {
     Lamp2P4_18 = 18,
 
   };
+
+  /**
+    ## Анимации
+   **/
+  enum class anims : unsigned short {
+  
+    /**
+      #### Анимация
+      ### WIPERS_R
+     **/
+    WIPERS_R_0 = 0,
+
+    /**
+      #### Анимация
+      ### WIPERS_L
+     **/
+    WIPERS_L_1 = 1,
+
+    /**
+      #### Анимация
+      ### WIPERS_R1
+     **/
+    WIPERS_R1_2 = 2,
+
+    /**
+      #### Анимация
+      ### WIPERS_L1
+     **/
+    WIPERS_L1_3 = 3,
+
+  };
 };
 
   

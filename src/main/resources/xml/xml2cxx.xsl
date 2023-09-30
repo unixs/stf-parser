@@ -40,6 +40,24 @@
     </xsl:for-each>
   </xsl:template>
 
+  <xsl:template name="anims">
+    <xsl:param name="anims"/>
+    <xsl:for-each select="$anims">
+    /**
+      #### Анимация
+      ### <xsl:call-template name="dev_name">
+            <xsl:with-param name="name" select="Name/string"/>
+          </xsl:call-template>
+     **/
+    <xsl:value-of select="Name" />
+      <xsl:text>_</xsl:text>
+      <xsl:value-of select="position() - 1" />
+      <xsl:text> = </xsl:text>
+      <xsl:value-of select="position() - 1" />
+      <xsl:text>,&#xa;</xsl:text>
+    </xsl:for-each>
+  </xsl:template>
+
   <xsl:template name="switch">
     <xsl:param name="switch"/>
     <xsl:param name="location"/>
@@ -294,6 +312,15 @@ namespace model {
     <xsl:call-template name="lights">
       <xsl:with-param name="lights" select="LightSources/LightSource"/>
     </xsl:call-template>
+  };
+
+  /**
+    ## Анимации
+   **/
+  enum class anims : unsigned short {
+  <xsl:call-template name="anims">
+    <xsl:with-param name="anims" select="Animations/AnimNode"/>
+  </xsl:call-template>
   };
 };&#xa;
   </xsl:template>
