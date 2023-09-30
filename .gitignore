@@ -45,3 +45,5 @@ build/
 stfListener.java
 *Parser.java
 src/main/antlr4/samples/*.xml
+src/main/antlr4/samples/*.cc
+src/main/antlr4/samples/*.h

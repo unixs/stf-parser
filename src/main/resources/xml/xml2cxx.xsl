@@ -151,7 +151,7 @@
         DEFAULT = <xsl:value-of select="$switch/States/number[2]"/><xsl:text>,</xsl:text>
         <xsl:for-each select="1 to $switch/States/number[1]">&#xa;
         /**
-          #### <xsl:value-of select="$switch/Hint/string"/>
+          #### <xsl:value-of select="if ($switch/Hint/string) then $switch/Hint/string else 'UNNAMED'"/>
           ### <xsl:call-template name="switch_state_hint">
                 <xsl:with-param name="st" select=". - 1"/>
                 <xsl:with-param name="sw" select="$switch"/>
@@ -281,13 +281,19 @@ namespace model {
     ## <xsl:value-of select="$cab2_name"/>
    **/
   namespace cab2 {
+    <xsl:variable name="cab2_switches" select="Switches/Switch[ID/number/text() &gt; $cab1_max_id and ID/number/text() &lt;= $cab2_max_id]"/>
+    <xsl:variable name="cab2_displays" select="Displays/Display[ID/number/text() &gt; $cab1_max_id and ID/number/text() &lt;= $cab2_disp_max_id]"/>
     <xsl:call-template name="switches">
-      <xsl:with-param name="switches" select="Switches/Switch[ID/number/text() &gt; $cab1_max_id and ID/number/text() &lt;= $cab2_max_id]"/>
+      <xsl:with-param name="switches" select="$cab2_switches"/>
       <xsl:with-param name="location" select="$cab2_name"/>
     </xsl:call-template>
     <xsl:call-template name="displays">
-      <xsl:with-param name="displays" select="Displays/Display[ID/number/text() &gt; $cab1_max_id and ID/number/text() &lt;= $cab2_disp_max_id]"/>
+      <xsl:with-param name="displays" select="$cab2_displays"/>
       <xsl:with-param name="location" select="$cab2_name"/>
+    </xsl:call-template>
+    <xsl:call-template name="states">
+      <xsl:with-param name="location" select="$cab2_name"/>
+      <xsl:with-param name="switches" select="$cab2_switches"/>
     </xsl:call-template>
   };
 
