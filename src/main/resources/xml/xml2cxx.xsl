@@ -22,6 +22,24 @@
 
 
 
+  <xsl:template name="lights">
+    <xsl:param name="lights"/>
+    <xsl:for-each select="$lights">
+    /**
+      #### Источник света
+      ### <xsl:call-template name="dev_name">
+            <xsl:with-param name="name" select="Name/string"/>
+          </xsl:call-template>
+     **/
+    <xsl:value-of select="Name" />
+      <xsl:text>_</xsl:text>
+      <xsl:value-of select="position() - 1" />
+      <xsl:text> = </xsl:text>
+      <xsl:value-of select="position() - 1" />
+      <xsl:text>,&#xa;</xsl:text>
+    </xsl:for-each>
+  </xsl:template>
+
   <xsl:template name="switch">
     <xsl:param name="switch"/>
     <xsl:param name="location"/>
@@ -266,6 +284,15 @@ namespace model {
     <xsl:call-template name="displays">
       <xsl:with-param name="displays" select="Displays/Display[ID/number/text() &gt; $cab2_disp_max_id]"/>
       <xsl:with-param name="location" select="$deck_name"/>
+    </xsl:call-template>
+  };
+
+  /**
+    ## Источники света
+   **/
+  enum class lights : unsigned short {
+    <xsl:call-template name="lights">
+      <xsl:with-param name="lights" select="LightSources/LightSource"/>
     </xsl:call-template>
   };
 };&#xa;
