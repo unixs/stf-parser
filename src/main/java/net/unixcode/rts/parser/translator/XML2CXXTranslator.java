@@ -7,8 +7,8 @@ import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
-import org.springframework.util.ResourceUtils;
 import org.xml.sax.InputSource;
 
 import javax.xml.transform.sax.SAXSource;
@@ -24,14 +24,14 @@ public class XML2CXXTranslator implements ITranslator<ISTF2XMLListenerCtxt> {
   protected XsltExecutable stylesheet;
   protected Xslt30Transformer transformer;
 
-  public XML2CXXTranslator() {
+  public XML2CXXTranslator(ApplicationContext appContext) {
     try {
-      File file = ResourceUtils.getFile(XSLT_FILENAME);
+      InputStream xsltInputStream = appContext.getResource(XSLT_FILENAME).getInputStream();
 
       processor = new Processor(false);
       XsltCompiler compiler = processor.newXsltCompiler();
 
-      stylesheet = compiler.compile(new StreamSource(file));
+      stylesheet = compiler.compile(new StreamSource(xsltInputStream));
 
       transformer = stylesheet.load30();
     }

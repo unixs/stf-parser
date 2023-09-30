@@ -16,8 +16,9 @@ public class STFLexerErrorListener extends ConsoleErrorListener {
     String err = "line " + line + ":" + charPositionInLine + " " + msg;
 
     log.error(err);
+    log.info("Try to check source file encoding. It must be UTF-16LE.");
 
-    // System.exit(1);
+    System.exit(1);
   }
 
   public static class LexerError extends Error {

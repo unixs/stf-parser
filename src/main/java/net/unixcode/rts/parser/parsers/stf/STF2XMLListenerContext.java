@@ -2,6 +2,8 @@ package net.unixcode.rts.parser.parsers.stf;
 
 import net.unixcode.rts.parser.api.IParserListenerContext;
 import net.unixcode.rts.parser.api.stf.ISTF2XMLListenerCtxt;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.w3c.dom.Document;
@@ -19,6 +21,7 @@ import java.io.OutputStreamWriter;
 @Component
 @Scope("prototype")
 public class STF2XMLListenerContext implements ISTF2XMLListenerCtxt {
+  final protected Logger log = LoggerFactory.getLogger(getClass());
   protected String sourcePath;
   protected Document doc;
   protected boolean processed = false;
@@ -30,7 +33,7 @@ public class STF2XMLListenerContext implements ISTF2XMLListenerCtxt {
       doc = builder.newDocument();
     }
     catch (ParserConfigurationException e) {
-      System.err.println(e.getMessage());
+      log.error(e.getMessage());
 
       throw new RuntimeException(e);
     }
@@ -78,8 +81,8 @@ public class STF2XMLListenerContext implements ISTF2XMLListenerCtxt {
       transformer.transform(source, result);
     }
     catch (Exception e) {
-      System.err.println("Unable transform Document to xml.");
-      System.err.println(e.getMessage());
+      log.error("Unable to transform Document to xml");
+      log.error(e.getMessage());
 
       throw new RuntimeException(e);
     }

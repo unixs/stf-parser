@@ -77,7 +77,7 @@ public abstract class BaseRunnerProvider<L extends Lexer, P extends Parser> impl
       }
 
       if (sourceItem.getStream() == null) {
-        System.err.println("Source stream is NULL. Trying next source item.");
+        log.warn("Source stream is NULL. Trying next source item.");
 
         sourceItem = null;
         continue;

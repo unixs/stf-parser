@@ -21,7 +21,9 @@ public class Main {
   final static protected Logger log = LoggerFactory.getLogger(Main.class);
   public static void main(String @NotNull [] argv) {
     if (argv.length < 1) {
-      throw new RuntimeException("No input files were provided.");
+      log.error("No input files were provided.");
+
+      System.exit(1);
     }
 
     ApplicationContext ctxt = new AnnotationConfigApplicationContext(DIConfig.class);
