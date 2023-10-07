@@ -18,8 +18,8 @@ import java.io.*;
 @Component
 public class XML2CXXTranslator implements ITranslator<ISTF2XMLListenerCtxt> {
   final Logger logger = LoggerFactory.getLogger(getClass());
-  public static final String XSLT_FILENAME = "classpath:xml/xml2cxx.xsl";
-  public static final String CXX_EXTENSION = "cc";
+  public static final String XSLT_FILENAME = "classpath:xml/xml2cxx_no-cabins.xsl";
+  public static final String CXX_EXTENSION = "hpp";
   protected Processor processor;
   protected XsltExecutable stylesheet;
   protected Xslt30Transformer transformer;

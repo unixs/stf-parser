@@ -47,5 +47,6 @@ stfListener.java
 src/main/antlr4/samples/*.xml
 src/main/antlr4/samples/*.cc
 src/main/antlr4/samples/*.h
+src/main/antlr4/samples/*.hpp
 src/main/antlr4/samples/*.sd
 src/main/antlr4/samples/*.sms
