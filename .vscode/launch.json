@@ -50,6 +50,16 @@
       "input": "${workspaceFolder}/src/main/antlr4/samples/cabin.sd",
       "visualParseTree": true,
       "printParseTree": false
+    },
+    {
+      "name": "rz_tep70-cab.sms",
+      "type": "antlr-debug",
+      "request": "launch",
+      "grammar": "${workspaceFolder}/src/main/antlr4/stf.g4",
+      "startRule": "stf",
+      "input": "${workspaceFolder}/src/main/antlr4/samples/rz_tep70-cab.sms",
+      "visualParseTree": true,
+      "printParseTree": false
     }
   ]
 }

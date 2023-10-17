@@ -7,19 +7,25 @@ grammar stf;
 stf:
   heading
   WS
-  rootSections?
+  rootBlocks?
   WS?
   EOF;
 
 heading:
   MAGIC_HEADING;
 
-rootSections:
-  section (WS? section)*;
+block:
+  section | comment;
+
+rootBlocks:
+  block (WS? block)*;
 
 section:
   sectionName
   WS?
+  body;
+
+body:
   LEFT_PAREN
   WS?
   list?
@@ -33,17 +39,24 @@ list:
   listItem (WS listItem)*;
 
 listItem:
-  section | term;
+  block | term;
 
 term:
-  word | number | string;
+  number | string | word | point;
+
+comment:
+  SKIP_KW
+  WS?
+  body;
 
 string:
   STRING  ( WS? PLUS WS? STRING )*;
 
+point:
+  number WS? COMMA WS? number;
+
 word:
-  (ANY_LETTERS | CYR_LETTERS | SYMBOL)+
-  (ANY_LETTERS | CYR_LETTERS | SYMBOL | DIGITS | DOT | DASH | PLUS)*;
+  (ANY_LETTERS | CYR_LETTERS | SYMBOL | DIGITS | COMMA | DOT | DASH | PLUS)+;
 
 number:
   intNumber | floatNumber;
@@ -66,14 +79,17 @@ RIGHT_PAREN:
 QUOTE:
   '"';
 
-fragment ANY:
-  .*?;
-
 STRING:
   QUOTE ANY QUOTE;
 
+SKIP_KW:
+  [Ss]'kip';
+
 SYMBOL:
-  [,&:?№*~`§±|;!#%=\\/@$] | LEFT_BRACKET | RIGHT_BRACKET;
+  [&:?№*~`§±|;!#%=\\/@$] | LEFT_BRACKET | RIGHT_BRACKET;
+
+COMMA:
+  ',';
 
 LEFT_BRACKET:
   '[';
@@ -107,3 +123,6 @@ DOT:
 
 WS:
   [ \t\r\n\uFFFE\uFEFF]+;
+
+fragment ANY:
+  .*?;
