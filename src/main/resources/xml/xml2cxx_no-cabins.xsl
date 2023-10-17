@@ -53,7 +53,6 @@
     Name: <xsl:value-of select="$switch/Name/word/text()" />
     Flags: <xsl:value-of select="$switch/Flags/word" separator=", "/>
     **/
-    <xsl:text>  </xsl:text>
     <xsl:call-template name="nameable">
       <xsl:with-param name="nameable" select="."/>
     </xsl:call-template>
@@ -198,7 +197,6 @@
     <xsl:text>`</xsl:text>
     <xsl:call-template name="display_values" />
     **/
-    <xsl:text>  </xsl:text>
     <xsl:call-template name="nameable">
       <xsl:with-param name="nameable" select="."/>
     </xsl:call-template>
