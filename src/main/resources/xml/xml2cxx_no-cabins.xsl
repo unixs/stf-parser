@@ -7,23 +7,30 @@
   <xsl:output method="text" encoding="UTF-8"/>
   <xsl:strip-space elements="*"/>
 
-
+  <xsl:template name="ident">
+    <xsl:param name="node"/>
+    <xsl:variable name="ident" select="$node/*/text()"/>
+    <xsl:if test="matches($ident, '^\d')">
+      <xsl:text>_</xsl:text>
+    </xsl:if>
+    <xsl:value-of select="translate($ident, '- ', '__')"/>
+  </xsl:template>
 
   <xsl:template name="lights">
     <xsl:param name="lights"/>
     <xsl:for-each select="$lights">
-      /**
-      #### Источник света
-      ### <xsl:call-template name="dev_name">
-      <xsl:with-param name="name" select="Name/string"/>
-    </xsl:call-template>
-      **/
-      <xsl:value-of select="Name" />
-      <xsl:text>_</xsl:text>
-      <xsl:value-of select="position() - 1" />
-      <xsl:text> = </xsl:text>
-      <xsl:value-of select="position() - 1" />
-      <xsl:text>,&#xa;</xsl:text>
+    /**
+    #### Источник света
+    ### <xsl:call-template name="dev_name">
+    <xsl:with-param name="name" select="Name/string"/>
+  </xsl:call-template>
+    **/
+    <xsl:value-of select="Name" />
+    <xsl:text>_</xsl:text>
+    <xsl:value-of select="position() - 1" />
+    <xsl:text> = </xsl:text>
+    <xsl:value-of select="position() - 1" />
+    <xsl:text>,&#xa;</xsl:text>
     </xsl:for-each>
   </xsl:template>
 
@@ -74,16 +81,16 @@
 
   <xsl:template name="switches">
     <xsl:param name="switches"/>
-    /**
-    ## Переключатели.
-    **/
-    enum class sw : unsigned short {
+  /**
+  ## Переключатели.
+  **/
+  enum class sw : unsigned short {
     <xsl:for-each select="$switches">
       <xsl:call-template name="switch">
         <xsl:with-param name="switch" select="."/>
       </xsl:call-template>
     </xsl:for-each>
-    };
+  };
   </xsl:template>
 
   <xsl:template name="dev_name">
@@ -120,15 +127,17 @@
     </xsl:call-template>
   </xsl:for-each>
     **/
-    enum class <xsl:value-of select="$switch/Name/word/text()"/> : unsigned short {
-    /**
-    #### <xsl:call-template name="dev_name">
-    <xsl:with-param name="name" select="$switch/Hint/string"/>
-  </xsl:call-template>
-    ### Исходное состояние
-    **/
-    DEFAULT = <xsl:value-of select="$switch/States/number[2]"/><xsl:text>,</xsl:text>
-    <xsl:for-each select="1 to $switch/States/number[1]">&#xa;
+    enum class <xsl:call-template name="ident">
+                <xsl:with-param name="node" select="$switch/Name"/>
+              </xsl:call-template> : unsigned short {
+      /**
+      #### <xsl:call-template name="dev_name">
+      <xsl:with-param name="name" select="$switch/Hint/string"/>
+    </xsl:call-template>
+      ### Исходное состояние
+      **/
+      DEFAULT = <xsl:value-of select="$switch/States/number[2]"/><xsl:text>,</xsl:text>
+      <xsl:for-each select="1 to $switch/States/number[1]">&#xa;
       /**
       #### <xsl:value-of select="if ($switch/Hint/string) then $switch/Hint/string else 'UNNAMED'"/>
       ### <xsl:call-template name="switch_state_hint">
@@ -146,22 +155,24 @@
 
   <xsl:template name="states">
     <xsl:param name="switches"/>
-    /**
-    ## Состояния приборов
-    **/
-    namespace st {
+  /**
+  ## Состояния приборов
+  **/
+  namespace st {
     <xsl:for-each select="$switches">
       <xsl:call-template name="switch_state">
         <xsl:with-param name="switch" select="."/>
       </xsl:call-template>
     </xsl:for-each>
-    };
+  };
   </xsl:template>
 
 
   <xsl:template name="nameable">
     <xsl:param name="nameable"/>
-    <xsl:value-of select="$nameable/Name/word/text()" />
+    <xsl:call-template name="ident">
+      <xsl:with-param name="node" select="$nameable/Name"/>
+    </xsl:call-template>
     <xsl:text>_</xsl:text>
     <xsl:value-of select="$nameable/ID/number/text()" />
     <xsl:text> = </xsl:text>
@@ -205,16 +216,16 @@
 
   <xsl:template name="displays">
     <xsl:param name="displays"/>
-    /**
-    ## Указатели.
-    **/
-    enum class disp : unsigned short {
+  /**
+  ## Указатели.
+  **/
+  enum class disp : unsigned short {
     <xsl:for-each select="$displays">
       <xsl:call-template name="display">
         <xsl:with-param name="display" select="."/>
       </xsl:call-template>
     </xsl:for-each>
-    };
+  };
   </xsl:template>
 
 
