@@ -8,7 +8,6 @@ import net.unixcode.rts.parser.parsers.CountableListenerStackFrame;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 import org.w3c.dom.*;
 
 import java.util.ArrayList;
@@ -20,7 +19,7 @@ import java.util.stream.StreamSupport;
 
 @Component
 @Scope("prototype")
-public class STF2XMLListener extends StackableSTFListener<Node, CountableListenerStackFrame<Node>> implements IParserListener {
+public class STF2XMLListener extends StackableSTFListener<Node, CountableListenerStackFrame<Node>> {
   protected static class Frame extends CountableListenerStackFrame<Node> {
     public Frame(CountableListenerStackFrame<Node> prevFrame) {
       super(prevFrame);
@@ -172,6 +171,17 @@ public class STF2XMLListener extends StackableSTFListener<Node, CountableListene
   }
 
   @Override
+  public void exitPoint(@NotNull stfParser.PointContext ctx) {
+    var num1 = pop();
+    var num2 = pop();
+
+    pushElement("point");
+
+    peekData().appendChild(num2.getData());
+    peekData().appendChild(num1.getData());
+  }
+
+  @Override
   public void exitComment (@NotNull stfParser.CommentContext ctx) {
     // Были ли дочерний список и секции в нём?
     var hasList = ctx.body().list() != null;
@@ -223,29 +233,25 @@ public class STF2XMLListener extends StackableSTFListener<Node, CountableListene
   }
 
   @Override public void exitWord(@NotNull stfParser.WordContext ctx) {
-    var node = newElement("word");
-      node.setTextContent(ctx.getText());
-
-    pushData(node);
+    pushElement("word");
+    peekData().setTextContent(ctx.getText());
   }
 
   @Override
   public void exitString(@NotNull stfParser.StringContext ctx) {
-    var node = newElement("string");
+    pushElement("string");
+
     var str = ctx.getText();
 
-    node.setTextContent(str.substring(1, str.length() - 1).trim());
-
-    pushData(node);
+    peekData().setTextContent(str.substring(1, str.length() - 1).trim());
   }
 
   @Override
   public void exitNumber(@NotNull stfParser.NumberContext ctx) {
-    var node = newElement("number");
-      node.appendChild(popData());
-      node.setAttributeNode((Attr) popData());
+    pushElement("number");
 
-    pushData(node);
+    peekData().appendChild(popData());
+    ((Element) peekData()).setAttributeNode((Attr) popData());
   }
 
   @Override
@@ -270,10 +276,8 @@ public class STF2XMLListener extends StackableSTFListener<Node, CountableListene
 
   @Override
   public void exitHeading(@NotNull stfParser.HeadingContext ctx) {
-    var heading = newElement("header");
-      heading.setTextContent(ctx.getText());
-
-    pushData(heading);
+    pushElement("header");
+    peekData().setTextContent(ctx.getText());
   }
 
   @Override

@@ -37,6 +37,10 @@ abstract class StackableSTFListener<T, F extends BaseListenerStackFrame<T>> exte
     return stack.peek();
   }
 
+  protected T peekData() {
+    return stack.peek().getData();
+  }
+
   @Override
   public abstract IParserListenerContext getContext();
 }

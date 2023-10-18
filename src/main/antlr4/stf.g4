@@ -42,7 +42,7 @@ listItem:
   block | term;
 
 term:
-  number | string | word | point;
+  number | string | point | word;
 
 comment:
   SKIP_KW
