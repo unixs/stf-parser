@@ -8,9 +8,15 @@ import net.unixcode.rts.parser.parsers.CountableListenerStackFrame;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 import org.w3c.dom.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 @Component
 @Scope("prototype")
@@ -75,6 +81,16 @@ public class STF2XMLListener extends StackableSTFListener<Node, CountableListene
     return (Frame) pushNew().setData(data);
   }
 
+  protected Frame pushDataItems(Node ...data) {
+
+    var frag = Arrays.stream(data).collect(
+      () -> doc().createDocumentFragment(),
+      DocumentFragment::appendChild,
+      DocumentFragment::appendChild);
+
+    return pushData(frag);
+  }
+
   protected Node popData() {
     return pop().getData();
   }
@@ -113,7 +129,7 @@ public class STF2XMLListener extends StackableSTFListener<Node, CountableListene
     var elementName = ctx.sectionName().getText();
 
     // Были ли дочерний список и секции в нём?
-    var hasList = ctx.list() != null;
+    var hasList = ctx.body().list() != null;
 
     // Коли список был,то нужно прочитать из него счётчик
     var counter = 0;
@@ -148,10 +164,62 @@ public class STF2XMLListener extends StackableSTFListener<Node, CountableListene
     // Добавляем в секцию все веброшенные узлы
     var reverseIterator = childs.descendingIterator();
     while (reverseIterator.hasNext()) {
-      section.appendChild(reverseIterator.next());
+      var node = reverseIterator.next();
+      section.appendChild(node);
     }
 
     pushData(section);
+  }
+
+  @Override
+  public void exitComment (@NotNull stfParser.CommentContext ctx) {
+    // Были ли дочерний список и секции в нём?
+    var hasList = ctx.body().list() != null;
+
+    // Коли список был,то нужно прочитать из него счётчик
+    var counter = 0;
+    if (hasList) {
+      counter = peek().getCounter();
+    }
+
+    // Прям щас в стеке лежат дочерние элементы и счётчик,
+    // который был добавлен при входе в секцию
+
+    // Надобно всё дочернее выбросить, обернуть в мой новый кадр и затолкнуть обратно
+
+    // Тут задёшево храним кадры дочерних элементов
+    var childs = new LinkedList<Node>();
+
+    // Выбрасываем всё что было в списке и что насчитано счётчиком
+    for (int i = 0; i < counter; i++) {
+      childs.add(popData());
+    }
+
+    // выбрасываем ненужный счётчик если список был
+    // и счётчик значит тоже
+    if (hasList) {
+      pop();
+    }
+
+    // Ок, а теперь узел текущей секции
+    var comment = newElement("comment");
+
+    // Добавляем в секцию все выброшенные узлы
+    Iterable<Node> iterable = childs::descendingIterator;
+    Stream<Node> stream = StreamSupport.stream(iterable.spliterator(), false);
+    List<String> textBuilder = stream
+      .collect(
+        ArrayList::new,
+        (a, b) -> a.add(b.getTextContent()),
+        ArrayList::addAll
+      );
+
+    var text = String.join(" ", textBuilder);
+
+    var xmlComment = doc().createComment(" "+ text.replace("--", "~~") +" ");
+    comment.setTextContent(text);
+
+    pushDataItems(xmlComment, comment);
   }
 
   @Override public void exitWord(@NotNull stfParser.WordContext ctx) {
