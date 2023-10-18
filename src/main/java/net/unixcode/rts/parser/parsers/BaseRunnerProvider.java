@@ -6,7 +6,6 @@ import net.unixcode.rts.parser.parsers.stf.STF2XMLListener;
 import net.unixcode.rts.parser.translator.XML2CXXTranslator;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.Parser;
-import org.antlr.v4.runtime.RecognitionException;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

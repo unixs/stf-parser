@@ -10,6 +10,7 @@
       "request": "launch",
       "mainClass": "net.unixcode.rts.parser.Main",
       "projectName": "parser",
+      "args": "src/main/antlr4/samples/cab.sd"
     },
     {
       "name": "rts simple",

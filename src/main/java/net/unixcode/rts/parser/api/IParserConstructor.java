@@ -1,6 +1,5 @@
 package net.unixcode.rts.parser.api;
 
-import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Parser;
 
 import java.util.function.Function;

@@ -1,7 +1,6 @@
 package net.unixcode.rts.parser.parsers.stf;
 
 import net.unixcode.rts.parser.antlr.stf.stfParser;
-import net.unixcode.rts.parser.api.IParserListener;
 import net.unixcode.rts.parser.api.IParserListenerContext;
 import net.unixcode.rts.parser.api.stf.ISTF2XMLListenerCtxt;
 import net.unixcode.rts.parser.parsers.CountableListenerStackFrame;
@@ -248,10 +247,11 @@ public class STF2XMLListener extends StackableSTFListener<Node, CountableListene
 
   @Override
   public void exitNumber(@NotNull stfParser.NumberContext ctx) {
-    pushElement("number");
+    var node = newElement("number");
+      node.appendChild(popData());
+      node.setAttributeNode((Attr) popData());
 
-    peekData().appendChild(popData());
-    ((Element) peekData()).setAttributeNode((Attr) popData());
+    pushData(node);
   }
 
   @Override

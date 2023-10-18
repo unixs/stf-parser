@@ -1,6 +1,5 @@
 package net.unixcode.rts.parser.api;
 
-import java.io.FileWriter;
 import java.io.OutputStreamWriter;
 
 public interface IParserListenerContext {
