@@ -56,6 +56,7 @@ public class Main {
   @Configuration
   // @ImportResource(locations = {"classpath:spring/app_context.xml"})
   @ComponentScan(basePackages = { "net.unixcode.rts.parser" })
+  @PropertySource("classpath:application.properties")
   static class DIConfig {
     @Bean
     IParserTypeProvider parser_type_provider() {

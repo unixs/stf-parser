@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="2.0"
+                xpath-default-namespace="http://rts.unixcode.net/xml/cabin/model/1.0.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
@@ -20,7 +21,9 @@
     <xsl:param name="lights"/>
     <xsl:for-each select="$lights">
     /**
-    #### Источник света
+    #### Источник света<xsl:if test="./comment">
+    #### <xsl:value-of select="./comment/text()" />
+    </xsl:if>
     ### <xsl:call-template name="dev_name">
     <xsl:with-param name="name" select="Name/string"/>
   </xsl:call-template>
@@ -37,18 +40,20 @@
   <xsl:template name="anims">
     <xsl:param name="anims"/>
     <xsl:for-each select="$anims">
-      /**
-      #### Анимация
-      ### <xsl:call-template name="dev_name">
-      <xsl:with-param name="name" select="Name/string"/>
-    </xsl:call-template>
-      **/
-      <xsl:value-of select="Name" />
-      <xsl:text>_</xsl:text>
-      <xsl:value-of select="position() - 1" />
-      <xsl:text> = </xsl:text>
-      <xsl:value-of select="position() - 1" />
-      <xsl:text>,&#xa;</xsl:text>
+    /**
+    #### Анимация<xsl:if test="./comment">
+    #### <xsl:value-of select="./comment/text()" />
+    </xsl:if>
+    ### <xsl:call-template name="dev_name">
+    <xsl:with-param name="name" select="Name/string"/>
+  </xsl:call-template>
+    **/
+    <xsl:value-of select="Name" />
+    <xsl:text>_</xsl:text>
+    <xsl:value-of select="position() - 1" />
+    <xsl:text> = </xsl:text>
+    <xsl:value-of select="position() - 1" />
+    <xsl:text>,&#xa;</xsl:text>
     </xsl:for-each>
   </xsl:template>
 
@@ -274,7 +279,7 @@ namespace model {
   </xsl:template>
 
 
-  <xsl:template match="/root">
+  <xsl:template match="/cabin">
     <xsl:apply-templates />
   </xsl:template>
 

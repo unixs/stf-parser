@@ -29,6 +29,8 @@ public class STF2XMLListenerContext implements ISTF2XMLListenerCtxt {
   public STF2XMLListenerContext() {
     try {
       DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+      dbf.setNamespaceAware(true);
+
       DocumentBuilder builder = dbf.newDocumentBuilder();
       doc = builder.newDocument();
     }

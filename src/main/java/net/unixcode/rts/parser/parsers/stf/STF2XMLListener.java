@@ -2,6 +2,7 @@ package net.unixcode.rts.parser.parsers.stf;
 
 import net.unixcode.rts.parser.antlr.stf.stfParser;
 import net.unixcode.rts.parser.api.IParserListenerContext;
+import net.unixcode.rts.parser.api.IXMLSettingsProvider;
 import net.unixcode.rts.parser.api.stf.ISTF2XMLListenerCtxt;
 import net.unixcode.rts.parser.parsers.CountableListenerStackFrame;
 import org.jetbrains.annotations.NotNull;
@@ -35,9 +36,15 @@ public class STF2XMLListener extends StackableSTFListener<Node, CountableListene
   }
 
   protected ISTF2XMLListenerCtxt listenerContext;
+  protected IXMLSettingsProvider xmlSettingsProvider;
+  protected String xmlNamespace;
 
-  public STF2XMLListener(ISTF2XMLListenerCtxt listenerContext) {
+  public STF2XMLListener(ISTF2XMLListenerCtxt listenerContext, IXMLSettingsProvider xmlSettingsProvider) {
     this.listenerContext = listenerContext;
+    this.xmlSettingsProvider = xmlSettingsProvider;
+
+    // TODO: conditional namespace
+    this.xmlNamespace = xmlSettingsProvider.getCabinNamespace();
   }
 
   protected Document doc() {
@@ -45,7 +52,7 @@ public class STF2XMLListener extends StackableSTFListener<Node, CountableListene
   }
 
   protected Element newElement(String name) {
-    return doc().createElement(name);
+    return doc().createElementNS(xmlNamespace, name);
   }
 
   protected Attr newAttr(String name, String value) {
@@ -282,7 +289,12 @@ public class STF2XMLListener extends StackableSTFListener<Node, CountableListene
 
   @Override
   public void exitStf(@NotNull stfParser.StfContext ctx) {
-    var root = newElement("root");
+
+    // TODO: Need to delegate this to the context or something related to configuration
+    var root = newElement(xmlSettingsProvider.getCabinRootElementName());
+    root.setAttribute("xmlns", xmlSettingsProvider.getCabinNamespace());
+    root.setAttribute("xmlns:xsi", xmlSettingsProvider.XSI_NS);
+    root.setAttribute("xsi:schemaLocation", xmlSettingsProvider.getCabinNamespace() + " " + xmlSettingsProvider.getCabinSchemaLocation());
 
     for (var node : stack) {
       root.appendChild(node.getData());
