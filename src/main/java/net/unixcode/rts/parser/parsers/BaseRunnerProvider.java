@@ -3,7 +3,7 @@ package net.unixcode.rts.parser.parsers;
 import net.unixcode.rts.parser.api.*;
 import net.unixcode.rts.parser.api.stf.ISTF2XMLListenerCtxt;
 import net.unixcode.rts.parser.parsers.stf.STF2XMLListener;
-import net.unixcode.rts.parser.translator.XML2CXXTranslator;
+import net.unixcode.rts.parser.translator.CabinXML2CXXTranslator;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.Parser;
 import org.jetbrains.annotations.NotNull;
@@ -23,10 +23,10 @@ public abstract class BaseRunnerProvider<L extends Lexer, P extends Parser> impl
   protected Iterator<ISourceItem> iterator;
   protected ApplicationContext applicationContext;
   protected IParserEmitter emitter;
-  protected XML2CXXTranslator translator;
+  protected CabinXML2CXXTranslator translator;
 
 
-  public BaseRunnerProvider(ApplicationContext applicationContext, IIterableStreamsProvider streamsProvider, BaseExecutor<L, P> parserExecutor, IParserEmitter emitter, XML2CXXTranslator translator) {
+  public BaseRunnerProvider(ApplicationContext applicationContext, IIterableStreamsProvider streamsProvider, BaseExecutor<L, P> parserExecutor, IParserEmitter emitter, CabinXML2CXXTranslator translator) {
     this.applicationContext = applicationContext;
     this.streamsProvider = streamsProvider;
     this.parserExecutor = parserExecutor;

@@ -4,7 +4,7 @@ import net.unixcode.rts.parser.api.IIterableStreamsProvider;
 import net.unixcode.rts.parser.api.IParserEmitter;
 import net.unixcode.rts.parser.api.IParserRunner;
 import net.unixcode.rts.parser.parsers.BaseRunnerProvider;
-import net.unixcode.rts.parser.translator.XML2CXXTranslator;
+import net.unixcode.rts.parser.translator.CabinXML2CXXTranslator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ import net.unixcode.rts.parser.antlr.stf.stfParser;
 public class STFRunnerProvider extends BaseRunnerProvider<stfLexer, stfParser> {
 
   @Autowired
-  public STFRunnerProvider(ApplicationContext applicationContext, IIterableStreamsProvider streamsProvider, STFExecutor stfParserExecutor, IParserEmitter emitter, XML2CXXTranslator translator) {
+  public STFRunnerProvider(ApplicationContext applicationContext, IIterableStreamsProvider streamsProvider, STFExecutor stfParserExecutor, IParserEmitter emitter, CabinXML2CXXTranslator translator) {
     super(applicationContext, streamsProvider, stfParserExecutor, emitter, translator);
   }
 
