@@ -1,25 +1,27 @@
 package net.unixcode.rts.parser.services;
 
 import net.unixcode.rts.parser.api.IFileNamesProvider;
-import net.unixcode.rts.parser.api.IIterableStreamsProvider;
-import net.unixcode.rts.parser.api.ISourceItem;
-import net.unixcode.rts.parser.parsers.BaseSourceItem;
+import net.unixcode.rts.parser.api.IIterableSourcesProvider;
+import net.unixcode.rts.parser.api.compiler.ISourceItem;
+import net.unixcode.rts.parser.api.compiler.ISourceItemProvider;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-@Service
-public class FilesIterableSyncStreamsProvider implements IIterableStreamsProvider {
-  IFileNamesProvider fileNamesProvider;
-  List<String> argv;
+@Component
+public class FilesIterableSyncStreamsProvider implements IIterableSourcesProvider {
+  protected IFileNamesProvider fileNamesProvider;
+  protected ISourceItemProvider sourceItemProvider;
+  protected List<String> argv;
 
   @Autowired
-  public FilesIterableSyncStreamsProvider(IFileNamesProvider fileNamesProvider) {
+  public FilesIterableSyncStreamsProvider(IFileNamesProvider fileNamesProvider, ISourceItemProvider sourceItemProvider) {
     this.fileNamesProvider = fileNamesProvider;
+    this.sourceItemProvider = sourceItemProvider;
   }
 
   @Override
@@ -28,7 +30,7 @@ public class FilesIterableSyncStreamsProvider implements IIterableStreamsProvide
   }
 
   @Override
-  public IIterableStreamsProvider apply(List<String> argv) {
+  public IIterableSourcesProvider apply(List<String> argv) {
     this.argv = argv;
 
     return this;
@@ -51,7 +53,7 @@ public class FilesIterableSyncStreamsProvider implements IIterableStreamsProvide
     public ISourceItem next() {
       String filePath = filesIter.next();
 
-      return new BaseSourceItem(filePath);
+      return sourceItemProvider.apply(filePath);
     }
   }
 }
