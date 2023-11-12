@@ -1,8 +1,8 @@
-package net.unixcode.rts.parser.translator.antlr;
+package net.unixcode.rts.parser.compiler.antlr;
 
 import net.unixcode.rts.parser.api.compiler.CompilerType;
 import net.unixcode.rts.parser.api.compiler.antlr.IANTLRSourceItem;
-import net.unixcode.rts.parser.translator.DefaultSourceItem;
+import net.unixcode.rts.parser.compiler.DefaultSourceItem;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.jetbrains.annotations.Contract;

@@ -1,4 +1,4 @@
-package net.unixcode.rts.parser.translator.antlr;
+package net.unixcode.rts.parser.compiler.antlr;
 
 import net.unixcode.rts.parser.api.ICountableStackFrame;
 import net.unixcode.rts.parser.api.IListenerStackFrame;

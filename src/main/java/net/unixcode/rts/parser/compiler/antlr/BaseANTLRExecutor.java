@@ -1,4 +1,4 @@
-package net.unixcode.rts.parser.translator.antlr;
+package net.unixcode.rts.parser.compiler.antlr;
 
 import net.unixcode.rts.parser.api.*;
 import net.unixcode.rts.parser.api.compiler.antlr.IANTLRParserListener;

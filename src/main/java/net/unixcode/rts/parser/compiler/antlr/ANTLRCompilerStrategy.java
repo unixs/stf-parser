@@ -1,31 +1,26 @@
-package net.unixcode.rts.parser.translator.antlr;
+package net.unixcode.rts.parser.compiler.antlr;
 
-import net.unixcode.rts.parser.api.IParserEmitter;
+import net.unixcode.rts.parser.api.compiler.ICompilerEmitter;
 import net.unixcode.rts.parser.api.IParserListenerContext;
 import net.unixcode.rts.parser.api.compiler.ISourceItem;
 import net.unixcode.rts.parser.api.compiler.antlr.IANTLRParserListener;
 import net.unixcode.rts.parser.api.compiler.antlr.IANTLRSourceItem;
-import net.unixcode.rts.parser.translator.DefaultCompilerStrategy;
+import net.unixcode.rts.parser.compiler.DefaultCompilerStrategy;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.Parser;
 import org.jetbrains.annotations.NotNull;
 
 public abstract class ANTLRCompilerStrategy<L extends Lexer, P extends Parser> extends DefaultCompilerStrategy {
   protected BaseANTLRExecutor<L, P> parserExecutor;
-  protected IParserEmitter emitter;
 
-  public ANTLRCompilerStrategy(BaseANTLRExecutor<L, P> parserExecutor, IParserEmitter emitter) {
+
+  public ANTLRCompilerStrategy(BaseANTLRExecutor<L, P> parserExecutor, ICompilerEmitter emitter) {
+    super(emitter);
     this.parserExecutor = parserExecutor;
-    this.emitter = emitter;
   }
 
   @Override
-  abstract public void accept(ISourceItem sourceItem);
-
-
-  protected void emitOutputData(@NotNull IANTLRParserListener listener) {
-    this.emitter.accept(listener.getContext());
-  }
+  public abstract void accept(ISourceItem sourceItem);
 
   protected IParserListenerContext execute(IANTLRSourceItem sourceItem, @NotNull IANTLRParserListener listener) {
     if (listener.getContext().processed()) {

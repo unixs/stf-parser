@@ -5,5 +5,5 @@
 >
 
 
-  <!--<bean id="stateTranslator" class="net.unixcode.rts.parser.translator.xml.DefaultXMLTranslator p: />-->
+  <!--<bean id="stateTranslator" class="net.unixcode.rts.parser.compiler.xml.DefaultXMLTranslator p: />-->
 </beans>

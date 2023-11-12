@@ -1,4 +1,4 @@
-package net.unixcode.rts.parser.translator.antlr.stf;
+package net.unixcode.rts.parser.compiler.antlr.stf;
 
 import org.antlr.v4.runtime.ConsoleErrorListener;
 import org.antlr.v4.runtime.RecognitionException;

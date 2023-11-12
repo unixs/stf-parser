@@ -1,4 +1,4 @@
-package net.unixcode.rts.parser.translator.antlr.stf;
+package net.unixcode.rts.parser.compiler.antlr.stf;
 
 import net.unixcode.rts.parser.api.IParserListenerContext;
 import net.unixcode.rts.parser.api.compiler.antlr.stf.ISTF2XMLListenerCtxt;
@@ -69,7 +69,7 @@ public class STF2XMLListenerContext implements ISTF2XMLListenerCtxt {
   }
 
   @Override
-  public void writeToStream(OutputStreamWriter streamWriter) {
+  public void accept(OutputStreamWriter streamWriter) {
     try {
       TransformerFactory transformerFactory = TransformerFactory.newInstance();
       Transformer transformer = transformerFactory.newTransformer();
@@ -89,27 +89,6 @@ public class STF2XMLListenerContext implements ISTF2XMLListenerCtxt {
       throw new RuntimeException(e);
     }
   }
-
-/*  @Override
-  public String toString() {
-    try {
-      TransformerFactory transformerFactory = TransformerFactory.newInstance();
-      Transformer transformer = transformerFactory.newTransformer();
-      transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-
-      DOMSource source = new DOMSource(getDoc());
-
-      StreamResult result = new StreamResult(streamWriter);
-
-      transformer.transform(source, result);
-    }
-    catch (Exception e) {
-      System.err.println("Unable transform Document to xml.");
-      System.err.println(e.getMessage());
-
-      throw new RuntimeException(e);
-    }
-  }*/
 }
 
 

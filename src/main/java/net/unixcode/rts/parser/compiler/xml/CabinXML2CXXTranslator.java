@@ -1,4 +1,4 @@
-package net.unixcode.rts.parser.translator.xml;
+package net.unixcode.rts.parser.compiler.xml;
 
 import net.unixcode.rts.parser.api.ITranslator;
 import net.unixcode.rts.parser.api.compiler.xml.IXMLTransformer;

@@ -1,10 +1,10 @@
-package net.unixcode.rts.parser.translator.antlr.stf;
+package net.unixcode.rts.parser.compiler.antlr.stf;
 
 import net.unixcode.rts.parser.antlr.stf.stfParser;
 import net.unixcode.rts.parser.api.IParserListenerContext;
 import net.unixcode.rts.parser.api.compiler.xml.IXMLSettingsProvider;
 import net.unixcode.rts.parser.api.compiler.antlr.stf.ISTF2XMLListenerCtxt;
-import net.unixcode.rts.parser.translator.antlr.CountableListenerStackFrame;
+import net.unixcode.rts.parser.compiler.antlr.CountableListenerStackFrame;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;

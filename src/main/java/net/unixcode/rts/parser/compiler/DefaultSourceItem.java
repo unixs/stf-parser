@@ -1,6 +1,7 @@
-package net.unixcode.rts.parser.translator;
+package net.unixcode.rts.parser.compiler;
 
 import net.unixcode.rts.parser.api.compiler.CompilerType;
+import net.unixcode.rts.parser.api.compiler.ICompilerContext;
 import net.unixcode.rts.parser.api.compiler.ISourceItem;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -15,6 +16,8 @@ public class DefaultSourceItem implements ISourceItem {
   final protected Logger log = LoggerFactory.getLogger(getClass());
   protected String sourcePath;
   protected CompilerType compilerType;
+
+  protected ICompilerContext context;
 
   public DefaultSourceItem(String sourcePath, CompilerType compilerType) {
     this.compilerType = compilerType;
@@ -52,6 +55,16 @@ public class DefaultSourceItem implements ISourceItem {
   @Override
   public CompilerType getCompilerType() {
     return compilerType;
+  }
+
+  @Override
+  public ICompilerContext getContext() {
+    return this.context;
+  }
+
+  @Override
+  public void setContext(@NotNull ICompilerContext context) {
+    this.context = context;
   }
 
   @Contract("_ -> new")

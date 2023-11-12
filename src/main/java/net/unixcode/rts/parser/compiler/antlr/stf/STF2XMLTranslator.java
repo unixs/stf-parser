@@ -1,4 +1,4 @@
-package net.unixcode.rts.parser.translator.antlr.stf;
+package net.unixcode.rts.parser.compiler.antlr.stf;
 
 import net.unixcode.rts.parser.api.ITranslator;
 

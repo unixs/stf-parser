@@ -1,4 +1,4 @@
-package net.unixcode.rts.parser.translator.antlr.stf;
+package net.unixcode.rts.parser.compiler.antlr.stf;
 
 import net.unixcode.rts.parser.antlr.stf.stfLexer;
 import net.unixcode.rts.parser.antlr.stf.stfParser;
@@ -6,7 +6,7 @@ import net.unixcode.rts.parser.api.compiler.antlr.IANTLRParserListener;
 import net.unixcode.rts.parser.api.IParserListenerContext;
 import net.unixcode.rts.parser.api.compiler.antlr.stf.ISTFLexerSupplier;
 import net.unixcode.rts.parser.api.compiler.antlr.stf.ISTFParserSupplier;
-import net.unixcode.rts.parser.translator.antlr.BaseANTLRExecutor;
+import net.unixcode.rts.parser.compiler.antlr.BaseANTLRExecutor;
 import org.antlr.v4.runtime.ANTLRErrorListener;
 import org.antlr.v4.runtime.RecognitionException;
 import org.jetbrains.annotations.NotNull;

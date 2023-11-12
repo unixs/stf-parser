@@ -1,13 +1,12 @@
 package net.unixcode.rts.parser.api;
 
-import java.io.OutputStreamWriter;
+import net.unixcode.rts.parser.api.compiler.ICompilerContext;
 
-public interface IParserListenerContext {
+public interface IParserListenerContext extends ICompilerContext {
   IParserListenerContext setSourcePath(String path);
+  @Override
   String getSourcePath();
   String getFileExtensiion();
   boolean processed();
   void setProcessed();
-
-  void writeToStream(OutputStreamWriter writer);
 }

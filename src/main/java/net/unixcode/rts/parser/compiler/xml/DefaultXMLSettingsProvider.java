@@ -1,4 +1,4 @@
-package net.unixcode.rts.parser.translator.xml;
+package net.unixcode.rts.parser.compiler.xml;
 
 import net.unixcode.rts.parser.api.compiler.xml.IXMLSettingsProvider;
 import org.springframework.beans.factory.annotation.Value;

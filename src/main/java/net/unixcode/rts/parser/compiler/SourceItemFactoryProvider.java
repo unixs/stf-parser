@@ -1,4 +1,4 @@
-package net.unixcode.rts.parser.translator;
+package net.unixcode.rts.parser.compiler;
 
 import net.unixcode.rts.parser.api.compiler.CompilerType;
 import net.unixcode.rts.parser.api.compiler.ISourceItemFactory;

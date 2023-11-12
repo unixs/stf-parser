@@ -1,6 +1,7 @@
-package net.unixcode.rts.parser.translator;
+package net.unixcode.rts.parser.compiler;
 
 import net.unixcode.rts.parser.api.compiler.*;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -9,22 +10,17 @@ public class DefaultCompiler implements ICompiler {
   protected ICompilerStrategy compilerStrategy;
 
   @Override
-  public void emitOutput() {
-    // noop
+  public void emit(@NotNull ISourceItem sourceItem) {
+    compilerStrategy.emit(sourceItem.getContext());
   }
 
   @Override
-  public void setEmitterStrategy() {
-    // noop
-  }
-
-  @Override
-  public void setCompileStrategy(ICompilerStrategy strategy) {
+  public void setCompileStrategy(@NotNull ICompilerStrategy strategy) {
     this.compilerStrategy = strategy;
   }
 
   @Override
-  public void accept(ISourceItem sourceItem) {
+  public void accept(@NotNull ISourceItem sourceItem) {
     compilerStrategy.accept(sourceItem);
   }
 }

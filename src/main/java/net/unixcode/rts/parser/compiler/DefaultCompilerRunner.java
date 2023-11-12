@@ -1,4 +1,4 @@
-package net.unixcode.rts.parser.translator;
+package net.unixcode.rts.parser.compiler;
 
 import net.unixcode.rts.parser.api.*;
 import net.unixcode.rts.parser.api.compiler.ICompiler;
@@ -72,6 +72,8 @@ public class DefaultCompilerRunner implements ICompilerRunner {
     compiler.setCompileStrategy(compileStrategy);
 
     compiler.accept(sourceItem);
+
+    compiler.emit(sourceItem);
   }
 
   @Override
