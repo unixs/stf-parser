@@ -3,7 +3,7 @@ package net.unixcode.rts.parser.compiler.antlr.stf;
 import net.unixcode.rts.parser.antlr.stf.stfLexer;
 import net.unixcode.rts.parser.antlr.stf.stfParser;
 import net.unixcode.rts.parser.api.compiler.antlr.IANTLRParserListener;
-import net.unixcode.rts.parser.api.IParserListenerContext;
+import net.unixcode.rts.parser.api.compiler.antlr.IANTLRListenerContext;
 import net.unixcode.rts.parser.api.compiler.antlr.stf.ISTFLexerSupplier;
 import net.unixcode.rts.parser.api.compiler.antlr.stf.ISTFParserSupplier;
 import net.unixcode.rts.parser.compiler.antlr.BaseANTLRExecutor;
@@ -25,7 +25,7 @@ public class STFExecutor extends BaseANTLRExecutor<stfLexer, stfParser> {
   }
 
   @Override
-  public IParserListenerContext exec(@NotNull stfParser parser, IANTLRParserListener listener) {
+  public IANTLRListenerContext exec(@NotNull stfParser parser, IANTLRParserListener listener) {
     parser.addParseListener(listener);
 
     try {

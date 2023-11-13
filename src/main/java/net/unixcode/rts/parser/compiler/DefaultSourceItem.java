@@ -3,7 +3,6 @@ package net.unixcode.rts.parser.compiler;
 import net.unixcode.rts.parser.api.compiler.CompilerType;
 import net.unixcode.rts.parser.api.compiler.ICompilerContext;
 import net.unixcode.rts.parser.api.compiler.ISourceItem;
-import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,8 +15,8 @@ public class DefaultSourceItem implements ISourceItem {
   final protected Logger log = LoggerFactory.getLogger(getClass());
   protected String sourcePath;
   protected CompilerType compilerType;
-
   protected ICompilerContext context;
+  protected String outPath;
 
   public DefaultSourceItem(String sourcePath, CompilerType compilerType) {
     this.compilerType = compilerType;
@@ -67,8 +66,14 @@ public class DefaultSourceItem implements ISourceItem {
     this.context = context;
   }
 
-  @Contract("_ -> new")
-  public static @NotNull ISourceItem defaultSourceItemFactory(String srcPath) {
-    return new DefaultSourceItem(srcPath, CompilerType.XML);
+  public ISourceItem setOutPath(String outPath) {
+    this.outPath = outPath;
+
+    return this;
+  }
+
+  @Override
+  public String getOutPath() {
+    return outPath;
   }
 }

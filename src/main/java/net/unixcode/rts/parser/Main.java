@@ -14,9 +14,9 @@ import net.unixcode.rts.parser.api.compiler.xml.IXMLSourceItemFactory;
 import net.unixcode.rts.parser.api.compiler.xml.IXMLTransformer;
 import net.unixcode.rts.parser.api.compiler.xml.IXsltTransformerSupplier;
 import net.unixcode.rts.parser.api.compiler.xml.ParserType;
-import net.unixcode.rts.parser.compiler.DefaultSourceItem;
 import net.unixcode.rts.parser.compiler.antlr.ANTLRSourceItem;
-import net.unixcode.rts.parser.compiler.xml.DefaultXMLTranslator;
+import net.unixcode.rts.parser.compiler.xml.DefaultXMLTransformer;
+import net.unixcode.rts.parser.compiler.xml.XMLSourceItem;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,7 +50,7 @@ public class Main {
   }
 
   static ParserType parserTypeProviderImpl(String[] argv) {
-    return ParserType.MODEL;
+    return ParserType.CABIN;
   }
 
   static @NotNull List<String> argvCheckFileNames(List<String> argv) {
@@ -96,7 +96,7 @@ public class Main {
 
     @Bean
     IXMLSourceItemFactory xml_source_item_factory() {
-      return DefaultSourceItem::defaultSourceItemFactory;
+      return XMLSourceItem::defaultSourceItemFactory;
     }
 
     @Bean
@@ -110,7 +110,7 @@ public class Main {
 
     @Bean
     IXMLTransformer model_xml_transformer(ApplicationContext applicationContext, @Value("${xml.cabin.xslt}") String xsltPath) {
-      return new DefaultXMLTranslator(
+      return new DefaultXMLTransformer(
         applicationContext,
         xslt_transformer_supplier(),
         xsltPath
@@ -119,7 +119,7 @@ public class Main {
 
     @Bean
     IXMLTransformer state_xml_transformer(ApplicationContext applicationContext, @Value("${xml.state.xslt}") String xsltPath) {
-      return new DefaultXMLTranslator(
+      return new DefaultXMLTransformer(
         applicationContext,
         xslt_transformer_supplier(),
         xsltPath

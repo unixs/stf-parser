@@ -2,7 +2,7 @@ package net.unixcode.rts.parser.compiler;
 
 import net.unixcode.rts.parser.api.*;
 import net.unixcode.rts.parser.api.compiler.ICompiler;
-import net.unixcode.rts.parser.api.compiler.ICompilerStrategyFactoryProvider;
+import net.unixcode.rts.parser.api.compiler.ICompilerStrategyProvider;
 import net.unixcode.rts.parser.api.compiler.ISourceItem;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -22,12 +22,13 @@ public class DefaultCompilerRunner implements ICompilerRunner {
   protected List<String> argv;
   protected IIterableSourcesProvider sourcesProvider;
   protected Iterator<ISourceItem> iterator;
-  protected ICompilerStrategyFactoryProvider compilerStrategyFactoryProvider;
+  protected ICompilerStrategyProvider compilerStrategyFactory;
+  protected ICompilerFactory compilerFactory;
   protected ICompiler compiler;
 
-  public DefaultCompilerRunner(ICompiler compiler, ICompilerStrategyFactoryProvider compilerStrategyFactoryProvider, @NotNull IIterableSourcesProvider sourcesProvider) {
-    this.compiler = compiler;
-    this.compilerStrategyFactoryProvider = compilerStrategyFactoryProvider;
+  public DefaultCompilerRunner(ICompilerFactory compilerFactory, ICompilerStrategyProvider compilerStrategyFactory, @NotNull IIterableSourcesProvider sourcesProvider) {
+    this.compilerFactory = compilerFactory;
+    this.compilerStrategyFactory = compilerStrategyFactory;
     this.sourcesProvider = sourcesProvider;
   }
 
@@ -38,6 +39,8 @@ public class DefaultCompilerRunner implements ICompilerRunner {
     if (argv == null) {
       throw new IllegalArgumentException("Sources not set.");
     }
+
+    this.compiler = compilerFactory.get();
 
     ISourceItem sourceItem = null;
 
@@ -66,16 +69,6 @@ public class DefaultCompilerRunner implements ICompilerRunner {
     }
   }
 
-  protected void compile(@NotNull ISourceItem sourceItem) {
-    var compileStrategy = compilerStrategyFactoryProvider.apply(sourceItem.getCompilerType());
-
-    compiler.setCompileStrategy(compileStrategy);
-
-    compiler.accept(sourceItem);
-
-    compiler.emit(sourceItem);
-  }
-
   @Override
   public ICompilerRunner setSources(String @NotNull [] argv) {
     if (argv.length  == 0) {
@@ -87,5 +80,15 @@ public class DefaultCompilerRunner implements ICompilerRunner {
     this.iterator = sourcesProvider.iterator();
 
     return this;
+  }
+
+  protected void compile(@NotNull ISourceItem sourceItem) {
+    var compileStrategy = compilerStrategyFactory.apply(sourceItem.getCompilerType());
+
+    compiler.setCompileStrategy(compileStrategy);
+
+    compiler.accept(sourceItem);
+
+    compiler.emit(sourceItem);
   }
 }

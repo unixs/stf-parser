@@ -1,7 +1,7 @@
 package net.unixcode.rts.parser.compiler.antlr.stf;
 
 import net.unixcode.rts.parser.antlr.stf.stfParser;
-import net.unixcode.rts.parser.api.IParserListenerContext;
+import net.unixcode.rts.parser.api.compiler.antlr.IANTLRListenerContext;
 import net.unixcode.rts.parser.api.compiler.xml.IXMLSettingsProvider;
 import net.unixcode.rts.parser.api.compiler.antlr.stf.ISTF2XMLListenerCtxt;
 import net.unixcode.rts.parser.compiler.antlr.CountableListenerStackFrame;
@@ -109,7 +109,7 @@ public class STF2XMLListener extends StackableSTFListener<Node, CountableListene
   }
 
   @Override
-  public IParserListenerContext getContext() {
+  public IANTLRListenerContext getContext() {
     return listenerContext;
   }
 

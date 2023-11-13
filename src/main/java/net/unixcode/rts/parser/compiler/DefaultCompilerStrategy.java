@@ -15,16 +15,16 @@ public abstract class DefaultCompilerStrategy implements ICompilerStrategy {
   }
 
   @Override
-  public abstract void accept(ISourceItem iSourceItem);
+  public abstract void accept(ISourceItem sourceItem);
 
   @Override
-  public void emit(ICompilerContext context) {
-    this.emitter.accept(context);
+  public void emit(ISourceItem sourceItem) {
+    this.emitter.accept(sourceItem);
   }
 
   protected static void checkSourceItem(@NotNull ISourceItem sourceItem, CompilerType compilerType) {
     if (sourceItem.getCompilerType() != compilerType) {
-      throw new IllegalArgumentException("Wrong source item for STF compiler.");
+      throw new IllegalArgumentException("Wrong source item for compiler.");
     }
   }
 }

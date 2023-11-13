@@ -1,6 +1,7 @@
 package net.unixcode.rts.parser.compiler.antlr;
 
 import net.unixcode.rts.parser.api.*;
+import net.unixcode.rts.parser.api.compiler.antlr.IANTLRListenerContext;
 import net.unixcode.rts.parser.api.compiler.antlr.IANTLRParserListener;
 import net.unixcode.rts.parser.api.compiler.antlr.IANTLRSourceItem;
 import org.antlr.v4.runtime.ANTLRErrorListener;
@@ -33,5 +34,5 @@ public abstract class BaseANTLRExecutor<L extends Lexer, P extends Parser> imple
     return parserSupplier.apply(tokenStreeam);
   }
 
-  public abstract IParserListenerContext exec(P parser, IANTLRParserListener listener);
+  public abstract IANTLRListenerContext exec(P parser, IANTLRParserListener listener);
 }

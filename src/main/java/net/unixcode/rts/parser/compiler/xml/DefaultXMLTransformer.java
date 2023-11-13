@@ -13,12 +13,12 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 
-public class DefaultXMLTranslator implements IXMLTransformer {
+public class DefaultXMLTransformer implements IXMLTransformer {
   final Logger logger = LoggerFactory.getLogger(getClass());
 
   Xslt30Transformer transformer;
 
-  public DefaultXMLTranslator(ApplicationContext appContext, IXsltTransformerSupplier transformerSupplier, String xsltPath) {
+  public DefaultXMLTransformer(ApplicationContext appContext, IXsltTransformerSupplier transformerSupplier, String xsltPath) {
     try {
       var xsltInputStream = appContext.getResource(xsltPath).getInputStream();
 

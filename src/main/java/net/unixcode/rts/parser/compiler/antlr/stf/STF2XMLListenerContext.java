@@ -1,9 +1,10 @@
 package net.unixcode.rts.parser.compiler.antlr.stf;
 
-import net.unixcode.rts.parser.api.IParserListenerContext;
+import net.unixcode.rts.parser.api.compiler.antlr.IANTLRListenerContext;
 import net.unixcode.rts.parser.api.compiler.antlr.stf.ISTF2XMLListenerCtxt;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.w3c.dom.Document;
@@ -19,7 +20,7 @@ import javax.xml.transform.stream.StreamResult;
 import java.io.OutputStreamWriter;
 
 @Component
-@Scope("prototype")
+@Scope(BeanDefinition.SCOPE_PROTOTYPE)
 public class STF2XMLListenerContext implements ISTF2XMLListenerCtxt {
   final protected Logger log = LoggerFactory.getLogger(getClass());
   protected String sourcePath;
@@ -39,18 +40,6 @@ public class STF2XMLListenerContext implements ISTF2XMLListenerCtxt {
 
       throw new RuntimeException(e);
     }
-  }
-
-  @Override
-  public IParserListenerContext setSourcePath(String path) {
-    sourcePath = path;
-
-    return this;
-  }
-
-  @Override
-  public String getSourcePath() {
-    return sourcePath;
   }
 
   @Override
