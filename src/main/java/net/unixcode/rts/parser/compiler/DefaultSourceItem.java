@@ -7,8 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.text.MessageFormat;
 
 public class DefaultSourceItem implements ISourceItem {
@@ -18,6 +17,7 @@ public class DefaultSourceItem implements ISourceItem {
   protected ICompilerContext context;
   protected String outPath;
 
+  protected InputStream inputStream;
   public DefaultSourceItem(String sourcePath, CompilerType compilerType) {
     this.compilerType = compilerType;
 
@@ -70,6 +70,22 @@ public class DefaultSourceItem implements ISourceItem {
     this.outPath = outPath;
 
     return this;
+  }
+
+  @Override
+  public InputStream getInputStream() {
+    if (inputStream == null) {
+      try {
+        inputStream = new FileInputStream(getSourcePath());
+      } catch (FileNotFoundException e) {
+        log.error("File not found: " + sourcePath);
+        log.error(e.getMessage());
+
+        throw new RuntimeException(e);
+      }
+    }
+
+    return inputStream;
   }
 
   @Override

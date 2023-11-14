@@ -1,6 +1,6 @@
 package net.unixcode.rts.parser.api.compiler.xml;
 
-public enum ParserType {
+public enum XMLType {
   BATCH,
   MODEL,
   CABIN,

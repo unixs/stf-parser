@@ -2,9 +2,7 @@ package net.unixcode.rts.parser.compiler.xml;
 
 import net.unixcode.rts.parser.api.compiler.CompilerType;
 import net.unixcode.rts.parser.api.compiler.ISourceItem;
-import net.unixcode.rts.parser.api.compiler.xml.IXMLSourceItem;
-import net.unixcode.rts.parser.api.compiler.xml.IXMLTransformer;
-import net.unixcode.rts.parser.api.compiler.xml.IXMLTransformerContext;
+import net.unixcode.rts.parser.api.compiler.xml.*;
 import net.unixcode.rts.parser.compiler.DefaultCompilerStrategy;
 import net.unixcode.rts.parser.services.FileEmitter;
 import org.apache.commons.io.FilenameUtils;
@@ -21,14 +19,15 @@ import java.io.*;
 @Component
 public class XMLCompilerStrategy extends DefaultCompilerStrategy {
   final Logger logger = LoggerFactory.getLogger(getClass());
-  final private static Integer OUT_BUF_SIZE = 5000;
   final private static String CXX_EXTENSION = "hpp";
   final public static CompilerType COMPILER_TYPE = CompilerType.XML;
-  final protected IXMLTransformer xmlTransformer;
+  protected IXMLTransformerProvider transformerProvider;
+  protected IXMLTypeProvider xmlTypeProvider;
 
-  public XMLCompilerStrategy(@Qualifier("model_xml_transformer") IXMLTransformer xmlTransformer, @NotNull FileEmitter emitter) {
+  public XMLCompilerStrategy(IXMLTransformerProvider transformerProvider, IXMLTypeProvider xmlTypeProvider, @NotNull FileEmitter emitter) {
     super(emitter.setExtension(CXX_EXTENSION));
-    this.xmlTransformer = xmlTransformer;
+    this.transformerProvider = transformerProvider;
+    this.xmlTypeProvider = xmlTypeProvider;
   }
 
   @Override
@@ -44,8 +43,10 @@ public class XMLCompilerStrategy extends DefaultCompilerStrategy {
     try {
       var context = lookupContext();
 
-      try (var inputStream = readInputFile(sourceItem)) {
-        xmlTransformer.accept(inputStream, context.getOutputStream());
+      try (var inputStream = sourceItem.getInputStream()) {
+        var transformer = transformerProvider.apply(sourceItem.getType());
+
+        transformer.accept(inputStream, context.getOutputStream());
         sourceItem.setContext(context);
       }
     } catch (Exception e) {
@@ -59,29 +60,5 @@ public class XMLCompilerStrategy extends DefaultCompilerStrategy {
   @Lookup
   protected IXMLTransformerContext lookupContext() {
     return null;
-  }
-
-  protected InputStream readInputFile(@NotNull ISourceItem sourceItem) throws FileNotFoundException {
-    return new FileInputStream(sourceItem.getSourcePath());
-  }
-
-  protected InputStream inputStreamFromSourceItem(@NotNull ISourceItem sourceItem) {
-    var outputStream = new ByteArrayOutputStream(OUT_BUF_SIZE);
-    var outWriter = new OutputStreamWriter(outputStream);
-    var context = sourceItem.getContext();
-
-    context.writeToStream(outWriter);
-
-    try {
-      //try (var xmlBytesStream = IOUtils.toInputStream(xmlString, "UTF-8")) {
-      try (var inputBytesStream = new ByteArrayInputStream(outputStream.toByteArray())) {
-        return inputBytesStream;
-      }
-    } catch (Exception e) {
-      logger.error("Unable to create inputStream from source item.");
-      logger.error(e.getMessage());
-
-      throw new RuntimeException(e);
-    }
   }
 }

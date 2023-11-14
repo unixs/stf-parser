@@ -15,11 +15,12 @@ import java.io.OutputStreamWriter;
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
 public class XMLTransformerContext implements IXMLTransformerContext {
   final protected Logger log = LoggerFactory.getLogger(getClass());
+  final private static Integer OUT_BUF_SIZE = 10000;
 
   protected OutputStream outputStream;
 
   public XMLTransformerContext() {
-    outputStream = new ByteArrayOutputStream();
+    outputStream = new ByteArrayOutputStream(OUT_BUF_SIZE);
   }
 
   @Override

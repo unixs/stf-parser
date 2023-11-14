@@ -1,5 +1,6 @@
 package net.unixcode.rts.parser.api.compiler;
 
+import java.io.InputStream;
 import java.util.function.Supplier;
 
 public interface ISourceItem extends Supplier<String> {
@@ -11,4 +12,5 @@ public interface ISourceItem extends Supplier<String> {
   default String getSourcePath() {
     return this.get();
   }
+  InputStream getInputStream();
 }

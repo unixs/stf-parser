@@ -1,8 +1,8 @@
 package net.unixcode.rts.parser.api;
 
-import net.unixcode.rts.parser.api.compiler.xml.ParserType;
+import net.unixcode.rts.parser.api.compiler.xml.XMLType;
 
 @FunctionalInterface
 public interface IParserTypeProvider {
-  ParserType getParserType(String[] argv);
+  XMLType getParserType(String[] argv);
 }

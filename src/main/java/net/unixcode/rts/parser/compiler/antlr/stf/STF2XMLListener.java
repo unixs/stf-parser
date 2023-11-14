@@ -6,6 +6,8 @@ import net.unixcode.rts.parser.api.compiler.xml.IXMLSettingsProvider;
 import net.unixcode.rts.parser.api.compiler.antlr.stf.ISTF2XMLListenerCtxt;
 import net.unixcode.rts.parser.compiler.antlr.CountableListenerStackFrame;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.w3c.dom.*;
@@ -18,7 +20,7 @@ import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 @Component
-@Scope("prototype")
+@Scope(BeanDefinition.SCOPE_PROTOTYPE)
 public class STF2XMLListener extends StackableSTFListener<Node, CountableListenerStackFrame<Node>> {
   protected static class Frame extends CountableListenerStackFrame<Node> {
     public Frame(CountableListenerStackFrame<Node> prevFrame) {

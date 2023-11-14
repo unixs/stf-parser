@@ -5,4 +5,5 @@ import net.unixcode.rts.parser.api.compiler.ISourceItem;
 public interface IXMLSourceItem extends ISourceItem {
   @Override
   IXMLTransformerContext getContext();
+  XMLType getType();
 }

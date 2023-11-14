@@ -10,11 +10,9 @@ import net.unixcode.rts.parser.api.compiler.ICompilerTypeProvider;
 import net.unixcode.rts.parser.api.compiler.antlr.stf.ISTFLexerSupplier;
 import net.unixcode.rts.parser.api.compiler.antlr.stf.ISTFParserSupplier;
 import net.unixcode.rts.parser.api.compiler.antlr.stf.ISTFSourceItemFactory;
-import net.unixcode.rts.parser.api.compiler.xml.IXMLSourceItemFactory;
-import net.unixcode.rts.parser.api.compiler.xml.IXMLTransformer;
-import net.unixcode.rts.parser.api.compiler.xml.IXsltTransformerSupplier;
-import net.unixcode.rts.parser.api.compiler.xml.ParserType;
+import net.unixcode.rts.parser.api.compiler.xml.*;
 import net.unixcode.rts.parser.compiler.antlr.ANTLRSourceItem;
+import net.unixcode.rts.parser.compiler.xml.DefaultXMLSettingsProvider;
 import net.unixcode.rts.parser.compiler.xml.DefaultXMLTransformer;
 import net.unixcode.rts.parser.compiler.xml.XMLSourceItem;
 import org.jetbrains.annotations.NotNull;
@@ -49,8 +47,8 @@ public class Main {
     }
   }
 
-  static ParserType parserTypeProviderImpl(String[] argv) {
-    return ParserType.CABIN;
+  static XMLType parserTypeProviderImpl(String[] argv) {
+    return XMLType.CABIN;
   }
 
   static @NotNull List<String> argvCheckFileNames(List<String> argv) {
@@ -95,8 +93,8 @@ public class Main {
     }
 
     @Bean
-    IXMLSourceItemFactory xml_source_item_factory() {
-      return XMLSourceItem::defaultSourceItemFactory;
+    IXMLSourceItemFactory xml_source_item_factory(IXMLTypeProvider xmlTypeProvider) {
+      return (srcPath) -> XMLSourceItem.defaultSourceItemFactory(xmlTypeProvider, srcPath);
     }
 
     @Bean
@@ -104,12 +102,25 @@ public class Main {
       return (ext) -> switch (ext) {
         case "xml" -> CompilerType.XML;
         case "sd", "sms", "eng", "rtseng" -> CompilerType.STF;
-        default -> throw new IllegalArgumentException(MessageFormat.format("Unprocessable file type [.{0}]", ext));
+        default -> throw new IllegalArgumentException(
+          MessageFormat.format("Unprocessable file type [.{0}]", ext)
+        );
       };
     }
 
     @Bean
-    IXMLTransformer model_xml_transformer(ApplicationContext applicationContext, @Value("${xml.cabin.xslt}") String xsltPath) {
+    IXMLTypeMapper xml_type_mapper() {
+      return (ns) -> switch (ns) {
+        case "http://rts.unixcode.net/xml/cabin/model/1.0.0" -> XMLType.CABIN;
+        case "http://rts.unixcode.net/xml/cabin/state/1.0.0" -> XMLType.STATE;
+        default -> throw new IllegalArgumentException(
+          MessageFormat.format("Unprocessable xml namespace [.{0}]", ns)
+        );
+      };
+    }
+
+    @Bean
+    IXMLTransformer cabin_xml_transformer(ApplicationContext applicationContext, @Value("${xml.cabin.xslt}") String xsltPath) {
       return new DefaultXMLTransformer(
         applicationContext,
         xslt_transformer_supplier(),
@@ -124,6 +135,15 @@ public class Main {
         xslt_transformer_supplier(),
         xsltPath
       );
+    }
+
+    @Bean
+    IXMLTransformerProvider xml_transformer_provider(ApplicationContext applicationContext) {
+      return (xmlType) -> switch (xmlType) {
+        case CABIN -> cabin_xml_transformer(applicationContext, null);
+        case STATE -> state_xml_transformer(applicationContext, null);
+        default -> throw new IllegalArgumentException("Unknown XML type/namespace.");
+      };
     }
 
     @Bean
