@@ -12,7 +12,6 @@ import net.unixcode.rts.parser.api.compiler.antlr.stf.ISTFParserSupplier;
 import net.unixcode.rts.parser.api.compiler.antlr.stf.ISTFSourceItemFactory;
 import net.unixcode.rts.parser.api.compiler.xml.*;
 import net.unixcode.rts.parser.compiler.antlr.ANTLRSourceItem;
-import net.unixcode.rts.parser.compiler.xml.DefaultXMLSettingsProvider;
 import net.unixcode.rts.parser.compiler.xml.DefaultXMLTransformer;
 import net.unixcode.rts.parser.compiler.xml.XMLSourceItem;
 import org.jetbrains.annotations.NotNull;
