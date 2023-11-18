@@ -61,6 +61,16 @@
       "input": "${workspaceFolder}/src/main/antlr4/samples/rz_tep70-cab.sms",
       "visualParseTree": true,
       "printParseTree": false
+    },
+    {
+      "name": "cab300.sd",
+      "type": "antlr-debug",
+      "request": "launch",
+      "grammar": "${workspaceFolder}/src/main/antlr4/stf.g4",
+      "startRule": "stf",
+      "input": "${workspaceFolder}/src/main/antlr4/samples/Cab300.sd",
+      "visualParseTree": true,
+      "printParseTree": false
     }
   ]
 }

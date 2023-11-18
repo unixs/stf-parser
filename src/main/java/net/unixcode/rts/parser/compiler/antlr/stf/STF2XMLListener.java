@@ -6,6 +6,8 @@ import net.unixcode.rts.parser.api.compiler.xml.IXMLSettingsProvider;
 import net.unixcode.rts.parser.api.compiler.antlr.stf.ISTF2XMLListenerCtxt;
 import net.unixcode.rts.parser.compiler.antlr.CountableListenerStackFrame;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
@@ -22,6 +24,8 @@ import java.util.stream.StreamSupport;
 @Component
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
 public class STF2XMLListener extends StackableSTFListener<Node, CountableListenerStackFrame<Node>> {
+  final protected Logger log = LoggerFactory.getLogger(getClass());
+
   protected static class Frame extends CountableListenerStackFrame<Node> {
     public Frame(CountableListenerStackFrame<Node> prevFrame) {
       super(prevFrame);

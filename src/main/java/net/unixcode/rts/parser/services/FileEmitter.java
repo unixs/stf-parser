@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 
 @Component
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
@@ -26,7 +27,7 @@ public class FileEmitter extends STDOUTEmitter {
       sourceItem.setOutPath(targetPath);
       log.info("compiled file: " + targetPath);
 
-      return new FileWriter(file);
+      return new FileWriter(file, StandardCharsets.UTF_8);
     }
     catch (IOException e) {
       log.error("Unable to write output file.");
