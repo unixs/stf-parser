@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.io.OutputStreamWriter;
+import java.io.OutputStream;
 
 @Component
 public class STDOUTEmitter implements ICompilerEmitter {
@@ -19,7 +19,7 @@ public class STDOUTEmitter implements ICompilerEmitter {
     var context = sourceItem.getContext();
 
     try {
-      var streamWriter = getOutputStreamWriter(sourceItem);
+      var streamWriter = getOutputStream(sourceItem);
       context.writeToStream(streamWriter);
       streamWriter.close();
     } catch (IOException e) {
@@ -30,7 +30,7 @@ public class STDOUTEmitter implements ICompilerEmitter {
     }
   }
 
-  protected OutputStreamWriter getOutputStreamWriter(ISourceItem sourceItem) {
-    return new OutputStreamWriter(System.out);
+  protected OutputStream getOutputStream(ISourceItem sourceItem) {
+    return System.out;
   }
 }

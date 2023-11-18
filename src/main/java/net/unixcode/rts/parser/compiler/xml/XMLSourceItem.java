@@ -7,17 +7,7 @@ import net.unixcode.rts.parser.api.compiler.xml.IXMLTransformerContext;
 import net.unixcode.rts.parser.api.compiler.xml.IXMLTypeProvider;
 import net.unixcode.rts.parser.api.compiler.xml.XMLType;
 import net.unixcode.rts.parser.compiler.DefaultSourceItem;
-import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
-import org.w3c.dom.Document;
-import org.xml.sax.SAXException;
-
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.IOException;
 
 public class XMLSourceItem extends DefaultSourceItem implements IXMLSourceItem {
   protected XMLType xmlType;

@@ -17,6 +17,7 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 
 @Component
@@ -58,7 +59,7 @@ public class STF2XMLListenerContext implements ISTF2XMLListenerCtxt {
   }
 
   @Override
-  public void accept(OutputStreamWriter streamWriter) {
+  public void accept(OutputStream emitOutputStream) {
     try {
       TransformerFactory transformerFactory = TransformerFactory.newInstance();
       Transformer transformer = transformerFactory.newTransformer();
@@ -67,7 +68,7 @@ public class STF2XMLListenerContext implements ISTF2XMLListenerCtxt {
       DOMSource source = new DOMSource(getDoc());
 
 
-      StreamResult result = new StreamResult(streamWriter);
+      StreamResult result = new StreamResult(emitOutputStream);
 
       transformer.transform(source, result);
     }

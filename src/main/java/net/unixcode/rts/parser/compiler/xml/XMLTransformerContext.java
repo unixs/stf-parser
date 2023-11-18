@@ -7,9 +7,8 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 @Component
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
@@ -17,7 +16,7 @@ public class XMLTransformerContext implements IXMLTransformerContext {
   final protected Logger log = LoggerFactory.getLogger(getClass());
   final private static Integer OUT_BUF_SIZE = 10000;
 
-  protected OutputStream outputStream;
+  protected ByteArrayOutputStream outputStream;
 
   public XMLTransformerContext() {
     outputStream = new ByteArrayOutputStream(OUT_BUF_SIZE);
@@ -29,9 +28,9 @@ public class XMLTransformerContext implements IXMLTransformerContext {
   }
 
   @Override
-  public void accept(OutputStreamWriter streamWriter) {
+  public void accept(OutputStream emitOutputStream) {
     try {
-      streamWriter.write(outputStream.toString());
+        outputStream.writeTo(emitOutputStream);
     }
     catch (Exception e) {
       log.error("Unable to write result.");

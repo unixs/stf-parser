@@ -10,7 +10,9 @@ import org.xml.sax.InputSource;
 
 import javax.xml.transform.sax.SAXSource;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 
 
 public class DefaultXMLTransformer implements IXMLTransformer {
@@ -34,7 +36,7 @@ public class DefaultXMLTransformer implements IXMLTransformer {
 
   @Override
   public void accept(InputStream xmlStream, OutputStream outputStream) {
-    var inputSource = new InputSource(xmlStream);
+    var inputSource = new InputSource(new InputStreamReader(xmlStream, StandardCharsets.UTF_8));
     var saxSource = new SAXSource(inputSource);
 
     var dst = transformer.newSerializer(outputStream);
