@@ -33,7 +33,7 @@ body:
   RIGHT_PAREN;
 
 sectionName:
-  ANY_LETTERS (ANY_LETTERS | DIGITS)*;
+  ANY_LETTERS (ANY_LETTERS | DIGITS | DOT)*;
 
 list:
   listItem (WS listItem)*;
