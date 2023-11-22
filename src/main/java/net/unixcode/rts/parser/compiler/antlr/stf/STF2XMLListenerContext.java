@@ -24,7 +24,6 @@ import java.io.OutputStreamWriter;
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
 public class STF2XMLListenerContext implements ISTF2XMLListenerCtxt {
   final protected Logger log = LoggerFactory.getLogger(getClass());
-  protected String sourcePath;
   protected Document doc;
   protected boolean processed = false;
 

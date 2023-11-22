@@ -31,7 +31,7 @@ public class XMLSourceItem extends DefaultSourceItem implements IXMLSourceItem {
     this.context = context;
   }
 
-  public static @NotNull ISourceItem defaultSourceItemFactory(IXMLTypeProvider xmlTypeProvider, String srcPath) {
-    return new XMLSourceItem(xmlTypeProvider, srcPath, CompilerType.XML);
+  public static @NotNull ISourceItem factory(IXMLTypeProvider typeProvider, String srcPath) {
+      return new XMLSourceItem(typeProvider, srcPath, CompilerType.XML);
   }
 }

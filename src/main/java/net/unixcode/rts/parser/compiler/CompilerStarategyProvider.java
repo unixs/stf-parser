@@ -5,6 +5,7 @@ import net.unixcode.rts.parser.api.compiler.ICompilerStrategy;
 import net.unixcode.rts.parser.api.compiler.ICompilerStrategyProvider;
 import net.unixcode.rts.parser.compiler.antlr.stf.STFCompilerStrategy;
 import net.unixcode.rts.parser.compiler.xml.XMLCompilerStrategy;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -18,7 +19,7 @@ public class CompilerStarategyProvider implements ICompilerStrategyProvider {
   }
 
   @Override
-  public ICompilerStrategy apply(CompilerType compilerType) {
+  public ICompilerStrategy apply(@NotNull CompilerType compilerType) {
     return switch (compilerType) {
       case STF -> stfCompilerStrategy;
       case XML -> xmlCompilerStrategy;

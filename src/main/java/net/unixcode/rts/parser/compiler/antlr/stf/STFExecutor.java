@@ -33,7 +33,7 @@ public class STFExecutor extends BaseANTLRExecutor<stfLexer, stfParser> {
       parser.stf();
     }
     catch (RecognitionException e) {
-      log.error("ANTLR error");
+      log.error("Parse error");
       log.error(e.getMessage());
 
       System.exit(1);

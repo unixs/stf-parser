@@ -7,17 +7,18 @@ import net.unixcode.rts.parser.antlr.stf.stfParser;
 import net.unixcode.rts.parser.api.*;
 import net.unixcode.rts.parser.api.compiler.CompilerType;
 import net.unixcode.rts.parser.api.compiler.ICompilerTypeProvider;
-import net.unixcode.rts.parser.api.compiler.antlr.stf.ISTFLexerSupplier;
-import net.unixcode.rts.parser.api.compiler.antlr.stf.ISTFParserSupplier;
-import net.unixcode.rts.parser.api.compiler.antlr.stf.ISTFSourceItemFactory;
+import net.unixcode.rts.parser.api.compiler.antlr.stf.*;
 import net.unixcode.rts.parser.api.compiler.xml.*;
-import net.unixcode.rts.parser.compiler.antlr.ANTLRSourceItem;
+import net.unixcode.rts.parser.compiler.antlr.stf.STFSourceItem;
+import net.unixcode.rts.parser.compiler.xml.CabinXMLSettings;
 import net.unixcode.rts.parser.compiler.xml.DefaultXMLTransformer;
+import net.unixcode.rts.parser.compiler.xml.StateXMLSettings;
 import net.unixcode.rts.parser.compiler.xml.XMLSourceItem;
+import org.apache.commons.io.FilenameUtils;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.*;
 
@@ -50,7 +51,8 @@ public class Main {
     return XMLType.CABIN;
   }
 
-  static @NotNull List<String> argvCheckFileNames(List<String> argv) {
+  @Contract("_ -> new")
+  static @NotNull List<String> argvCheckFileNames(@NotNull List<String> argv) {
     if (argv.isEmpty()) {
       log.error("The file names are not specified in cmd.");
       System.exit(1);
@@ -87,13 +89,13 @@ public class Main {
     }
 
     @Bean
-    ISTFSourceItemFactory stf_source_item_factory() {
-      return ANTLRSourceItem::stfSourceItemFactory;
+    ISTFSourceItemFactory stf_source_item_factory(ISTFTypeProvider typeProvider) {
+      return (srcPath) -> STFSourceItem.factory(typeProvider, srcPath);
     }
 
     @Bean
-    IXMLSourceItemFactory xml_source_item_factory(IXMLTypeProvider xmlTypeProvider) {
-      return (srcPath) -> XMLSourceItem.defaultSourceItemFactory(xmlTypeProvider, srcPath);
+    IXMLSourceItemFactory xml_source_item_factory(IXMLTypeProvider typeProvider) {
+      return (srcPath) -> XMLSourceItem.factory(typeProvider, srcPath);
     }
 
     @Bean
@@ -104,6 +106,19 @@ public class Main {
         default -> throw new IllegalArgumentException(
           MessageFormat.format("Unprocessable file type [.{0}]", ext)
         );
+      };
+    }
+
+    @Bean
+    ISTFTypeProvider stf_type_provider() {
+      return (sourceItem) -> {
+        var ext = FilenameUtils.getExtension(sourceItem.getSourcePath());
+
+        return switch (ext) {
+          case "sd" -> STFType.SD;
+          case "sms" -> STFType.SMS;
+          default -> STFType.UNKNOWN;
+        };
       };
     }
 
@@ -119,28 +134,28 @@ public class Main {
     }
 
     @Bean
-    IXMLTransformer cabin_xml_transformer(ApplicationContext applicationContext, @Value("${xml.cabin.xslt}") String xsltPath) {
+    IXMLTransformer cabin_xml_transformer(ApplicationContext applicationContext, @NotNull CabinXMLSettings xmlSettingsProvider) {
       return new DefaultXMLTransformer(
         applicationContext,
         xslt_transformer_supplier(),
-        xsltPath
+        xmlSettingsProvider.getXslt()
       );
     }
 
     @Bean
-    IXMLTransformer state_xml_transformer(ApplicationContext applicationContext, @Value("${xml.state.xslt}") String xsltPath) {
+    IXMLTransformer state_xml_transformer(ApplicationContext applicationContext, @NotNull StateXMLSettings xmlSettingsProvider) {
       return new DefaultXMLTransformer(
         applicationContext,
         xslt_transformer_supplier(),
-        xsltPath
+        xmlSettingsProvider.getXslt()
       );
     }
 
     @Bean
-    IXMLTransformerProvider xml_transformer_provider(ApplicationContext applicationContext) {
+    IXMLTransformerProvider xml_transformer_provider(ApplicationContext applicationContext, StateXMLSettings stateSettingsProvider, @NotNull CabinXMLSettings cabinSettingsProvider) {
       return (xmlType) -> switch (xmlType) {
-        case CABIN -> cabin_xml_transformer(applicationContext, null);
-        case STATE -> state_xml_transformer(applicationContext, null);
+        case CABIN -> cabin_xml_transformer(applicationContext, cabinSettingsProvider);
+        case STATE -> state_xml_transformer(applicationContext, stateSettingsProvider);
         default -> throw new IllegalArgumentException("Unknown XML type/namespace.");
       };
     }
@@ -149,7 +164,6 @@ public class Main {
     IXsltTransformerSupplier xslt_transformer_supplier() {
       return (xsltInputStream) -> {
         try {
-
           var processor = new Processor(false);
           XsltCompiler compiler = processor.newXsltCompiler();
 

@@ -6,6 +6,7 @@ import net.unixcode.rts.parser.api.ICompilerFactory;
 import net.unixcode.rts.parser.api.compiler.*;
 import net.unixcode.rts.parser.api.compiler.antlr.IANTLRParserListener;
 import net.unixcode.rts.parser.api.compiler.antlr.IANTLRSourceItem;
+import net.unixcode.rts.parser.api.compiler.antlr.stf.STFType;
 import net.unixcode.rts.parser.compiler.antlr.ANTLRCompilerStrategy;
 import net.unixcode.rts.parser.compiler.xml.XMLCompilerStrategy;
 import net.unixcode.rts.parser.services.FileEmitter;
@@ -47,11 +48,16 @@ public class STFCompilerStrategy extends ANTLRCompilerStrategy<stfLexer, stfPars
   public void emit(ISourceItem sourceItem) {
     super.emit(sourceItem);
 
-    compileXML(sourceItem);
+    compileXML((STFSourceItem) sourceItem);
   }
 
-  protected void compileXML(@NotNull ISourceItem antlrSourceItem) {
-    var outSourceItem = this.sourceItemProvider.apply(antlrSourceItem.getOutPath());
+  protected void compileXML(@NotNull STFSourceItem stfSourceItem) {
+    if (stfSourceItem.getType() == STFType.UNKNOWN) {
+      log.info("XML transformation for UNKNOWN STF item has been skipped");
+      return;
+    }
+
+    var outSourceItem = sourceItemProvider.apply(stfSourceItem.getOutPath());
 
     xmlCompiler.accept(outSourceItem);
     xmlCompiler.emit(outSourceItem);

@@ -8,6 +8,7 @@ import org.antlr.v4.runtime.ANTLRErrorListener;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.Parser;
+import org.jetbrains.annotations.NotNull;
 
 public abstract class BaseANTLRExecutor<L extends Lexer, P extends Parser> implements IParserConstructor<P>, IParserExecutor<P> {
   protected ILexerSupplier<L> lexerSupplier;
@@ -21,7 +22,7 @@ public abstract class BaseANTLRExecutor<L extends Lexer, P extends Parser> imple
   }
 
   @Override
-  public P apply(IANTLRSourceItem sourceItem) {
+  public P apply(@NotNull IANTLRSourceItem sourceItem) {
     var stream = sourceItem.getStream();
 
     Lexer lexer = lexerSupplier.apply(stream);

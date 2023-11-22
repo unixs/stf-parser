@@ -5,6 +5,7 @@ import net.unixcode.rts.parser.api.compiler.ISourceItemFactory;
 import net.unixcode.rts.parser.api.compiler.ISourceItemFactoryProvider;
 import net.unixcode.rts.parser.api.compiler.antlr.stf.ISTFSourceItemFactory;
 import net.unixcode.rts.parser.api.compiler.xml.IXMLSourceItemFactory;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -18,7 +19,7 @@ public class SourceItemFactoryProvider implements ISourceItemFactoryProvider {
   }
 
   @Override
-  public ISourceItemFactory apply(CompilerType compilerType) {
+  public ISourceItemFactory apply(@NotNull CompilerType compilerType) {
     return switch (compilerType) {
       case STF -> stfSourceItemFactory;
       case XML -> xmlSourceItemFactory;

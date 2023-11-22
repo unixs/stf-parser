@@ -1,8 +1,6 @@
 package net.unixcode.rts.parser.api.compiler.xml;
 
-import net.unixcode.rts.parser.api.compiler.ISourceItem;
+import net.unixcode.rts.parser.api.compiler.ISourceTypeProvider;
 
-import java.util.function.Function;
-
-public interface IXMLTypeProvider extends Function<ISourceItem, XMLType> {
+public interface IXMLTypeProvider extends ISourceTypeProvider<XMLType> {
 }

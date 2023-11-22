@@ -5,16 +5,12 @@ import net.unixcode.rts.parser.api.compiler.ISourceItem;
 import net.unixcode.rts.parser.api.compiler.xml.*;
 import net.unixcode.rts.parser.compiler.DefaultCompilerStrategy;
 import net.unixcode.rts.parser.services.FileEmitter;
-import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.io.IOUtils;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Lookup;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import java.io.*;
 
 @Component
 public class XMLCompilerStrategy extends DefaultCompilerStrategy {

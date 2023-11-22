@@ -2,13 +2,14 @@ package net.unixcode.rts.parser.compiler.antlr.stf;
 
 import net.unixcode.rts.parser.antlr.stf.stfParser;
 import net.unixcode.rts.parser.api.compiler.antlr.IANTLRListenerContext;
-import net.unixcode.rts.parser.api.compiler.xml.IXMLSettingsProvider;
+import net.unixcode.rts.parser.api.compiler.antlr.stf.ISTF2XMLSettingsProvider;
+import net.unixcode.rts.parser.api.compiler.xml.IXMLSettings;
 import net.unixcode.rts.parser.api.compiler.antlr.stf.ISTF2XMLListenerCtxt;
+import net.unixcode.rts.parser.api.compiler.xml.XMLType;
 import net.unixcode.rts.parser.compiler.antlr.CountableListenerStackFrame;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -42,15 +43,11 @@ public class STF2XMLListener extends StackableSTFListener<Node, CountableListene
   }
 
   protected ISTF2XMLListenerCtxt listenerContext;
-  protected IXMLSettingsProvider xmlSettingsProvider;
-  protected String xmlNamespace;
+  protected IXMLSettings xmlSettings;
 
-  public STF2XMLListener(ISTF2XMLListenerCtxt listenerContext, IXMLSettingsProvider xmlSettingsProvider) {
+  public STF2XMLListener(@NotNull ISTF2XMLListenerCtxt listenerContext, @NotNull ISTF2XMLSettingsProvider xmlSettingsProvider) {
     this.listenerContext = listenerContext;
-    this.xmlSettingsProvider = xmlSettingsProvider;
-
-    // TODO: conditional namespace
-    this.xmlNamespace = xmlSettingsProvider.getCabinNamespace();
+    this.xmlSettings = xmlSettingsProvider.apply(XMLType.CABIN);
   }
 
   protected Document doc() {
@@ -58,7 +55,7 @@ public class STF2XMLListener extends StackableSTFListener<Node, CountableListene
   }
 
   protected Element newElement(String name) {
-    return doc().createElementNS(xmlNamespace, name);
+    return doc().createElementNS(xmlSettings.getNamespace(), name);
   }
 
   protected Attr newAttr(String name, String value) {
@@ -295,12 +292,11 @@ public class STF2XMLListener extends StackableSTFListener<Node, CountableListene
 
   @Override
   public void exitStf(@NotNull stfParser.StfContext ctx) {
+    var root = newElement(xmlSettings.getRootElementName());
 
-    // TODO: Need to delegate this to the context or something related to configuration
-    var root = newElement(xmlSettingsProvider.getCabinRootElementName());
-    root.setAttribute("xmlns", xmlSettingsProvider.getCabinNamespace());
-    root.setAttribute("xmlns:xsi", xmlSettingsProvider.XSI_NS);
-    root.setAttribute("xsi:schemaLocation", xmlSettingsProvider.getCabinNamespace() + " " + xmlSettingsProvider.getCabinSchemaLocation());
+    root.setAttribute("xmlns", xmlSettings.getNamespace());
+    root.setAttribute("xmlns:xsi", xmlSettings.XSI_NS);
+    root.setAttribute("xsi:schemaLocation", xmlSettings.getNamespace() + " " + xmlSettings.getSchemaLocation());
 
     for (var node : stack) {
       root.appendChild(node.getData());

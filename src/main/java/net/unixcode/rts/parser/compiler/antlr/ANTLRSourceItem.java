@@ -5,8 +5,6 @@ import net.unixcode.rts.parser.api.compiler.antlr.IANTLRSourceItem;
 import net.unixcode.rts.parser.compiler.DefaultSourceItem;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,7 +24,7 @@ public class ANTLRSourceItem extends DefaultSourceItem implements IANTLRSourceIt
       stream = CharStreams.fromFileName(this.sourcePath, StandardCharsets.UTF_16);
     }
     catch (IOException e) {
-      log.error(MessageFormat.format("ERROR: Unable to compile STF file [{0}]", sourcePath));
+      log.error(MessageFormat.format("ERROR: Unable to build STF source item for [{0}]", sourcePath));
       log.error(e.getMessage());
     }
   }
@@ -34,10 +32,5 @@ public class ANTLRSourceItem extends DefaultSourceItem implements IANTLRSourceIt
   @Override
   public CharStream getStream() {
     return stream;
-  }
-
-  @Contract("_ -> new")
-  public static @NotNull IANTLRSourceItem stfSourceItemFactory(String srcPath) {
-    return new ANTLRSourceItem(srcPath);
   }
 }
