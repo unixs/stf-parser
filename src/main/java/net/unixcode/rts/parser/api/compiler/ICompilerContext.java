@@ -8,4 +8,6 @@ public interface ICompilerContext extends Consumer<OutputStream> {
   default void writeToStream(OutputStream outSriter) {
     this.accept(outSriter);
   }
+  void setSourceItem(ISourceItem sourceItem);
+  ISourceItem getSourceItem();
 }

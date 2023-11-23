@@ -1,6 +1,7 @@
 package net.unixcode.rts.parser.compiler.xml;
 
 import net.unixcode.rts.parser.api.compiler.xml.IXMLTransformerContext;
+import net.unixcode.rts.parser.compiler.DefaultCompilerContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -8,11 +9,10 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 
 @Component
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
-public class XMLTransformerContext implements IXMLTransformerContext {
+public class XMLTransformerContext extends DefaultCompilerContext implements IXMLTransformerContext {
   final protected Logger log = LoggerFactory.getLogger(getClass());
   final private static Integer OUT_BUF_SIZE = 10000;
 

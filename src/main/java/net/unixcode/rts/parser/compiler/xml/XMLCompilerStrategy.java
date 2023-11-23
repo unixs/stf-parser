@@ -11,6 +11,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Lookup;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
+
 
 @Component
 public class XMLCompilerStrategy extends DefaultCompilerStrategy {
@@ -32,24 +34,24 @@ public class XMLCompilerStrategy extends DefaultCompilerStrategy {
 
     var sourceItem = (IXMLSourceItem) iSourceItem;
 
-    transform(sourceItem);
+    try {
+      transform(sourceItem);
+    } catch (Exception e) {
+      logger.error("Unable to transform XML.");
+      logger.error(e.getMessage());
+    }
   }
 
-  protected void transform(@NotNull IXMLSourceItem sourceItem) {
-    try {
-      var context = lookupContext();
+  protected void transform(@NotNull IXMLSourceItem sourceItem) throws IOException {
+    var context = lookupContext();
 
-      try (var inputStream = sourceItem.getInputStream()) {
-        var transformer = transformerProvider.apply(sourceItem.getType());
+    context.setSourceItem(sourceItem);
 
-        transformer.accept(inputStream, context.getOutputStream());
-        sourceItem.setContext(context);
-      }
-    } catch (Exception e) {
-      logger.error("Unable to translate XML.");
-      logger.error(e.getMessage());
+    try (var inputStream = sourceItem.getInputStream()) {
+      var transformer = transformerProvider.apply(sourceItem.getType());
 
-      throw new RuntimeException(e);
+      transformer.accept(inputStream, context.getOutputStream());
+      sourceItem.setContext(context);
     }
   }
 

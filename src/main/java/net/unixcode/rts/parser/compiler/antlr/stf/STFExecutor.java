@@ -13,9 +13,10 @@ import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Service
+@Component
 public class STFExecutor extends BaseANTLRExecutor<stfLexer, stfParser> {
   final protected Logger log = LoggerFactory.getLogger(getClass());
 
@@ -31,6 +32,7 @@ public class STFExecutor extends BaseANTLRExecutor<stfLexer, stfParser> {
     try {
       parser.removeErrorListeners();
       parser.stf();
+      listener.getContext().setProcessed();
     }
     catch (RecognitionException e) {
       log.error("Parse error");

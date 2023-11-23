@@ -7,12 +7,13 @@ import net.unixcode.rts.parser.antlr.stf.stfParser;
 import net.unixcode.rts.parser.api.*;
 import net.unixcode.rts.parser.api.compiler.CompilerType;
 import net.unixcode.rts.parser.api.compiler.ICompilerTypeProvider;
+import net.unixcode.rts.parser.api.compiler.ISTF2XMLTypeMapper;
 import net.unixcode.rts.parser.api.compiler.antlr.stf.*;
 import net.unixcode.rts.parser.api.compiler.xml.*;
 import net.unixcode.rts.parser.compiler.antlr.stf.STFSourceItem;
-import net.unixcode.rts.parser.compiler.xml.CabinXMLSettings;
+import net.unixcode.rts.parser.compiler.xml.settings.CabinXMLSettings;
 import net.unixcode.rts.parser.compiler.xml.DefaultXMLTransformer;
-import net.unixcode.rts.parser.compiler.xml.StateXMLSettings;
+import net.unixcode.rts.parser.compiler.xml.settings.StateXMLSettings;
 import net.unixcode.rts.parser.compiler.xml.XMLSourceItem;
 import org.apache.commons.io.FilenameUtils;
 import org.jetbrains.annotations.Contract;
@@ -124,12 +125,16 @@ public class Main {
 
     @Bean
     IXMLTypeMapper xml_type_mapper() {
-      return (ns) -> switch (ns) {
-        case "http://rts.unixcode.net/xml/cabin/model/1.0.0" -> XMLType.CABIN;
-        case "http://rts.unixcode.net/xml/cabin/state/1.0.0" -> XMLType.STATE;
-        default -> throw new IllegalArgumentException(
-          MessageFormat.format("Unprocessable xml namespace [.{0}]", ns)
-        );
+      return (ns) -> {
+        if (ns == null) {
+          return XMLType.UNKNOWN;
+        }
+
+        return switch (ns) {
+          case "http://rts.unixcode.net/xml/cabin/model/1.0.0" -> XMLType.CABIN;
+          case "http://rts.unixcode.net/xml/cabin/state/1.0.0" -> XMLType.STATE;
+          default -> XMLType.UNKNOWN;
+        };
       };
     }
 
@@ -157,6 +162,15 @@ public class Main {
         case CABIN -> cabin_xml_transformer(applicationContext, cabinSettingsProvider);
         case STATE -> state_xml_transformer(applicationContext, stateSettingsProvider);
         default -> throw new IllegalArgumentException("Unknown XML type/namespace.");
+      };
+    }
+
+    @Bean
+    ISTF2XMLTypeMapper stf_xml_mapper() {
+      return (stfType) -> switch (stfType) {
+        case SD -> XMLType.CABIN;
+        case SMS -> XMLType.SOUND;
+        default -> XMLType.UNKNOWN;
       };
     }
 

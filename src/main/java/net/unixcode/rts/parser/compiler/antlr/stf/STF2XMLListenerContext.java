@@ -1,7 +1,14 @@
 package net.unixcode.rts.parser.compiler.antlr.stf;
 
-import net.unixcode.rts.parser.api.compiler.antlr.IANTLRListenerContext;
+import net.unixcode.rts.parser.api.compiler.ISTF2XMLTypeMapper;
 import net.unixcode.rts.parser.api.compiler.antlr.stf.ISTF2XMLListenerCtxt;
+import net.unixcode.rts.parser.api.compiler.antlr.stf.ISTF2XMLSettingsProvider;
+import net.unixcode.rts.parser.api.compiler.antlr.stf.ISTFSourceItem;
+import net.unixcode.rts.parser.api.compiler.antlr.stf.STFType;
+import net.unixcode.rts.parser.api.compiler.xml.IXMLSettings;
+import net.unixcode.rts.parser.api.compiler.xml.XMLType;
+import net.unixcode.rts.parser.compiler.DefaultCompilerContext;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -18,16 +25,21 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 
 @Component
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
-public class STF2XMLListenerContext implements ISTF2XMLListenerCtxt {
+public class STF2XMLListenerContext extends DefaultCompilerContext implements ISTF2XMLListenerCtxt {
   final protected Logger log = LoggerFactory.getLogger(getClass());
   protected Document doc;
   protected boolean processed = false;
+  protected IXMLSettings xmlSettings;
+  protected ISTF2XMLTypeMapper typeMapper;
+  protected ISTF2XMLSettingsProvider settingsProvider;
 
-  public STF2XMLListenerContext() {
+  public STF2XMLListenerContext(@NotNull ISTF2XMLSettingsProvider settingsProvider, @NotNull ISTF2XMLTypeMapper typeMapper) {
+    this.typeMapper = typeMapper;
+    this.settingsProvider = settingsProvider;
+
     try {
       DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
       dbf.setNamespaceAware(true);
@@ -55,6 +67,27 @@ public class STF2XMLListenerContext implements ISTF2XMLListenerCtxt {
   @Override
   public Document getDoc() {
     return doc;
+  }
+
+
+
+  @Override
+  public IXMLSettings getXMLSettings() {
+    if (xmlSettings == null) {
+      if (sourceItem == null) {
+        String msg = "Source item is null. Try to call specific setter before compilation.";
+        log.error(msg);
+
+        throw new IllegalArgumentException(msg);
+      }
+
+      ISTFSourceItem sourceItem = (ISTFSourceItem) getSourceItem();
+      var xmlType = typeMapper.apply(sourceItem.getType());
+
+      xmlSettings = settingsProvider.apply(xmlType);
+    }
+
+    return xmlSettings;
   }
 
   @Override

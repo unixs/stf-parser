@@ -29,9 +29,6 @@ public abstract class ANTLRCompilerStrategy<L extends Lexer, P extends Parser> e
 
     var parser = this.parserExecutor.apply(sourceItem);
 
-    // Marking the listener related context as processed and ready for data emitting
-    listener.getContext().setProcessed();
-
     return this.parserExecutor.exec(parser, listener);
   }
 }

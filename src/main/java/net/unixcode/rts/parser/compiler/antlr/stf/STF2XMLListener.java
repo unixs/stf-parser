@@ -1,11 +1,12 @@
 package net.unixcode.rts.parser.compiler.antlr.stf;
 
 import net.unixcode.rts.parser.antlr.stf.stfParser;
+import net.unixcode.rts.parser.api.compiler.ISTF2XMLTypeMapper;
 import net.unixcode.rts.parser.api.compiler.antlr.IANTLRListenerContext;
 import net.unixcode.rts.parser.api.compiler.antlr.stf.ISTF2XMLSettingsProvider;
+import net.unixcode.rts.parser.api.compiler.antlr.stf.STFType;
 import net.unixcode.rts.parser.api.compiler.xml.IXMLSettings;
 import net.unixcode.rts.parser.api.compiler.antlr.stf.ISTF2XMLListenerCtxt;
-import net.unixcode.rts.parser.api.compiler.xml.XMLType;
 import net.unixcode.rts.parser.compiler.antlr.CountableListenerStackFrame;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
@@ -43,11 +45,21 @@ public class STF2XMLListener extends StackableSTFListener<Node, CountableListene
   }
 
   protected ISTF2XMLListenerCtxt listenerContext;
-  protected IXMLSettings xmlSettings;
 
-  public STF2XMLListener(@NotNull ISTF2XMLListenerCtxt listenerContext, @NotNull ISTF2XMLSettingsProvider xmlSettingsProvider) {
+  protected String xmlNamespace;
+  protected Function<String, Element> newElementCallee;
+
+  public STF2XMLListener(@NotNull ISTF2XMLListenerCtxt listenerContext) {
     this.listenerContext = listenerContext;
-    this.xmlSettings = xmlSettingsProvider.apply(XMLType.CABIN);
+
+    xmlNamespace = listenerContext.getXMLSettings().getNamespace();
+
+    if (xmlNamespace == null) {
+      newElementCallee = this::newSimpleElement;
+    }
+    else {
+      newElementCallee = this::newNsElement;
+    }
   }
 
   protected Document doc() {
@@ -55,7 +67,15 @@ public class STF2XMLListener extends StackableSTFListener<Node, CountableListene
   }
 
   protected Element newElement(String name) {
-    return doc().createElementNS(xmlSettings.getNamespace(), name);
+    return newElementCallee.apply(name);
+  }
+
+  protected Element newSimpleElement(String name) {
+    return doc().createElement(name);
+  }
+
+  protected Element newNsElement(String name) {
+    return doc().createElementNS(xmlNamespace, name);
   }
 
   protected Attr newAttr(String name, String value) {
@@ -292,11 +312,15 @@ public class STF2XMLListener extends StackableSTFListener<Node, CountableListene
 
   @Override
   public void exitStf(@NotNull stfParser.StfContext ctx) {
+    var xmlSettings = listenerContext.getXMLSettings();
     var root = newElement(xmlSettings.getRootElementName());
 
-    root.setAttribute("xmlns", xmlSettings.getNamespace());
     root.setAttribute("xmlns:xsi", xmlSettings.XSI_NS);
-    root.setAttribute("xsi:schemaLocation", xmlSettings.getNamespace() + " " + xmlSettings.getSchemaLocation());
+
+    if (xmlSettings.getNamespace() != null) {
+      root.setAttribute("xmlns", xmlSettings.getNamespace());
+      root.setAttribute("xsi:schemaLocation", xmlSettings.getNamespace() + " " + xmlSettings.getSchemaLocation());
+    }
 
     for (var node : stack) {
       root.appendChild(node.getData());
