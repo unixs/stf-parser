@@ -240,7 +240,8 @@
   <xsl:variable name="disp_arrow" as="xs:string" select="'ARROW'"/>
 
 
-  <xsl:template match="//ESD_Interior">
+  <xsl:template match="//ESD_Interior">// DO NOT EDIT!!! GENERATED FILE - <xsl:value-of  select="current-dateTime()"/>
+#pragma once
 /**
   # Интерфейс 3D модели
  **/

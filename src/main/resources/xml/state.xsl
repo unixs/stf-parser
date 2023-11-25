@@ -92,7 +92,7 @@
     };
   </xsl:template>
 
-  <xsl:template match="/state">
+  <xsl:template match="/state">// DO NOT EDIT!!! GENERATED FILE - <xsl:value-of  select="current-dateTime()"/>
 #pragma once
 <xsl:text>#include &lt;cstddef&gt;</xsl:text>
 

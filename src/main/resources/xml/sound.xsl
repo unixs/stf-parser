@@ -11,6 +11,8 @@
   <xsl:param name="isCabin" select="if (/sound//Activation/CabCam) then true() else false()" />
 
 
+  <xsl:template match="text()"/>
+
   <xsl:template name="siblings">
     <xsl:param name="me"/>
     <xsl:for-each select="$me/ancestor::Triggers/Discrete_Trigger">
@@ -24,19 +26,22 @@
   </xsl:template>
 
   <xsl:template match="//Discrete_Trigger">
+    <xsl:variable name="id" select="./number/text()"/>
+    <xsl:variable name="pair" select="./ancestor::ScalabiltyGroup/DiscreteTriggerPairs/Pair"/>
     /**
       #### <xsl:value-of select="if (./ancestor::Stream/comment) then ./ancestor::Stream/comment/text() else 'UNCOMMENTED STREAM'"/>
       ### Триггер
       Type: `<xsl:value-of select="./number/following-sibling::*/name()" />`
       File: `<xsl:value-of select=".//File/string/text()" />`
-      Triggers group:<xsl:call-template name="siblings">
- <xsl:with-param name="me" select="."/>
-</xsl:call-template>
+      Triggers group:<xsl:call-template name="siblings"><xsl:with-param name="me" select="."/></xsl:call-template>
+      <xsl:if test="$pair//number[2][text() eq $id]">
+      Paired: <xsl:value-of select="$id"/>
+      </xsl:if>
      */
     trg_<xsl:value-of select="./number[1]" /> = <xsl:value-of select="./number[1]" />,
   </xsl:template>
 
-  <xsl:template match="/sound">
+  <xsl:template match="/sound">// DO NOT EDIT!!! GENERATED FILE - <xsl:value-of  select="current-dateTime()"/>
 #pragma once
 
 /**
@@ -51,9 +56,5 @@ namespace sound {
   };
 }
   </xsl:template>
-
-
-  <xsl:template match="text()"/>
-
 
 </xsl:stylesheet>
