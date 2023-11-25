@@ -4,6 +4,7 @@ import net.unixcode.rts.parser.api.compiler.antlr.stf.ISTF2XMLSettingsProvider;
 import net.unixcode.rts.parser.api.compiler.xml.IXMLSettings;
 import net.unixcode.rts.parser.api.compiler.xml.XMLType;
 import net.unixcode.rts.parser.compiler.xml.settings.CabinXMLSettings;
+import net.unixcode.rts.parser.compiler.xml.settings.SoundXMLSettings;
 import net.unixcode.rts.parser.compiler.xml.settings.StateXMLSettings;
 import net.unixcode.rts.parser.compiler.xml.settings.UnknownXMLSettings;
 import org.jetbrains.annotations.NotNull;
@@ -18,6 +19,7 @@ public class STF2XMLSettingsProvider implements ISTF2XMLSettingsProvider {
     return switch (type) {
       case CABIN -> cabinSettings();
       case STATE -> stateSettings();
+      case SOUND -> soundSettings();
       default -> unknownSettings();
     };
   }
@@ -34,6 +36,11 @@ public class STF2XMLSettingsProvider implements ISTF2XMLSettingsProvider {
 
   @Lookup
   protected UnknownXMLSettings unknownSettings() {
+    return null;
+  }
+
+  @Lookup
+  protected SoundXMLSettings soundSettings() {
     return null;
   }
 }

@@ -58,7 +58,7 @@ public class STFCompilerStrategy extends ANTLRCompilerStrategy<stfLexer, stfPars
     var outSourceItem = (XMLSourceItem) sourceItemProvider.apply(stfSourceItem.getOutPath());
 
     if (outSourceItem.getType() == XMLType.UNKNOWN) {
-      log.info("XML transformation for UNKNOWN XML item has been skipped");
+      log.info("XML transformation for UNKNOWN XML item ["+ stfSourceItem.getOutPath() +"] has been skipped");
       return;
     }
 

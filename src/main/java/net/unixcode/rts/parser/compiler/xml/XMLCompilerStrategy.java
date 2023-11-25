@@ -39,6 +39,8 @@ public class XMLCompilerStrategy extends DefaultCompilerStrategy {
     } catch (Exception e) {
       logger.error("Unable to transform XML.");
       logger.error(e.getMessage());
+
+      throw new RuntimeException(e);
     }
   }
 

@@ -13,6 +13,7 @@ import net.unixcode.rts.parser.api.compiler.xml.*;
 import net.unixcode.rts.parser.compiler.antlr.stf.STFSourceItem;
 import net.unixcode.rts.parser.compiler.xml.settings.CabinXMLSettings;
 import net.unixcode.rts.parser.compiler.xml.DefaultXMLTransformer;
+import net.unixcode.rts.parser.compiler.xml.settings.SoundXMLSettings;
 import net.unixcode.rts.parser.compiler.xml.settings.StateXMLSettings;
 import net.unixcode.rts.parser.compiler.xml.XMLSourceItem;
 import org.apache.commons.io.FilenameUtils;
@@ -133,35 +134,46 @@ public class Main {
         return switch (ns) {
           case "http://rts.unixcode.net/xml/cabin/model/1.0.0" -> XMLType.CABIN;
           case "http://rts.unixcode.net/xml/cabin/state/1.0.0" -> XMLType.STATE;
+          case "http://rts.unixcode.net/xml/sound/1.0.0" -> XMLType.SOUND;
           default -> XMLType.UNKNOWN;
         };
       };
     }
 
     @Bean
-    IXMLTransformer cabin_xml_transformer(ApplicationContext applicationContext, @NotNull CabinXMLSettings xmlSettingsProvider) {
+    IXMLTransformer cabin_xml_transformer(ApplicationContext appContext, @NotNull CabinXMLSettings xmlSettings) {
       return new DefaultXMLTransformer(
-        applicationContext,
+        appContext,
         xslt_transformer_supplier(),
-        xmlSettingsProvider.getXslt()
+        xmlSettings.getXslt()
       );
     }
 
     @Bean
-    IXMLTransformer state_xml_transformer(ApplicationContext applicationContext, @NotNull StateXMLSettings xmlSettingsProvider) {
+    IXMLTransformer state_xml_transformer(ApplicationContext appContext, @NotNull StateXMLSettings xmlSettings) {
       return new DefaultXMLTransformer(
-        applicationContext,
+        appContext,
         xslt_transformer_supplier(),
-        xmlSettingsProvider.getXslt()
+        xmlSettings.getXslt()
       );
     }
 
     @Bean
-    IXMLTransformerProvider xml_transformer_provider(ApplicationContext applicationContext, StateXMLSettings stateSettingsProvider, @NotNull CabinXMLSettings cabinSettingsProvider) {
+    IXMLTransformer sound_xml_transformer(ApplicationContext appContext, @NotNull SoundXMLSettings xmlSettings) {
+      return new DefaultXMLTransformer(
+        appContext,
+        xslt_transformer_supplier(),
+        xmlSettings.getXslt()
+      );
+    }
+
+    @Bean
+    IXMLTransformerProvider xml_transformer_provider(ApplicationContext applicationContext, @NotNull StateXMLSettings stateSettings, @NotNull CabinXMLSettings cabinSettings, @NotNull SoundXMLSettings soundSettings) {
       return (xmlType) -> switch (xmlType) {
-        case CABIN -> cabin_xml_transformer(applicationContext, cabinSettingsProvider);
-        case STATE -> state_xml_transformer(applicationContext, stateSettingsProvider);
-        default -> throw new IllegalArgumentException("Unknown XML type/namespace.");
+        case CABIN -> cabin_xml_transformer(applicationContext, cabinSettings);
+        case STATE -> state_xml_transformer(applicationContext, stateSettings);
+        case SOUND -> sound_xml_transformer(applicationContext, soundSettings);
+        default -> throw new IllegalArgumentException("There is no XML transformer for ["+ xmlType +"] type/namespace.");
       };
     }
 
