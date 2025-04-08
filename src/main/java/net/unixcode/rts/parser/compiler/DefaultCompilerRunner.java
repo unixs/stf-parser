@@ -33,7 +33,7 @@ public class DefaultCompilerRunner implements ICompilerRunner {
    */
   public void run() {
     if (argv == null) {
-      throw new IllegalArgumentException("Sources not set.");
+      throw new IllegalArgumentException("Sources are not set.");
     }
 
     var compiler = compilerFactory.get();
